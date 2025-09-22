@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import ReactQueryProvider from "@/app/providers/ReactQueryProvider";
+import HeaderLanginPage from "./components/HeaderLandingPage/HeaderLandingPage";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,6 +37,7 @@ export default function RootLayout({
           defaultTheme="system"
           enableSystem={true}
         >
+          <HeaderLanginPage/>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </ThemeProvider>
       </body>
