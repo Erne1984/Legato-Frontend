@@ -1,16 +1,16 @@
-
-import Hero from "./components/Hero/Hero";
-import ThemeChanger from "./components/ThemeChanger/ThemeChanger";
+import FeaturesSection from "@/components/sections/FeaturesSection/FeaturesSection";
+import Hero from "../components/sections/Hero/Hero";
+import ThemeChanger from "../components/ui/ThemeChanger/ThemeChanger";
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
     <div className={styles.container}>
+      <Hero />
 
-      <Hero/>
+      <FeaturesSection/>
 
-      <ThemeChanger/>
-
+      <ThemeChanger />
     </div>
   );
 }

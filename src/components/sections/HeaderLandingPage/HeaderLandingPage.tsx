@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./HeaderLanginPage.module.css";
-import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
-import SecondaryButton from "../ui/SecondaryButton/SecondaryButton";
+import PrimaryButton from "../../ui/PrimaryButton/PrimaryButton";
+import SecondaryButton from "../../ui/SecondaryButton/SecondaryButton";
 
 export default function HeaderLanginPage() {
   return (

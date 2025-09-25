@@ -1,4 +1,4 @@
-import PrimaryButton from "../ui/PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../ui/PrimaryButton/PrimaryButton";
 import styles from "./Hero.module.css";
 
 export default function Hero() {

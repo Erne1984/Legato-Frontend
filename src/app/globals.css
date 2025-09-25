@@ -24,8 +24,8 @@
 }
 
 [data-theme="dark"] {
-  --background: #121212;
-  --secondary-color: #181c24;
+  --background: #0E0F12;
+  --secondary-color: #1B1825;
   --foreground: white;
   --text-color: white;
   --secondary-text-color: #a0a0a0;
