@@ -1,7 +1,16 @@
+'use client'
+
+import { useRouter } from "next/navigation";
 import PrimaryButton from "../../ui/PrimaryButton/PrimaryButton";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
+  const router = useRouter();
+
+  const navigateToSignup = () => {
+    router.push("/signup");
+  };
+
   return (
     <div className={styles.container_hero}>
       <div className={styles.call_to_action_box}>
@@ -11,7 +20,7 @@ export default function Hero() {
           colabore com artistas que compartilham da sua paixão pela música.
         </p>
 
-        <PrimaryButton content="Descobrir músicos" size="large" />
+        <PrimaryButton content="Descobrir músicos" size="large" onClick={navigateToSignup} />
       </div>
 
       <div className={styles.metrics}>
