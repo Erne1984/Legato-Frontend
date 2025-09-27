@@ -93,3 +93,16 @@
   font-size: var(--font-size-esm);
 }
 
+.back_link {
+  margin-top: 1rem;
+  font-size: var(--font-size-esm);
+  cursor: pointer;
+  color: var(--primary-color);
+  text-align: left;
+  display: inline-block;
+  transition: 200ms;
+}
+
+.back_link:hover {
+  text-decoration: underline;
+}

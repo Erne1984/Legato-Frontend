@@ -21,6 +21,7 @@ export default function AuthForm({ type }: AuthFormProps) {
 
   const navigateToLogin = () => router.push("/login");
   const navigateToSignup = () => router.push("/signup");
+  const navigateToResetPassword = () => router.push("/reset_password");
 
   return (
     <div className={styles.auth_form}>
@@ -59,7 +60,7 @@ export default function AuthForm({ type }: AuthFormProps) {
       />
 
       {isLogin ? (
-        <p className={styles.forgot_password}>Esqueceu a senha?</p>
+        <p className={styles.forgot_password} onClick={navigateToResetPassword} >Esqueceu a senha?</p>
       ) : (
         <>
           <InputField
@@ -79,8 +80,7 @@ export default function AuthForm({ type }: AuthFormProps) {
               required
             />
             <label htmlFor="terms">
-              Aceito os{" "}
-              <span className={styles.link}>termos de uso</span> e{" "}
+              Aceito os <span className={styles.link}>termos de uso</span> e{" "}
               <span className={styles.link}>política de privacidade</span>
             </label>
           </div>
