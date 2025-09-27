@@ -1,18 +1,15 @@
 import LoginForm from "@/components/sections/LoginForm/LoginForm";
-import Link from "next/link";
+
+import styles from "./LoginPage.module.css";
 
 export default function Login() {
 
     return(
-        <>
-
-            <p>Essa é tela de login!</p>
-
-            <Link href={"/"}>Voltar para Landing Page</Link>
+        <div className={styles.login_page}>
 
             <LoginForm/>
         
         
-        </>
+        </div>
     )
 }
