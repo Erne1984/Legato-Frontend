@@ -1,17 +1,10 @@
-import Link from "next/link";
-
-
+import AuthForm from "@/components/sections/AuthForm/AuthForm";
+import styles from "./signup.module.css";
 
 export default function Login() {
-
-    return(
-        <>
-
-            <p>Essa é tela de cadastro!</p>
-
-            <Link href={"/"}>Voltar para Landing Page</Link>
-        
-        
-        </>
-    )
+  return (
+    <div className={styles.signup_page}>
+      <AuthForm type="signup" />
+    </div>
+  );
 }

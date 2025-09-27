@@ -1,0 +1,95 @@
+.auth_form {
+  width: 400px;
+  background-color: var(--secondary-color);
+  padding: 1.8rem 1.4rem;
+  border-radius: 12px;
+}
+
+.auth_form h2 {
+  margin-bottom: 1.4rem;
+  text-align: center;
+}
+
+.auth_form input[type="text"] {
+  margin-bottom: 1.2rem;
+}
+
+.auth_form input[type="email"] {
+  margin-bottom: 1.2rem;
+}
+
+.auth_form input[name="password_login"] {
+  margin-bottom: 0.5rem;
+}
+
+.auth_form input[name="password_signup"] {
+  margin-bottom: 1.2rem;
+}
+
+.auth_form input[name="confirmPassword"] {
+  margin-bottom: 0.5rem;
+}
+
+
+.terms_container {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--font-size-esm);
+  margin: 1.2rem 0;
+}
+
+.terms_container input[type="checkbox"] {
+  cursor: pointer;
+}
+
+.terms_container label {
+  cursor: pointer;
+}
+
+.link {
+  color: var(--primary-color);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.forgot_password {
+  font-size: var(--font-size-esm);
+  margin-bottom: 2.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  width: fit-content;
+  transition: 200ms;
+}
+
+.forgot_password:hover {
+  color: var(--primary-color);
+}
+
+.auth_form .create_account {
+  text-align: center;
+  font-size: var(--font-size-esm);
+  margin-top: 1.2rem;
+}
+
+.auth_form .create_account .highlight {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-align: center;
+}
+
+.auth_form .create_account .highlight:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.auth_form .or_divider {
+  text-align: center;
+  margin: 1.2rem 0;
+  font-size: var(--font-size-esm);
+}
+
