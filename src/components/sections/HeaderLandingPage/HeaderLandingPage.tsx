@@ -25,7 +25,7 @@ export default function HeaderLanginPage() {
         <Link href={"/"}>
           <div className={styles.logo_box}>
             <Image
-              src="/logo/Logo_Legato_Roxo.png"
+              src="/logo/logo-legato.png"
               width={90}
               height={90}
               alt="Logo legato"
