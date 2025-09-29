@@ -7,6 +7,8 @@ import SecondaryButton from "../../ui/SecondaryButton/SecondaryButton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
+import logo from "../../../assets/logo/logo-legato.png"
+
 export default function HeaderLanginPage() {
   const router = useRouter();
 
@@ -25,7 +27,7 @@ export default function HeaderLanginPage() {
         <Link href={"/"}>
           <div className={styles.logo_box}>
             <Image
-              src="/logo/logo-legato.png"
+              src={logo}
               width={90}
               height={90}
               alt="Logo legato"
