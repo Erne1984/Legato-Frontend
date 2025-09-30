@@ -1,0 +1,156 @@
+
+
+.container_card{
+    width: 25%;
+    display: inline-block;
+    /* border-color: chartreuse;
+    border-width: 1px;
+    border-style: solid; */
+    border-radius: 15px;
+    box-shadow: 0 1px 5px #ffffffbe;
+}
+
+.image_container_section_card{
+    aspect-ratio: 1/0.75;
+    /* border-color: crimson;
+    border-width: 1px;
+    border-style: solid; */
+    height: 50%;
+    position: relative;
+    background-image: url("/imgs/musician_image_profile.png");
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.description_container_card{
+    /* border-color: rgb(20, 213, 220);
+    border-width: 1px;
+    border-style: solid; */
+    height: 50%;
+    padding: 3% 2% 3% 2%;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.distance_tag{
+    background: var(--primary-color);;
+    border-radius: 15px;
+    width: 17%;
+    height: 11%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 3% 3% 0 0;
+}
+
+.view_profile_button{
+    background: var(--primary-color);;
+    border-radius: 15px;
+    width: 19%;
+    height: 11%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    margin: 0% 0% 2% 0%;
+}
+
+.distance_tag,
+.view_profile_button {
+  font-size: 0.7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.musician_name{
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.musician_bio,
+.musician_skills_item{
+    font-size: 0.9rem;
+}
+
+.musician_skills_item{
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    display: inline-block;
+    padding: 0.5% 1.5%;
+    margin-right: 0.8%;
+}
+
+.musician_skills_title,
+.musician_commom_artists_title{
+    font-size: 1rem;
+    margin-top: 2%;
+   font-weight: 600;
+}
+
+.musician_commom_artists_container{
+    display: inline-flex;
+    width: 100%;
+}
+.musician_commom_artists_item{
+    background-image: url("/imgs/common_artists_image.png");
+    background-size: cover;
+}
+
+.musician_commom_artists_item_more{
+    border-color: var(--primary-color);
+    border-style: solid;
+    border-width: 1px;
+}
+
+
+
+.musician_commom_artists_item, 
+.musician_commom_artists_item_more{
+    border-radius: 100%;
+    width: 15%;
+    margin-right: 0.8%;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pass_musician_button{
+    background-color: red;
+}
+
+.match_musician_button{
+    background-color: var(--primary-color);
+}
+.pass_musician_button,
+.match_musician_button{
+    border-radius: 100%;
+    width: 5%;
+    margin: 0% 2%;
+    aspect-ratio: 1/1;
+    display: flex;
+}
+
+
+.plus_icon{
+    color: var(--primary-color);
+}
+
+.x_icon,
+.link_icon,
+.plus_icon{
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+}
+
+.mapPin_icon{
+    width: 25%;
+}
+
+
+
