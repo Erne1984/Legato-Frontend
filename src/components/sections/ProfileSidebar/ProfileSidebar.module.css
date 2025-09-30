@@ -5,6 +5,7 @@
   padding: 40px 16px 16px;  
   text-align: center;
   width: 240px;
+  height: fit-content;
   position: relative;
 }
 
@@ -42,4 +43,10 @@
   font-size: 0.9rem;
   color: #555;
   margin: 4px 0 12px 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+  }
 }
