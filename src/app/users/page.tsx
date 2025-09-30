@@ -1,6 +1,8 @@
 import ProfileSidebar from "@/components/sections/ProfileSidebar/ProfileSidebar";
 import ProfileBanner from "../../components/sections/ProfileBanner/ProfileBanner";
 import styles from "./users.module.css";
+import ProfileTabs from "@/components/sections/ProfileTabs/ProfileTabs";
+import SuggestedProfiles from "@/components/sections/SuggestedProfiles/SuggestedProfiles";
 
 export default function Users() {
   const linkBanner =
@@ -13,11 +15,17 @@ export default function Users() {
       <div className={styles.users_container}>
         <ProfileBanner imgUrl={linkBanner} />
 
-        <ProfileSidebar
-          displayName="Marcelo"
-          username="Marcel123"
-          userImg={userImg}
-        />
+        <div className={styles.main_content}>
+          <ProfileSidebar
+            displayName="Marcelo"
+            username="Marcel123"
+            userImg={userImg}
+          />
+
+          <ProfileTabs />
+
+          <SuggestedProfiles userImg={linkBanner}/>
+        </div>
       </div>
     </div>
   );
