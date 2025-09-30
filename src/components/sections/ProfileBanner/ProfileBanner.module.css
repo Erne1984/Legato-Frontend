@@ -4,7 +4,7 @@
   height: 200px;
   overflow: hidden;
   border-radius: 8px;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   max-width: var(--max-width);
 }
 
