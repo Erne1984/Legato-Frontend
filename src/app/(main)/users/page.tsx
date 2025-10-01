@@ -1,5 +1,5 @@
 import ProfileSidebar from "@/components/sections/ProfileSidebar/ProfileSidebar";
-import ProfileBanner from "../../components/sections/ProfileBanner/ProfileBanner";
+import ProfileBanner from "@/components/sections/ProfileBanner/ProfileBanner";
 import styles from "./users.module.css";
 import ProfileTabs from "@/components/sections/ProfileTabs/ProfileTabs";
 import SuggestedProfiles from "@/components/sections/SuggestedProfiles/SuggestedProfiles";
