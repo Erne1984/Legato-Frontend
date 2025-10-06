@@ -4,11 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./MainHeader.module.css";
 import Icon from "@/components/ui/Icon/Icon";
+import ThemeChanger from "../../ui/ThemeChanger/ThemeChanger";
 import { useTheme } from "next-themes";
+
 
 import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
 import logo_light from "../../../assets/logo/legato_logo_light_version.png";
 import user from "../../../assets/images/user.png"
+import React from "react";
+
+
 
 
 export default function MainHeader() {
@@ -51,6 +56,10 @@ export default function MainHeader() {
             height={35}
             className={styles.avatar}
           />
+        </div>
+
+        <div className={styles.theme_switcher}>
+          <ThemeChanger />
         </div>
       </div>
     </header>
