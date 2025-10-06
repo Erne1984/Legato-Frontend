@@ -19,6 +19,7 @@
 .logo_area {
   display: flex;
   align-items: center;
+  padding: 5px 0;
   gap: 8px;
   font-weight: bold;
   font-size: 1.2rem;

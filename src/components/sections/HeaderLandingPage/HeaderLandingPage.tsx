@@ -7,10 +7,13 @@ import SecondaryButton from "../../ui/SecondaryButton/SecondaryButton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import logo from "../../../assets/logo/logo-legato.png"
+import { useTheme } from "next-themes";
+import logo_light from "../../../assets/logo/legato_logo_light_version.png"
+import logo_dark from "../../../assets/logo/legato_logo_dark_version.png"
 
 export default function HeaderLanginPage() {
   const router = useRouter();
+  const { theme } = useTheme();
 
   const navigateToLogin = () => {
     router.push("/login");
@@ -25,11 +28,12 @@ export default function HeaderLanginPage() {
       <div className={styles.container}>
 
         <Link href={"/"}>
+
           <div className={styles.logo_box}>
             <Image
-              src={logo}
-              width={90}
-              height={90}
+              src={theme === "dark" ? logo_dark : logo_light}
+              width={150}
+              height={45}
               alt="Logo legato"
             />
           </div>
