@@ -6,8 +6,8 @@ import styles from "./MainHeader.module.css";
 import Icon from "@/components/ui/Icon/Icon";
 import { useTheme } from "next-themes";
 
-import logo_dark from "../../../assets/logo/logo-legato-dark.png";
-import logo_light from "../../../assets/logo/logo-legato-light.png";
+import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
+import logo_light from "../../../assets/logo/legato_logo_light_version.png";
 import user from "../../../assets/images/user.png"
 
 
