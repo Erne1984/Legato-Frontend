@@ -4,19 +4,24 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./MainHeader.module.css";
 import Icon from "@/components/ui/Icon/Icon";
+import { useTheme } from "next-themes";
 
-import logo from "../../../assets/logo/logo-legato.png";
+import logo_dark from "../../../assets/logo/logo-legato-dark.png";
+import logo_light from "../../../assets/logo/logo-legato-light.png";
 import user from "../../../assets/images/user.png"
 
+
 export default function MainHeader() {
+  const { theme } = useTheme();
+
   return (
     <header className={styles.container_wrapper}>
       <div className={styles.container}>
         <div className={styles.logo_area}>
             <Image
-              src={logo}
-              width={90}
-              height={90}
+              src={theme === "dark" ? logo_dark : logo_light}
+              width={150}
+              height={45}
               alt="Logo legato"
             />
         </div>
