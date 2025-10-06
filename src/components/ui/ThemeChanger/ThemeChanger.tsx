@@ -3,6 +3,8 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+import styles from "./ThemeChanger.module.css";
+
 export default function ThemeChanger() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -15,10 +17,16 @@ export default function ThemeChanger() {
     return null;
   }
 
+  const isDark = theme === "dark";  
+
   return (
-    <div>
-      <button onClick={() => setTheme("light")}>Light Mode</button>
-      <button onClick={() => setTheme("dark")}>Dark Mode</button>
-    </div>
+    <label className={styles.switch}>
+      <input 
+        type="checkbox"
+        checked={isDark}
+        onChange={() => setTheme(isDark ? "light" : "dark")}
+      />
+        <span className={styles.slider}></span>
+    </label>
   );
 }
