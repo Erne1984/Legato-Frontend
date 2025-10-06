@@ -32,8 +32,8 @@ export default function HeaderLanginPage() {
           <div className={styles.logo_box}>
             <Image
               src={theme === "dark" ? logo_dark : logo_light}
-              width={235}
-              height={70}
+              width={150}
+              height={45}
               alt="Logo legato"
             />
           </div>
