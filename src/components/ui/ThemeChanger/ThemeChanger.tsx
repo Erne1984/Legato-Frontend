@@ -21,23 +21,19 @@ export default function ThemeChanger() {
   const isDark = theme === "dark";
 
   return (
-    <>
+    <label className={styles.switch}>
       <input
         type="checkbox"
         checked={isDark}
         onChange={() => setTheme(isDark ? "light" : "dark")}
       />
+      <span className={styles.slider}>
+<span className={`${styles.toggleBall} ${isDark ? styles.moon_active : styles.sun_active}`}>
+  <Icon name="sun" className={styles.sun_icon} />
+  <Icon name="moon" className={styles.moon_icon} />
+</span>
 
-      <div className={styles.display}>
-        <label className={styles.toggle}>
-          <div className={styles.circle}>
-            <Icon 
-          </div>
-          <span className={styles.slider}></span>
-        </label>
-      </div>
-
-
-    </>
+      </span>
+    </label>
   );
 }

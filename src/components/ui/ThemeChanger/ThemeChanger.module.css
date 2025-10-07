@@ -1,52 +1,70 @@
-
-
-
-.switch{
-    position: relative;
-    display: flex;
-    width: 50px;
-    height: 24px;
-    
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
 }
 
 .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-    background-color: #f3f3f3;
+  display: none;
 }
 
 .slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .3s;
-    border-radius: 24px;
-    box-shadow: inset 0 0 5px rgb(235, 235, 235);
-    border-color: var(--primary-color);
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: #f10000; /* cor inicial */
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.slider:before{
-    position:absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 2px;
-    bottom: 2px;
-    background-color: #f3f3f3;
-    box-shadow: inset 0 0 5px rgb(235, 235, 235);
-    border-radius: 50%;
-    transition: .3s;
+.sliderDark {
+  background-color: #333; /* cor do slider no dark mode */
 }
 
-input:checked + .slider {
-    background-color: #5b21b6;
+.toggleBall {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
 }
 
-input:checked + .slider:before {
-    transform: translateX(26px);
+.toggleBall.sun_active {
+  left: 2px;
+}
+
+.toggleBall.moon_active {
+  left: 28px;
+}
+
+/* Ícones dentro da bolinha */
+.toggleBall .sun_icon,
+.toggleBall .moon_icon {
+  position: absolute;
+  font-size: 16px;
+  transition: opacity 0.3s ease;
+}
+
+.toggleBall .sun_icon {
+  opacity: 1;
+}
+
+.toggleBall .moon_icon {
+  opacity: 0;
+}
+
+.toggleBall.moon_active .sun_icon {
+  opacity: 0;
+}
+
+.toggleBall.moon_active .moon_icon {
+  opacity: 1;
 }
