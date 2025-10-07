@@ -1,0 +1,90 @@
+.switch {
+  position:relative;
+  align-items: center;
+  display: flex; /*put every component in same line if its possible*/
+  width: 65px;
+  height: 30px;
+}
+
+.switch input {
+  display: none; /*Exclude the pattern input*/
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-width: 1px;
+  border-radius: 50px;
+  border-style: solid;
+  border-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  cursor: pointer; /*Indicates the switch can be clickable */
+  transition: background-color 0.4s; /*Smooth transition of background color*/
+}
+
+.slider:hover {
+  box-shadow: 0 0 3px var(--primary-color);
+}
+
+
+.toggleBall {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
+  background-color: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: left 0.3s ease;
+}
+
+.toggleBall.sun_active {
+  left: 1px;
+  color: var(--primary-color);
+}
+
+.toggleBall.moon_active {
+  left: 36px;
+  color: var(--background);
+  background-color: var(--primary-color);
+}
+
+.toggleBall .sun_icon,
+.toggleBall .moon_icon {
+  position:absolute;
+  width: 22px;
+  height: 22px;
+  stroke-width: 1.5px;
+  transition: opacity 0.3s ease;
+}
+
+/* estado inicial */
+.toggleBall .sun_icon {
+  opacity: 1;
+}
+.toggleBall .moon_icon {
+  opacity: 0;
+}
+
+/* quando a bola tem a classe sun_active */
+.toggleBall.sun_active .sun_icon {
+  opacity: 1;
+}
+.toggleBall.sun_active .moon_icon {
+  opacity: 0;
+}
+
+/* quando a bola tem a classe moon_active */
+.toggleBall.moon_active .sun_icon {
+  opacity: 0;
+}
+.toggleBall.moon_active .moon_icon {
+  opacity: 1;
+}

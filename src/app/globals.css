@@ -30,6 +30,7 @@
   --foreground: white;
   --text-color: white;
   --secondary-text-color: #a0a0a0;
+   --primary-color: #d41bb6;
 }
 
 * {

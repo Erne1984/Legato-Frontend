@@ -1,7 +1,7 @@
 import FeaturesSection from "@/components/sections/FeaturesSection/FeaturesSection";
 import Hero from "../../components/sections/Hero/Hero";
-import ThemeChanger from "../../components/ui/ThemeChanger/ThemeChanger";
 import styles from "./page.module.css";
+import ThemeChanger from "@/components/ui/ThemeChanger/ThemeChanger";
 
 export default function Home() {
   return (
@@ -9,8 +9,6 @@ export default function Home() {
       <Hero />
 
       <FeaturesSection/>
-
-      <ThemeChanger />
     </div>
   );
 }

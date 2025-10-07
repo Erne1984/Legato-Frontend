@@ -1,5 +1,5 @@
 
-import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare } from "lucide-react"
+import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare, Sun, Moon } from "lucide-react"
 
 const icons = {
   home: Home,
@@ -14,7 +14,9 @@ const icons = {
   mapPin: MapPin,
   plus: Plus,
   bell: Bell,
- message_square: MessageSquare
+  message_square: MessageSquare,
+  sun: Sun,
+  moon: Moon
 };
 
 export type IconName = keyof typeof icons;

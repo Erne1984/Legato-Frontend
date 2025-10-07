@@ -27,3 +27,15 @@
   display: flex;
   gap: 1rem;
 }
+
+.theme_changer {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.right_area {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
