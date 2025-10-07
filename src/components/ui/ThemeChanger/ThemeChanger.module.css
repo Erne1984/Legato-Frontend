@@ -1,36 +1,38 @@
 .switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
+  position:relative;
+  display: inline-block; /*put every component in same line if its possible*/
+  width: 65px;
+  height: 29px;
 }
 
 .switch input {
-  display: none;
+  display: none; /*Exclude the pattern input*/
 }
 
 .slider {
+  position: relative;
+  display: flex;
   width: 100%;
   height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-width: 2px;
   border-radius: 50px;
-  background-color: #f10000; /* cor inicial */
-  position: relative;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: var(--secondary-color);
+  cursor: pointer; /*Indicates the switch can be clickable */
+  transition: background-color 0.4s; /*Smooth transition of background color*/
 }
 
-.sliderDark {
-  background-color: #333; /* cor do slider no dark mode */
+.slider::before{
+  background-color: var(--secondary-color);
 }
 
 .toggleBall {
   position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 27px;
-  height: 27px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: var(--primary-color);
+  background-color: var(--background);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,33 +40,43 @@
 }
 
 .toggleBall.sun_active {
-  left: 2px;
+  left: 0px;
+  color: var(--primary-color);
 }
 
 .toggleBall.moon_active {
-  left: 28px;
+  left: 38px;
+  color: var(--primary-color);
 }
 
-/* Ícones dentro da bolinha */
 .toggleBall .sun_icon,
 .toggleBall .moon_icon {
-  position: absolute;
-  font-size: 16px;
+  position:absolute;
+  width: 22px;
+  height: 22px;
   transition: opacity 0.3s ease;
 }
 
+/* estado inicial */
 .toggleBall .sun_icon {
   opacity: 1;
 }
-
 .toggleBall .moon_icon {
   opacity: 0;
 }
 
-.toggleBall.moon_active .sun_icon {
+/* quando a bola tem a classe sun_active */
+.toggleBall.sun_active .sun_icon {
+  opacity: 1;
+}
+.toggleBall.sun_active .moon_icon {
   opacity: 0;
 }
 
+/* quando a bola tem a classe moon_active */
+.toggleBall.moon_active .sun_icon {
+  opacity: 0;
+}
 .toggleBall.moon_active .moon_icon {
   opacity: 1;
 }

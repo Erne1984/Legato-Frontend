@@ -28,11 +28,10 @@ export default function ThemeChanger() {
         onChange={() => setTheme(isDark ? "light" : "dark")}
       />
       <span className={styles.slider}>
-<span className={`${styles.toggleBall} ${isDark ? styles.moon_active : styles.sun_active}`}>
-  <Icon name="sun" className={styles.sun_icon} />
-  <Icon name="moon" className={styles.moon_icon} />
-</span>
-
+        <span className={`${styles.toggleBall} ${isDark ? styles.moon_active : styles.sun_active}`}>
+          <Icon name="moon" className={styles.moon_icon} />
+          <Icon name="sun" className={styles.sun_icon} />
+        </span>
       </span>
     </label>
   );
