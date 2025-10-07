@@ -1,8 +1,9 @@
 .switch {
   position:relative;
-  display: inline-block; /*put every component in same line if its possible*/
+  align-items: center;
+  display: flex; /*put every component in same line if its possible*/
   width: 65px;
-  height: 29px;
+  height: 30px;
 }
 
 .switch input {
@@ -16,22 +17,27 @@
   height: 100%;
   align-items: center;
   justify-content: center;
-  border-width: 2px;
+  border-width: 1px;
   border-radius: 50px;
+  border-style: solid;
+  border-color: var(--primary-color);
   background-color: var(--secondary-color);
   cursor: pointer; /*Indicates the switch can be clickable */
   transition: background-color 0.4s; /*Smooth transition of background color*/
 }
 
-.slider::before{
-  background-color: var(--secondary-color);
+.slider:hover {
+  box-shadow: 0 0 3px var(--primary-color);
 }
+
 
 .toggleBall {
   position: absolute;
   width: 26px;
   height: 26px;
   border-radius: 50%;
+  border-style: solid;
+  border-width: 1px;
   background-color: var(--background);
   display: flex;
   align-items: center;
@@ -40,13 +46,14 @@
 }
 
 .toggleBall.sun_active {
-  left: 0px;
+  left: 1px;
   color: var(--primary-color);
 }
 
 .toggleBall.moon_active {
-  left: 38px;
-  color: var(--primary-color);
+  left: 36px;
+  color: var(--background);
+  background-color: var(--primary-color);
 }
 
 .toggleBall .sun_icon,
@@ -54,6 +61,7 @@
   position:absolute;
   width: 22px;
   height: 22px;
+  stroke-width: 1.5px;
   transition: opacity 0.3s ease;
 }
 

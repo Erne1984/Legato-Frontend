@@ -10,6 +10,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import logo_light from "../../../assets/logo/legato_logo_light_version.png"
 import logo_dark from "../../../assets/logo/legato_logo_dark_version.png"
+import ThemeChanger from "@/components/ui/ThemeChanger/ThemeChanger";
 
 export default function HeaderLanginPage() {
   const router = useRouter();
@@ -38,11 +39,16 @@ export default function HeaderLanginPage() {
             />
           </div>
         </Link>
-
-        <div className={styles.login_area}>
-          <SecondaryButton content="Entrar" onClick={navigateToLogin} />
-          <PrimaryButton content="Inscrever-se" onClick={navigateToSignup} />
+        <div className={styles.right_area}>
+          <div className={styles.login_area}>
+            <SecondaryButton content="Entrar" onClick={navigateToLogin} />
+            <PrimaryButton content="Inscrever-se" onClick={navigateToSignup} />
+          </div>
+          <div className={styles.theme_changer}>
+            <ThemeChanger />
+          </div>
         </div>
+
       </div>
     </header>
   );
