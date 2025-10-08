@@ -42,7 +42,7 @@
 .container_hero p {
   font-size: 1.125rem;
   font-weight: bold;
-  color: var(--secondary-text-color);
+  color: #a7a8a8;
   max-width: 700px;
   margin-bottom: 2.5rem;
 }
