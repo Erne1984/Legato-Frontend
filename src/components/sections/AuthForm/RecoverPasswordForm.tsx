@@ -36,7 +36,7 @@ export default function RecoverPasswordForm() {
       </form>
 
       <p className={styles.back_link} onClick={navigateToLogin}>
-        ← Voltar para o <span className={styles.highlight}>login</span>
+        Voltar para o <span className={styles.highlight}>login</span>
       </p>
     </div>
   );

@@ -1,0 +1,9 @@
+  .header_main_pages_container {
+    overflow: visible;
+  }
+
+@media (max-width: 768px) {
+  .header_main_pages_container {
+    display: none;
+  }
+}

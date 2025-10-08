@@ -13,7 +13,12 @@ import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
 import ThemeChanger from "@/components/ui/ThemeChanger/ThemeChanger";
 import { useEffect, useState } from "react";
 
-export default function HeaderLanginPage() {
+type HeaderLandingPageProps = {
+  className?: string;
+};
+
+
+export default function HeaderLanginPage({className}: HeaderLandingPageProps) {
   const router = useRouter();
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -44,7 +49,7 @@ export default function HeaderLanginPage() {
   };
 
   return (
-    <header className={styles.container_wrapper}>
+    <header className={`${styles.container_wrapper} ${className || ""}`}>
       <div className={styles.container}>
         <Link href={"/"}>
           <div className={styles.logo_box}>

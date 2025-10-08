@@ -4,11 +4,16 @@
   z-index: 10;
   width: 100%;
   background-color: var(--background);
-  padding: 0 20px;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  height: 80px;
+  display: flex;
+  align-items: center;
 }
 
 .container {
   max-width: var(--max-width);
+  width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -24,6 +29,7 @@
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--text-color);
+  height: 45px;
 }
 
 .logo {
@@ -93,5 +99,12 @@
 }
 
 .theme_switcher {
-  
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .container_wrapper {
+    display: none;
+  }
 }

@@ -7,28 +7,28 @@ import Icon from "@/components/ui/Icon/Icon";
 import ThemeChanger from "../../ui/ThemeChanger/ThemeChanger";
 import { useTheme } from "next-themes";
 
-
 import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
 import logo_light from "../../../assets/logo/legato_logo_light_version.png";
-import user from "../../../assets/images/user.png"
+import user from "../../../assets/images/user.png";
 import React from "react";
 
+type MainHeaderProps = {
+  className?: string;
+};
 
-
-
-export default function MainHeader() {
+export default function MainHeader({ className }: MainHeaderProps) {
   const { theme } = useTheme();
 
   return (
-    <header className={styles.container_wrapper}>
+    <header className={`${styles.container_wrapper} ${className || ""}`}>
       <div className={styles.container}>
         <div className={styles.logo_area}>
-            <Image
-              src={theme === "dark" ? logo_dark : logo_light}
-              width={150}
-              height={45}
-              alt="Logo legato"
-            />
+          <Image
+            src={theme === "dark" ? logo_dark : logo_light}
+            width={150}
+            height={45}
+            alt="Logo legato"
+          />
         </div>
 
         <nav className={styles.nav}>
