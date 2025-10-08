@@ -10,6 +10,10 @@ const nextConfig: NextConfig = {
         {
         protocol: "https",
         hostname: "gruvgear.com",
+      },
+        {
+        protocol: "https",
+        hostname: "static.dw.com",
       }
     ],
   },

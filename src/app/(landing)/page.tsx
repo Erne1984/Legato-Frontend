@@ -1,7 +1,7 @@
 import FeaturesSection from "@/components/sections/FeaturesSection/FeaturesSection";
 import Hero from "../../components/sections/Hero/Hero";
 import styles from "./page.module.css";
-import ThemeChanger from "@/components/ui/ThemeChanger/ThemeChanger";
+import DiscoverMusiciansSection from "@/components/sections/DiscoverMusiciansSection/DiscoverMusiciansSection";
 
 export default function Home() {
   return (
@@ -9,6 +9,8 @@ export default function Home() {
       <Hero />
 
       <FeaturesSection/>
+
+      <DiscoverMusiciansSection/>
     </div>
   );
 }
