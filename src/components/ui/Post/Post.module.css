@@ -1,0 +1,130 @@
+/* CONTAINER  */
+.post {
+  background: var(--secondary-color);
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: box-shadow 0.2s ease;
+}
+
+.post:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.headerLeft {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.userName {
+  font-weight: 600;
+  color: var(--text-color);
+  width: fit-content;
+}
+
+.userName:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.userMeta {
+  color: var(--secondary-text-color);
+  font-size: 0.8rem;
+}
+
+.location {
+  color: var(--secondary-text-color);
+  font-size: 0.75rem;
+}
+
+.icon_post_header:hover {
+  color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* CONTEÚDO */
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.text {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.image,
+.video {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: none;
+}
+
+.audio {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+/* FOOTER */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.footerButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footerButton {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.footerButton:hover {
+  color: var(--primary-color);
+}
+
+.footerButton svg {
+  stroke-width: 1.6;
+}

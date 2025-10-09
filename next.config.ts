@@ -5,16 +5,8 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "i.pinimg.com",
+        hostname: "*", // Permite qualquer domínio HTTPS
       },
-        {
-        protocol: "https",
-        hostname: "gruvgear.com",
-      },
-        {
-        protocol: "https",
-        hostname: "static.dw.com",
-      }
     ],
   },
 };

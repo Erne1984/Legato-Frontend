@@ -1,0 +1,62 @@
+[
+  {
+    "author": {
+      "name": "Ana Silva",
+      "username": "anasilva",
+      "avatarUrl": "https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480"
+    },
+    "timestamp": "2 horas atrás",
+    "location": "São Paulo, Brasil",
+    "content": {
+      "text": "Acabei de terminar uma caminhada incrível no Parque Ibirapuera! O dia está lindo e a natureza está simplesmente maravilhosa.",
+      "imageUrl": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&h=400&fit=crop"
+    },
+    "likes": 124,
+    "comments": 23
+  },
+  {
+    "author": {
+      "name": "Bruno Martins",
+      "username": "brunomartins",
+      "avatarUrl": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLF_m5y0xKIwRDBGUeRf4lytZlTMDbd_i6zxIP24DONkWWlQzqFPtV9-48mgS8z98YAQGZ19VoJxGZlfjTaCRNKyM44UHy6WzYo0VKp6-0"
+    },
+    "timestamp": "5 horas atrás",
+    "location": "Rio de Janeiro, Brasil",
+    "content": {
+      "text": "Revisitando um dos clássicos absolutos do rock britânico. Pete Townshend é simplesmente um gênio!",
+      "videoUrl": "https://www.youtube.com/watch?v=Gu9HhYv0C7E&list=RDGu9HhYv0C7E&start_radio=1"
+    },
+    "likes": 230,
+    "comments": 58
+  },
+  {
+    "author": {
+      "name": "Carla Menezes",
+      "username": "carlamenezes",
+      "avatarUrl": "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRLF_m5y0xKIwRDBGUeRf4lytZlTMDbd_i6zxIP24DONkWWlQzqFPtV9-48mgS8z98YAQGZ19VoJxGZlfjTaCRNKyM44UHy6WzYo0VKp6-0"
+    },
+    "timestamp": "1 dia atrás",
+    "location": "Lisboa, Portugal",
+    "content": {
+      "text": "Explorando a combinação entre texto, imagem e vídeo para testar o layout do feed. Que tal esse visual?",
+      "videoUrl": "https://www.youtube.com/watch?v=2H76LUCBIUg&list=RD2H76LUCBIUg&start_radio=1"
+    },
+    "likes": 312,
+    "comments": 41
+  },
+  {
+    "author": {
+      "name": "Carla Menezes",
+      "username": "carlamenezes",
+      "avatarUrl": "https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480"
+    },
+    "timestamp": "1 dia atrás",
+    "location": "Lisboa, Portugal",
+    "content": {
+      "text": "Explorando a combinação entre texto, imagem e vídeo para testar o layout do feed. Que tal esse visual?",
+      "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+    },
+    "likes": 312,
+    "comments": 41
+  }
+]
