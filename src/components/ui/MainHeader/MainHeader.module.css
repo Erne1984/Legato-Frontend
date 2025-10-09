@@ -108,3 +108,59 @@
     display: none;
   }
 }
+
+
+
+/* SKELETON STATE */
+.skeleton > div {
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  opacity: 0.6;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.logo_skeleton {
+  width: 150px;
+  height: 45px;
+}
+
+.nav_skeleton {
+  display: flex;
+  gap: 16px;
+}
+.nav_skeleton div {
+  width: 80px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.search_skeleton {
+  flex: 1;
+  max-width: 400px;
+  height: 36px;
+  border-radius: 8px;
+}
+
+.actions_skeleton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.actions_skeleton div {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+

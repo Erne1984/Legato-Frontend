@@ -1,13 +1,13 @@
 .switch {
   position:relative;
   align-items: center;
-  display: flex; /*put every component in same line if its possible*/
+  display: flex;
   width: 65px;
   height: 30px;
 }
 
 .switch input {
-  display: none; /*Exclude the pattern input*/
+  display: none; 
 }
 
 .slider {
@@ -22,14 +22,13 @@
   border-style: solid;
   border-color: var(--primary-color);
   background-color: var(--secondary-color);
-  cursor: pointer; /*Indicates the switch can be clickable */
-  transition: background-color 0.4s; /*Smooth transition of background color*/
+  cursor: pointer;
+  transition: background-color 0.4s;
 }
 
 .slider:hover {
   box-shadow: 0 0 3px var(--primary-color);
 }
-
 
 .toggleBall {
   position: absolute;
@@ -65,7 +64,6 @@
   transition: opacity 0.3s ease;
 }
 
-/* estado inicial */
 .toggleBall .sun_icon {
   opacity: 1;
 }
@@ -73,7 +71,6 @@
   opacity: 0;
 }
 
-/* quando a bola tem a classe sun_active */
 .toggleBall.sun_active .sun_icon {
   opacity: 1;
 }
@@ -81,7 +78,6 @@
   opacity: 0;
 }
 
-/* quando a bola tem a classe moon_active */
 .toggleBall.moon_active .sun_icon {
   opacity: 0;
 }

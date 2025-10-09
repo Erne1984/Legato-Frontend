@@ -1,0 +1,92 @@
+.dropdown_wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.avatar_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--border);
+  transition: transform 0.2s ease;
+}
+
+.avatar:hover {
+  transform: scale(1.05);
+}
+
+/* MENU SUSPENSO */
+.menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  min-width: 180px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 50;
+}
+
+.menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu a,
+.logout_button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  text-decoration: none;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.menu a:hover,
+.logout_button:hover {
+  background-color: rgba(91, 33, 182, 0.1);
+}
+
+.theme_area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.theme_area:hover {
+  background-color: rgba(91, 33, 182, 0.1);
+}
+
+.theme_area p {
+  font-size: 0.95rem;
+}
+
+.logout_button {
+  color: #e11d48;
+}

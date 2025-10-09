@@ -1,5 +1,5 @@
 
-import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare, Sun, Moon, Menu, Facebook, Instagram } from "lucide-react"
+import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare, Sun, Moon, Menu, Settings, LogOut, Facebook, Instagram } from "lucide-react"
 
 const icons = {
   home: Home,
@@ -18,6 +18,8 @@ const icons = {
   sun: Sun,
   moon: Moon,
   menu: Menu,
+  settings: Settings,
+  log_out: LogOut,
   facebook: Facebook,
   instagram: Instagram,
   

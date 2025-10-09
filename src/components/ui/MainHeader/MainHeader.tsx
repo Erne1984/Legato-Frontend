@@ -4,13 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./MainHeader.module.css";
 import Icon from "@/components/ui/Icon/Icon";
-import ThemeChanger from "../../ui/ThemeChanger/ThemeChanger";
 import { useTheme } from "next-themes";
+import React from "react";
 
 import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
 import logo_light from "../../../assets/logo/legato_logo_light_version.png";
-import user from "../../../assets/images/user.png";
-import React from "react";
+
+import DropdownMenu from "../DropdownMenu/DropwdownMenu";
 
 type MainHeaderProps = {
   className?: string;
@@ -18,6 +18,33 @@ type MainHeaderProps = {
 
 export default function MainHeader({ className }: MainHeaderProps) {
   const { theme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+
+  React.useEffect(() => {
+    const timeout = setTimeout(() => setMounted(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <header className={`${styles.container_wrapper} ${className || ""}`}>
+        <div className={`${styles.container} ${styles.skeleton}`}>
+          <div className={styles.logo_skeleton} />
+          <div className={styles.nav_skeleton}>
+            <div />
+            <div />
+            <div />
+          </div>
+          <div className={styles.search_skeleton} />
+          <div className={styles.actions_skeleton}>
+            <div />
+            <div />
+            <div />
+          </div>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <header className={`${styles.container_wrapper} ${className || ""}`}>
@@ -49,17 +76,8 @@ export default function MainHeader({ className }: MainHeaderProps) {
         <div className={styles.actions}>
           <Icon name="bell" className={styles.action_icon} />
           <Icon name="message_square" className={styles.action_icon} />
-          <Image
-            src={user}
-            alt="User avatar"
-            width={35}
-            height={35}
-            className={styles.avatar}
-          />
-        </div>
 
-        <div className={styles.theme_switcher}>
-          <ThemeChanger />
+          <DropdownMenu />
         </div>
       </div>
     </header>
