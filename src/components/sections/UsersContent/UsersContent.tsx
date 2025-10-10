@@ -1,5 +1,6 @@
-"use client"
+"use client";
 
+import { useState } from "react";
 import ProfileSidebar from "@/components/sections/ProfileSidebar/ProfileSidebar";
 import ProfileBanner from "@/components/sections/ProfileBanner/ProfileBanner";
 import ProfileTabs from "@/components/sections/ProfileTabs/ProfileTabs";
@@ -7,14 +8,24 @@ import SuggestedProfiles from "@/components/sections/SuggestedProfiles/Suggested
 import BioCard from "@/components/sections/BioCard/BioCard";
 import StatsCardUser from "@/components/sections/StatsCardUser/StatsCardUser";
 import Post from "@/components/ui/Post/Post";
-import styles from "./UsersContent.module.css"
-
-import posts from "./data.json";  
-import {  useSearchParams } from "next/navigation";
+import styles from "./UsersContent.module.css";
+import posts from "./data.json";
+import { useSearchParams } from "next/navigation";
+import ProfileAlbumBox from "../ProfileAlbumBox/ProfileAlbumBox";
+import TrackBox from "../../ui/TrackBox/TrackBox";
+import { Track } from "@/types/Track";
+import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "overview";
+  const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [playerVisible, setPlayerVisible] = useState(false);
+
+  const handleSelectTrack = (track: Track) => {
+    setCurrentTrack(track);
+    setPlayerVisible(true); 
+  };
 
   const linkBanner =
     "https://i.pinimg.com/736x/d1/79/be/d179be883aae4362fe022465d3fee356.jpg";
@@ -36,9 +47,7 @@ export default function UsersContent() {
             <StatsCardUser connections={4} followers={10} posts={3} />
           </div>
 
-          {/* Conteúdo central */}
           <div className={styles.center_content}>
-            {/* Tabs com troca manual */}
             <ProfileTabs />
 
             {tab === "overview" && <BioCard />}
@@ -56,10 +65,20 @@ export default function UsersContent() {
                 />
               ))}
 
-          
+            {tab === "musics" && (
+              <>
+                <TrackBox onSelectTrack={handleSelectTrack} />
+                <ProfileAlbumBox />
+              </>
+            )}
+
+            <MusicPlayer
+              currentTrack={currentTrack}
+              visible={playerVisible}
+              onClose={() => setPlayerVisible(false)}
+            />
           </div>
 
-          {/* Lateral direita */}
           <SuggestedProfiles userImg={linkBanner} />
         </div>
       </div>

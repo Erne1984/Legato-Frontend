@@ -1,13 +1,13 @@
 "use client";
 
-
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./ProfileTabs.module.css";
 
 const tabs = [
   { key: "overview", label: "Visão Geral" },
   { key: "activity", label: "Atividade" },
-  { key: "portfolio", label: "Portfólio" },
+  { key: "musics", label: "Músicas" },
+  { key: "videos", label: "Vídeos" },
   { key: "collaborations", label: "Colaborações" },
 ];
 
@@ -27,12 +27,13 @@ export default function ProfileTabs() {
           <li
             key={tab.key}
             onClick={() => handleTabChange(tab.key)}
-            className={`${styles.tab} ${activeTab === tab.key ? styles.selected_item : ""}`}
+            className={`${styles.tab} ${
+              activeTab === tab.key ? styles.selected_item : ""
+            }`}
           >
             {tab.label}
           </li>
         ))}
-
       </ul>
     </nav>
   );

@@ -1,0 +1,90 @@
+.card {
+  background: var(--secondary-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 5.7px rgba(0, 0, 0, 0.25);
+  margin-bottom: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.viewAll {
+  font-size: 0.85rem;
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #111;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.item:hover {
+  background: #1a1a1a;
+}
+
+.cover {
+  border-radius: 6px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.info {
+  flex: 1;
+}
+
+.trackTitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.explicit {
+  font-size: 0.7rem;
+  background: #333;
+  color: #ccc;
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+.artist {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.duration {
+  font-size: 0.85rem;
+  color: #ccc;
+}
+
+
+

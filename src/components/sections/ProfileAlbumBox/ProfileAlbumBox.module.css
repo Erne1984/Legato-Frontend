@@ -1,0 +1,71 @@
+.card {
+  background: var(--secondary-color);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 5.7px rgba(0, 0, 0, 0.25);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.viewAll {
+  font-size: 0.85rem;
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.viewAll:hover {
+  text-decoration: underline;
+}
+
+.album {
+  display: flex;
+  align-items: center;
+  background: #111;
+  padding: 10px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.album:hover {
+  background: #1a1a1a;
+}
+
+.cover {
+  width: 60px;
+  height: 60px;
+  border-radius: 6px;
+  object-fit: cover;
+  margin-right: 12px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.albumTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.details {
+  font-size: 0.85rem;
+  color: #aaa;
+}
+
+.meta {
+  font-size: 0.8rem;
+  color: #999;
+}

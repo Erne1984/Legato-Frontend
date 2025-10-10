@@ -1,0 +1,125 @@
+.player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  background: #0f0f0f;
+  border-top: 1px solid #222;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  z-index: 999;
+  font-family: "Inter", sans-serif;
+}
+
+/* --- Info --- */
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0.25;
+}
+
+.cover {
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.artist {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* --- CENTRO --- */
+.centerControls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0.5;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: none;
+  background: none;
+}
+
+.playButton {
+  color: var(--text-color);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 3px;
+  background: #333;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+}
+
+.time {
+  font-size: 0.75rem;
+  color: #bbb;
+  width: 30px;
+  text-align: center;
+}
+
+/* --- DIREITA --- */
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0.25;
+  justify-content: flex-end;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  color: #bbb;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.iconButton:hover {
+  color: #fff;
+}
+
+.liked {
+  color: #e74c3c;
+}
