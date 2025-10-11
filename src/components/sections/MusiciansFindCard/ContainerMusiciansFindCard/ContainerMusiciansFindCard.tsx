@@ -1,27 +1,23 @@
-import styles from "./MusiciansFindCard.module.css"
+import styles from "./ContainerMusiciansFindCard.module.css"
 import Icon from "@/components/ui/Icon/Icon"
+import CarrouselCard from "../CarrouselMusiciansFindCard/CarrouselMusiciansFindCard"
 
 export default function MusiciansFindCard() {
+    const mediaItems = [
+        {type: "image", src: "../../../../../public/imgs/black-boy-playing-guitar_1.jpg"},
+        {type: "image", src: "../../../../../public/imgs/black-boy-playing-guitar_2.jpg"},
+        {type: "image", src: "../../../../../public/imgs/black-boy-playing-guitar_3.jpg"},
+        {type: "string", src: "Renan"},
+        {type: "string", src: "Vocalista"},
+        {type: "string", src: "Guitarrista"}
+    ]
     return (
         <>
             <div className={styles.pass_musician_button}>
                 <Icon name="close" className={styles.x_icon}></Icon>
             </div>
             <div className={styles.container_card}>
-                <div className={styles.image_container_section_card}>
-                    <p className={styles.distance_tag}>
-                        <Icon name="mapPin" className={styles.mapPin_icon}></Icon> 3km
-                    </p>
-                    <div className={styles.container_intro_info}>
-                        <h1 className={styles.musician_name}>
-                            Renan
-                        </h1>
-                        <div className={styles.musician_skills}>
-                            <div className={styles.musician_skills_item}>Vocalista</div>
-                            <div className={styles.musician_skills_item}>Guitarrista</div>
-                        </div>
-                    </div>
-                </div>
+                <CarrouselCard />
                 <div className={styles.description_container_card}>
 
                     <p className={styles.musician_bio}>

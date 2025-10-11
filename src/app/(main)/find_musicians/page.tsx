@@ -1,4 +1,4 @@
-import MusiciansFindCard from "@/components/sections/MusiciansFindCard/MusiciansFindCard";
+import MusiciansFindCard from "@/components/sections/MusiciansFindCard/ContainerMusiciansFindCard/ContainerMusiciansFindCard";
 import styles from "./FindMusicians.module.css";
 
 export default function FindMusicians(){
