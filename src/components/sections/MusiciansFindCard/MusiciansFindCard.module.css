@@ -1,7 +1,11 @@
 
 
 .container_card{
-    width: 390px;
+    width: 335px;
+    height: 500px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
     display: inline-block;
     /* border-color: chartreuse;
     border-width: 1px;
@@ -129,8 +133,8 @@
 .pass_musician_button,
 .match_musician_button{
     border-radius: 100%;
-    width: 5%;
-    margin: 0% 2%;
+    width: 54px;
+    margin: 0% 5%;
     aspect-ratio: 1/1;
     display: flex;
 }
