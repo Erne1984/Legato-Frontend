@@ -1,7 +1,7 @@
 
 
 .container_card{
-    width: 25%;
+    width: 390px;
     display: inline-block;
     /* border-color: chartreuse;
     border-width: 1px;
@@ -152,5 +152,9 @@
     width: 25%;
 }
 
-
+@media(max-width: 768px){
+    .pass_musician_button, .match_musician_button{
+        display: none;
+    }
+}
 
