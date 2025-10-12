@@ -1,23 +1,33 @@
+"use client";
+
 import styles from "./ContainerMusiciansFindCard.module.css"
 import Icon from "@/components/ui/Icon/Icon"
-import CarrouselCard from "../CarrouselMusiciansFindCard/CarrouselMusiciansFindCard"
+import CarouselCard from "../CarouselMusiciansFindCard/CarouselMusiciansFindCard"
 
 export default function MusiciansFindCard() {
-    const mediaItems = [
-        {type: "image", src: "../../../../../public/imgs/black-boy-playing-guitar_1.jpg"},
-        {type: "image", src: "../../../../../public/imgs/black-boy-playing-guitar_2.jpg"},
-        {type: "image", src: "../../../../../public/imgs/black-boy-playing-guitar_3.jpg"},
-        {type: "string", src: "Renan"},
-        {type: "string", src: "Vocalista"},
-        {type: "string", src: "Guitarrista"}
+    const mediaItems: { type: "image" | "video"; src: string }[] = [
+        {type: "image", src: "/imgs/black-boy-playing-guitar_1.jpg"},
+        {type: "image", src: "/imgs/black-boy-playing-guitar_2.jpg"},
+        {type: "image", src: "/imgs/black-boy-playing-guitar_3.jpg"}
     ]
+
+    const name = "Renan";
+
+    const skills = ["Vocalista", "Guitarrista"];
+    
+    console.log(mediaItems);
+
     return (
         <>
             <div className={styles.pass_musician_button}>
                 <Icon name="close" className={styles.x_icon}></Icon>
             </div>
             <div className={styles.container_card}>
-                <CarrouselCard />
+                <CarouselCard 
+                    slides={mediaItems}
+                    name={name}
+                    skills={skills}
+                />
                 <div className={styles.description_container_card}>
 
                     <p className={styles.musician_bio}>

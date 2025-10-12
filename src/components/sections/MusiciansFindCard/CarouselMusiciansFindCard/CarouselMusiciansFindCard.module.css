@@ -4,9 +4,6 @@
     border-style: solid; */
     height: 500px;
     position: relative;
-    background-image: url("/imgs/musician_image_profile.png");
-    background-size: cover;
-    background-position: center;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
@@ -29,7 +26,6 @@
 }
 .distance_tag {
     background: var(--primary-color);
-    ;
     border-radius: 15px;
     width: 17%;
     height: 25px;
@@ -63,4 +59,75 @@
     padding: 0.5% 1.5%;
     margin-right: 0.8%;
     font-size: 0.9rem;
+}
+
+.carousel_background{
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.slide_item{
+    width: 100%;
+    height: 100%;
+}
+
+.background_media{
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+}
+
+.overlay_content{
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.progress_bar{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 4px;
+    z-index: 2;
+}
+
+.progress_dot{
+    flex: 1;
+    background: var(--foreground);
+    margin: 0 2px;
+    transition: background 0.3s;
+}
+
+.active_dot {
+    background: var(--primary-color);
+}
+
+.custom_arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 3;
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.image_container_section_card:hover .custom_arrow{
+    opacity: 1;
+}
+
+.custom_arrow.left {
+    left: 12px;
+}
+
+.custom_arrow.right{
+    right: 12px;
 }

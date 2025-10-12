@@ -1,5 +1,5 @@
 
-import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare, Sun, Moon, Menu, Settings, LogOut, Share, Play, Pause, StepForward, StepBack, Facebook, Instagram } from "lucide-react"
+import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare, Sun, Moon, Menu, Settings, LogOut, Share, Play, Pause, StepForward, StepBack, Facebook, Instagram, ChevronRight, ChevronLeft } from "lucide-react"
 
 const icons = {
   home: Home,
@@ -27,7 +27,9 @@ const icons = {
   stepBack: StepBack,
   facebook: Facebook,
   instagram: Instagram,
-  
+  LeftArrow: ChevronLeft,
+  RightArrow: ChevronRight
+
 };
 
 export type IconName = keyof typeof icons;

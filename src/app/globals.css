@@ -1,3 +1,7 @@
+/* For the carousel dont move from the top*/
+@import "slick-carousel/slick/slick.css";
+@import "slick-carousel/slick/slick-theme.css";
+
 :root {
   /* cores */
   --background: #fafafa;
@@ -80,3 +84,4 @@ small {
   font-size: var(--font-size-sm);
   color: var(--secondary-text-color);
 }
+
