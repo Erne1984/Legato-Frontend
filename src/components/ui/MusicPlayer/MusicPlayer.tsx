@@ -4,7 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import styles from "./MusicPlayer.module.css";
 import { Track } from "@/types/Track";
-import Icon from "@/components/ui/Icon/Icon"; // caminho conforme seu projeto
+import Icon from "@/components/ui/Icon/Icon"; 
 
 interface MusicPlayerProps {
   currentTrack: Track | null;

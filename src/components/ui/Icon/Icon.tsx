@@ -1,5 +1,32 @@
-
-import { Home, Music, User, Search, Heart, Users, Ellipsis, Link, X, MapPin, Plus, Bell, MessageSquare, Sun, Moon, Menu, Settings, LogOut, Share, Play, Pause, StepForward, StepBack, Facebook, Instagram } from "lucide-react"
+import {
+  Home,
+  Music,
+  User,
+  Search,
+  Heart,
+  Users,
+  Ellipsis,
+  Link,
+  X,
+  MapPin,
+  Plus,
+  Bell,
+  MessageSquare,
+  Sun,
+  Moon,
+  Menu,
+  Settings,
+  LogOut,
+  Share,
+  Play,
+  Pause,
+  StepForward,
+  StepBack,
+  ArrowUp,
+  ArrowDown,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 
 const icons = {
   home: Home,
@@ -25,9 +52,10 @@ const icons = {
   circlePause: Pause,
   stepForward: StepForward,
   stepBack: StepBack,
+  arrowUp: ArrowUp,
+  arrowDown: ArrowDown,
   facebook: Facebook,
   instagram: Instagram,
-  
 };
 
 export type IconName = keyof typeof icons;
