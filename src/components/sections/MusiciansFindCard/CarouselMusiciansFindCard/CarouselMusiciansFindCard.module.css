@@ -1,14 +1,116 @@
-.image_container_section_card {
-    /* border-color: crimson;
-    border-width: 1px;
-    border-style: solid; */
-    height: 500px;
+.carousel_container {
     position: relative;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-.container_intro_info{
+.slider_wrapper {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.slide {
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: none;
+}
+
+.slide.active{
+    opacity: 1;
+}
+
+.media{
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+}
+
+.arrow{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow.left{
+    left:10px;
+}
+
+.arrow.right{
+    right: 10px;
+}
+
+.stories_progress_container {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  width: 94%;
+  z-index: 20;
+}
+
+.story_bar_wrapper {
+  flex: 1;                     /* todas as barras têm o mesmo tamanho */
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.3); /* cor de fundo */
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.story_bar_fill {
+  height: 100%;
+  width: 0%;
+  background-color: white;
+  border-radius: 2px;
+  transition: width 2s linear; /* animação de preenchimento */
+}
+
+/* Barras já "passadas" ficam completas */
+.filled {
+  width: 100%;
+  transition: none;
+}
+
+/* Barra ativa preenche */
+.bar_active {
+  animation: fillStory 0.5s linear forwards;
+}
+
+/* Animação que enche a barrinha da ativa */
+@keyframes fillStory {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+
+
+.container_intro_info {
     bottom: 0;
     left: 0;
     width: 100%;
@@ -18,19 +120,19 @@
     justify-content: flex-end;
     padding: 0% 0% 2% 3%;
     position: absolute;
-  background: linear-gradient(
-    to top, 
-    var(--background),     /* cor sólida começa na base */
-    transparent           /* topo totalmente transparente */
-  );
+    background: linear-gradient(to top,
+            var(--background),
+            transparent
+        );
 }
+
 .distance_tag {
     background: var(--primary-color);
     border-radius: 15px;
     width: 17%;
     height: 25px;
     position: absolute;
-    top: 0;
+    top: 15;
     right: 0;
     margin: 3% 3% 0 0;
     font-size: 0.7rem;
@@ -40,7 +142,7 @@
     color: white;
 }
 
-.mapPin_icon{
+.mapPin_icon {
     width: 25%;
 }
 
@@ -59,75 +161,4 @@
     padding: 0.5% 1.5%;
     margin-right: 0.8%;
     font-size: 0.9rem;
-}
-
-.carousel_background{
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.slide_item{
-    width: 100%;
-    height: 100%;
-}
-
-.background_media{
-    width: 100%;
-    height: 500px;
-    background-size: cover;
-    background-position: center;
-}
-
-.overlay_content{
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-}
-
-.progress_bar{
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    width: 100%;
-    height: 4px;
-    z-index: 2;
-}
-
-.progress_dot{
-    flex: 1;
-    background: var(--foreground);
-    margin: 0 2px;
-    transition: background 0.3s;
-}
-
-.active_dot {
-    background: var(--primary-color);
-}
-
-.custom_arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 3;
-    opacity: 0;
-    width: 20px;
-    height: 20px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: opacity 0.3s;
-}
-
-.image_container_section_card:hover .custom_arrow{
-    opacity: 1;
-}
-
-.custom_arrow.left {
-    left: 12px;
-}
-
-.custom_arrow.right{
-    right: 12px;
 }
