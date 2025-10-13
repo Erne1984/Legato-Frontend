@@ -69,6 +69,13 @@
     right: 10px;
 }
 
+@media (max-width: 768px) {
+  .arrow {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
 .stories_progress_container {
   position: absolute;
   top: 10px;

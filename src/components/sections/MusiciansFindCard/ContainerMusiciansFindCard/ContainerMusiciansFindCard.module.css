@@ -1,6 +1,7 @@
 
 
 .container_card{
+    position: relative;
     width: 335px;
     height: 500px;
     overflow-y:auto;
@@ -14,6 +15,37 @@
     box-shadow: 0 1px 5px var(--foreground);
     z-index: 0;
 }
+
+.swipe_left{
+    animation: swipeLeft 0.6s ease forwards;
+}
+
+.swipe_right {
+    animation: swipeRight 0.6s ease forwards;
+}
+
+@keyframes swipeLeft{
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-400px) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+@keyframes swipeRight {
+    0% {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(400px) rotate(15deg);
+        opacity: 0;
+    }
+}
+
 
 
 .description_container_card{
@@ -116,6 +148,30 @@
     margin: 0% 5%;
     aspect-ratio: 1/1;
     display: flex;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.pass_musician_button:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    background-color: white;
+} 
+
+.pass_musician_button:hover .x_icon{
+    color: red;
+}
+
+.match_musician_button:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--primary-color);
+    background-color: white;
+} 
+
+.match_musician_button:hover .link_icon{
+    color: var(--primary-color);
 }
 
 .x_icon,
