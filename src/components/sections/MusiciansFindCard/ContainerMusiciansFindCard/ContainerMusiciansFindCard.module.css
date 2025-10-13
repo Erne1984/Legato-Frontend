@@ -1,4 +1,6 @@
-
+.card_wrapper{
+    position: relative;
+}
 
 .container_card{
     position: relative;
@@ -13,38 +15,9 @@
     border-style: solid; */
     border-radius: 15px;
     box-shadow: 0 1px 5px var(--foreground);
-    z-index: 0;
+    z-index: 2;
 }
 
-.swipe_left{
-    animation: swipeLeft 0.6s ease forwards;
-}
-
-.swipe_right {
-    animation: swipeRight 0.6s ease forwards;
-}
-
-@keyframes swipeLeft{
-    0% {
-        transform: translateX(0) rotate(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(-400px) rotate(-15deg);
-        opacity: 0;
-    }
-}
-
-@keyframes swipeRight {
-    0% {
-        transform: translateX(0) rotate(0);
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(400px) rotate(15deg);
-        opacity: 0;
-    }
-}
 
 
 
@@ -55,6 +28,7 @@
     padding: 3% 2% 3% 3%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    z-index: 2;
 }
 
 .view_profile_button{
@@ -134,66 +108,12 @@
     align-items: center;
 }
 
-.pass_musician_button{
-    background-color: red;
-}
-
-.match_musician_button{
-    background-color: var(--primary-color);
-}
-.pass_musician_button,
-.match_musician_button{
-    border-radius: 100%;
-    width: 54px;
-    margin: 0% 5%;
-    aspect-ratio: 1/1;
-    display: flex;
-    cursor: pointer;
-    transition: background 0.2s ease;
-}
-
-.pass_musician_button:hover {
-    border-style: solid;
-    border-width: 1px;
-    border-color: red;
-    background-color: white;
-} 
-
-.pass_musician_button:hover .x_icon{
-    color: red;
-}
-
-.match_musician_button:hover {
-    border-style: solid;
-    border-width: 1px;
-    border-color: var(--primary-color);
-    background-color: white;
-} 
-
-.match_musician_button:hover .link_icon{
-    color: var(--primary-color);
-}
-
-.x_icon,
-.link_icon{
-    color: white;
-}
 
 .plus_icon{
     color: var(--primary-color);
-}
-
-.x_icon,
-.link_icon,
-.plus_icon{
-    margin-left: auto;
+        margin-left: auto;
     margin-right: auto;
     align-self: center;
 }
 
-@media(max-width: 768px){
-    .pass_musician_button, .match_musician_button{
-        display: none;
-    }
-}
 

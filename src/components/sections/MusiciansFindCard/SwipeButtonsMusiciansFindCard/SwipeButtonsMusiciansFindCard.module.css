@@ -1,0 +1,71 @@
+
+/* Base a style for both buttons */
+.swipe_button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    width: 54px;
+    border-radius: 100%;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* Pass button */
+.pass {
+    background-color: red;
+    left: 375px;
+}
+
+/* Match button */
+.match {
+    background-color: var(--primary-color);
+    right: 375px;
+}
+
+/* Hover effect for both buttons */
+.pass:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: red;
+    background-color: white;
+} 
+
+.pass:hover .x_icon{
+    color: red;
+}
+
+.match:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--primary-color);
+    background-color: white;
+} 
+
+.match:hover .link_icon{
+    color: var(--primary-color);
+}
+
+.x_icon,
+.link_icon{
+    color: white;
+}
+
+.x_icon,
+.link_icon{
+    margin-left: auto;
+    margin-right: auto;
+    align-self: center;
+}
+
+@media(max-width: 768px){
+    .swipe_buttons_container{
+        display: none;
+    }
+}
+
