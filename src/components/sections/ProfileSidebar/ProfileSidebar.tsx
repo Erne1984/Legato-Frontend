@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styles from "./ProfileSidebar.module.css";
 import PrimaryButton from "@/components/ui/PrimaryButton/PrimaryButton";
-import Icon from "@/components/ui/Icon/Icon";
+import ProfileOptionsMenu from "../ProfileOptionsMenu/ProfileOptionsMenu";
+import { useState } from "react";
+import SecondaryButton from "@/components/ui/SecondaryButton/SecondaryButton";
 
 type ProfileSidebarProps = {
   userImg: string;
@@ -14,6 +16,12 @@ export default function ProfileSidebar({
   username,
   displayName,
 }: ProfileSidebarProps) {
+  const [follow, setFollow] = useState<boolean>(true);
+
+  const handleFollow = () => {
+    setFollow((prev) => !prev);
+  };
+
   return (
     <aside className={styles.container}>
       <div className={styles.avatar}>
@@ -25,11 +33,21 @@ export default function ProfileSidebar({
           className={styles.avatarImg}
         />
       </div>
-      <Icon name="ellipsis" className={styles.icon_user_options}/>
+      <div className={styles.icon_user_options}>
+        <ProfileOptionsMenu />
+      </div>
 
       <h2 className={styles.displayName}>{displayName}</h2>
       <p className={styles.username}>@{username}</p>
-      <PrimaryButton content="Conectar" size="medium" />
+      {follow ? (
+        <PrimaryButton
+          content="Conectado"
+          size="medium"
+          onClick={handleFollow}
+        />
+      ) : (
+        <SecondaryButton content="Conectar" onClick={handleFollow} />
+      )}
     </aside>
   );
 }

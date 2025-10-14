@@ -13,7 +13,6 @@ export default function DropdownMenu() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Fecha o menu se clicar fora dele
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
