@@ -16,6 +16,7 @@ import TrackBox from "../../ui/TrackBox/TrackBox";
 import { Track } from "@/types/Track";
 import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
 import ColaborationCard from "../../ui/ColaborationCard/ColaborationCard";
+import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
@@ -71,6 +72,17 @@ export default function UsersContent() {
                 <TrackBox onSelectTrack={handleSelectTrack} />
                 <ProfileAlbumBox />
               </>
+            )}
+
+            {tab === "videos" && (
+              <div className={styles.videosGrid}>
+                {[
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                ].map((videoUrl, idx) => (
+                  <ShortVideoCard key={idx} videoUrl={videoUrl} />
+                ))}
+              </div>
             )}
 
             {tab === "collaborations" && (
