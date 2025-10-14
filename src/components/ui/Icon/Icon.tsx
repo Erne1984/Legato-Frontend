@@ -24,6 +24,9 @@ import {
   StepBack,
   ArrowUp,
   ArrowDown,
+  Clock,
+  OctagonAlert,
+  Ban,
   Facebook,
   Instagram,
 } from "lucide-react";
@@ -54,6 +57,9 @@ const icons = {
   stepBack: StepBack,
   arrowUp: ArrowUp,
   arrowDown: ArrowDown,
+  clock: Clock,
+  octagonAlert: OctagonAlert,
+  ban: Ban,
   facebook: Facebook,
   instagram: Instagram,
 };

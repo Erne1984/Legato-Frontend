@@ -1,0 +1,70 @@
+.menuWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.iconButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  border-radius: 6px;
+  padding: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.iconButton:hover {
+  background-color: rgba(91, 33, 182, 0.1);
+}
+
+/* Dropdown */
+.menu {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  min-width: 190px;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+  transition: all 0.25s ease;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.menu button:hover {
+  background-color: rgba(91, 33, 182, 0.1);
+}
+
+.menu hr {
+  margin: 4px 0;
+  border: 0.5px solid var(--border);
+}
+
+.danger {
+  color: #e11d48;
+}
