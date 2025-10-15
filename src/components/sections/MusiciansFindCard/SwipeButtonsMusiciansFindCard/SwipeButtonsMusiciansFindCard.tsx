@@ -5,9 +5,9 @@ import styles from "./SwipeButtonsMusiciansFindCard.module.css"
 import Icon from "@/components/ui/Icon/Icon";
 
 type SwipeButtonProps = {
-    // Function triggered when user clicks the "pass" (X) button
+    // Function triggered when user clicks the "pass" (X) button and its is a callback to trigger pass animation
     onPass: () => void;
-    // Function triggered when user clicks the "match" (<3) button
+    // Function triggered when user clicks the "match" (<3) button and its is a callback to trigger match animation
     onMatch: () => void;
 };
 

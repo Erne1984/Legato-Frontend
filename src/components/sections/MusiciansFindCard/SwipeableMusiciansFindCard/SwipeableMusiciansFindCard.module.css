@@ -4,6 +4,7 @@
     cursor: grab;
     transition: transform 0.3s ease;
     will-change: transform;
+    z-index: 3;
 }
 
 /* When the user is dragging */

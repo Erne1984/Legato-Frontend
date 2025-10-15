@@ -1,5 +1,5 @@
 "use client";
-
+import { useState } from "react";
 import styles from "./ContainerMusiciansFindCard.module.css"
 import Icon from "@/components/ui/Icon/Icon"
 import CarouselCard from "../CarouselMusiciansFindCard/CarouselMusiciansFindCard"
@@ -8,6 +8,9 @@ import SwipeButtons from "../SwipeButtonsMusiciansFindCard/SwipeButtonsMusicians
 
 
 export default function MusiciansFindCard() {
+    //Local state to store which direction to animate
+    // "left" -> pass | "right" -> match | null -> idle
+    const[swipeDirection, setSwipeDirection] = useState<"left" | "right" | null>(null);
 
     const mediaItems: { type: "image" | "video"; src: string }[] = [
         { type: "image", src: "/imgs/black-boy-playing-guitar_1.jpg" },
@@ -15,25 +18,32 @@ export default function MusiciansFindCard() {
         { type: "image", src: "/imgs/black-boy-playing-guitar_3.jpg" }
     ]
 
+    //Example content
     const name = "Renan";
     const skills = ["Vocalista", "Guitarrista"];
 
     // Function called when user swipes left or presses the pass button
     const handlePass = () => {
-        console.log("❌ Passed (button or swipe)");
+        setSwipeDirection("left");//trigger animation to the left
     };
 
     // Function called when user swipes right or presses the match button
     const handleMatch = () => {
-        console.log("💚 Matched (button or swipe)");
+        setSwipeDirection("right");//trigger animation to the right
     };
 
+    //Once animation finishes, reset the state
+    const handleAnimationEnd = () => {
+        setSwipeDirection(null);
+    };
 
     return (
         <>
             <div className={styles.card_wrapper}>
                 {/* Swipeable wrapper around the main card */}
                 <SwipeableCard
+                    direction={swipeDirection}
+                    onAnimationEnd={handleAnimationEnd}
                     onPass={handlePass}
                     onMatch={handleMatch}
                 >

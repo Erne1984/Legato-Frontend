@@ -19,13 +19,13 @@
 /* Pass button */
 .pass {
     background-color: red;
-    left: 375px;
+    left: -90px;
 }
 
 /* Match button */
 .match {
-    background-color: var(--primary-color);
-    right: 375px;
+    background-color: green;
+    right: -90px;
 }
 
 /* Hover effect for both buttons */
@@ -43,12 +43,12 @@
 .match:hover {
     border-style: solid;
     border-width: 1px;
-    border-color: var(--primary-color);
+    border-color: green;
     background-color: white;
 } 
 
 .match:hover .link_icon{
-    color: var(--primary-color);
+    color: green;
 }
 
 .x_icon,
@@ -64,7 +64,7 @@
 }
 
 @media(max-width: 768px){
-    .swipe_buttons_container{
+    .swipe_button{
         display: none;
     }
 }
