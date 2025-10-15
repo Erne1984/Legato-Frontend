@@ -34,11 +34,19 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
     useEffect(() => {
         if(direction === "left") {
             triggerSwipe("pass");
+            onPass();
         } else if (direction === "right"){
             triggerSwipe("match");
+            onMatch();
         }
-    }, [direction]);
+    }, [direction, onMatch, onPass]);
 
+    //When animation ends (CSS animation completed)
+    const handleAnimationEnd = () => {
+        setAnimation("none");
+        setOffsetX(0);
+        onAnimationEnd();
+    };
 
     /**
      * Handles logic for triggering a swipe animation
@@ -79,30 +87,57 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
     const handleMouseUp = () => {
         if (!isDragging) return;
         setIsDragging(false);
+        endDrag();
+    };
 
-        const threshold = 150; // Minimum distance to trigger pass/match
+    // Touch Event Handlers (Mobile)
 
-        if (offsetX > threshold) {
-            //Swiped right - "Match"
-            triggerSwipe("match");
-            onMatch?.(); //Call callback if provided 
-        } else if (offsetX < -threshold) {
-            // Swiped left - "Pass"
-            triggerSwipe("pass");
+    //When finger touches the screen
+    const handleTouchStart = (e: React.TouchEvent) => {
+        startX.current = e.touches[0].clientX;
+        setIsDragging(true);
+    };
+
+    //When finger moves on screen
+    const handleTouchMove = (e: React.TouchEvent) => {
+        if(!isDragging || startX.current === null) return;
+        const deltaX = e.touches[0].clientX - startX.current;
+        setOffsetX(deltaX);
+    };
+
+    //When finger is lifted off the screen
+    const handleTouchEnd = () => {
+        if (!isDragging) return;
+        endDrag();
+    };
+
+    // Shared drag end logic for both mouse and touch
+    const endDrag = () => {
+        setIsDragging(false);
+
+        const threshold = 120; //distance to trigger swipe
+
+        if(offsetX > threshold){
+            // Swiped right -> Match
+            setAnimation("match");
+            onMatch?.();
+        }else if(offsetX < -threshold){
+            // Swiped left -> Pass
+            setAnimation("pass");
             onPass?.();
         } else {
-            // Didn't move far enough - reset to center
+            //Reset if not far enough
             setOffsetX(0);
-            // setAnimation("none");
-            // return;
+            setAnimation("none");
+            return;
         }
 
-        // After animation ends, reset card position
+        // Reset card after animarion finishes
         setTimeout(() => {
             setOffsetX(0);
-            // setAnimation("none");
+            setAnimation("none");
         }, 600);
-    }
+    };
 
     return (
         <>
@@ -110,13 +145,18 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
             // Apply conditional animation classes
             className={`${styles.swipeable_card} 
                 ${animation === "pass" ? styles.swipe_left : ""}
-                ${animation === "match"? styles.swipe_right: ""}
-            `}
-            // Mouse event handlers
+                ${animation === "match"? styles.swipe_right: ""}`}
+            onAnimationEnd={handleAnimationEnd}    
+            // Mouse event handlers (desktop)
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
+            // Touch events (mobile)
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            // Transform while dragging
             // Apply transform while dragging for smooth movement
             style={{
                 transform:
