@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./SwipeableMusiciansFindCard.module.css"
+import SwipeOverlay from "../SwipeOverlayMusiciansFindCard/SwipeOverlayMusiciansFindCard";
 
 // Props for the SwipeableCard component
 type SwipeableCardProps = {
@@ -107,26 +108,34 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
     };
 
     useEffect(() => {
-        // 👇 Define a function to handle every touch movement on the document.
-        // If the user is currently dragging a card (isDragging = true),
-        // we prevent the browser's default behavior — such as horizontal scrolling.
-        const handleTouchMoveNonPassive = (e: TouchEvent) => {
-            if (isDragging) e.preventDefault();
+        // 🧠 This function runs on both touch and mouse events
+        // It prevents any unintended horizontal scrolling or page movement
+        // while the user is dragging the card.
+        const preventScrollWhileDragging = (e: Event) => {
+            if (isDragging) {
+                e.preventDefault(); // Stop default scroll or drag page behavior
+            }
         };
 
-        // 👇 Add a global "touchmove" event listener.
-        // The `{ passive: false }` option is crucial — by default, browsers
-        // mark touch listeners as passive and block calls to preventDefault().
-        document.addEventListener("touchmove", handleTouchMoveNonPassive, { passive: false });
+        // 🖐️ Touch event listener (for mobile/tablet)
+        // passive: false is required so preventDefault() actually works
+        document.addEventListener("touchmove", preventScrollWhileDragging, { passive: false });
 
-        // 👇 Cleanup: remove the listener when the component unmounts
-        // or when "isDragging" changes, to avoid memory leaks or duplicates.
+        // 🖱️ Mouse event listener (for desktop)
+        // Prevent horizontal scroll when dragging with the mouse
+        document.addEventListener("mousemove", preventScrollWhileDragging, { passive: false });
+
+        // 🧭 Optional: block scroll wheel while dragging (avoids horizontal scroll)
+        document.addEventListener("wheel", preventScrollWhileDragging, { passive: false });
+
+        // 🧹 Cleanup all event listeners when component unmounts or isDragging changes
         return () => {
-            document.removeEventListener("touchmove", handleTouchMoveNonPassive);
+            document.removeEventListener("touchmove", preventScrollWhileDragging);
+            document.removeEventListener("mousemove", preventScrollWhileDragging);
+            document.removeEventListener("wheel", preventScrollWhileDragging);
         };
 
-        // 👇 This effect runs every time "isDragging" changes —
-        // meaning when the user starts or stops dragging.
+        // ⚙️ This effect re-runs whenever the dragging state changes
     }, [isDragging]);
 
     //When finger is lifted off the screen
@@ -190,6 +199,8 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
                     transition: isDragging ? "none" : "transform 0.3s ease",
                 }}
             >
+                {/* Overlay appears dynamically based on swipe direction */}
+                <SwipeOverlay offsetX={offsetX} />
 
                 {/* The actual content of the card (passed as children) */}
                 {children}
