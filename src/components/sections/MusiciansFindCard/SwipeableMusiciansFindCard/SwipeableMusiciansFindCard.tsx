@@ -32,10 +32,10 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
 
     //When direction changes, trigger animation class (form buttons)
     useEffect(() => {
-        if(direction === "left") {
+        if (direction === "left") {
             triggerSwipe("pass");
             onPass();
-        } else if (direction === "right"){
+        } else if (direction === "right") {
             triggerSwipe("match");
             onMatch();
         }
@@ -55,11 +55,11 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
     const triggerSwipe = (type: "pass" | "match") => {
         setAnimation(type);
         //Call the corresponding callback
-        if(type === "pass") onPass?.();
-        if(type === "match") onMatch?.();
-        
+        if (type === "pass") onPass?.();
+        if (type === "match") onMatch?.();
+
         //Reset after the animation finishes
-        setTimeout(() =>{
+        setTimeout(() => {
             setAnimation("none");
             setOffsetX(0);
             onAnimationEnd?.();
@@ -100,10 +100,34 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
 
     //When finger moves on screen
     const handleTouchMove = (e: React.TouchEvent) => {
-        if(!isDragging || startX.current === null) return;
+        if (!isDragging || startX.current === null) return;
+
         const deltaX = e.touches[0].clientX - startX.current;
         setOffsetX(deltaX);
     };
+
+    useEffect(() => {
+        // 👇 Define a function to handle every touch movement on the document.
+        // If the user is currently dragging a card (isDragging = true),
+        // we prevent the browser's default behavior — such as horizontal scrolling.
+        const handleTouchMoveNonPassive = (e: TouchEvent) => {
+            if (isDragging) e.preventDefault();
+        };
+
+        // 👇 Add a global "touchmove" event listener.
+        // The `{ passive: false }` option is crucial — by default, browsers
+        // mark touch listeners as passive and block calls to preventDefault().
+        document.addEventListener("touchmove", handleTouchMoveNonPassive, { passive: false });
+
+        // 👇 Cleanup: remove the listener when the component unmounts
+        // or when "isDragging" changes, to avoid memory leaks or duplicates.
+        return () => {
+            document.removeEventListener("touchmove", handleTouchMoveNonPassive);
+        };
+
+        // 👇 This effect runs every time "isDragging" changes —
+        // meaning when the user starts or stops dragging.
+    }, [isDragging]);
 
     //When finger is lifted off the screen
     const handleTouchEnd = () => {
@@ -117,11 +141,11 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
 
         const threshold = 120; //distance to trigger swipe
 
-        if(offsetX > threshold){
+        if (offsetX > threshold) {
             // Swiped right -> Match
             setAnimation("match");
             onMatch?.();
-        }else if(offsetX < -threshold){
+        } else if (offsetX < -threshold) {
             // Swiped left -> Pass
             setAnimation("pass");
             onPass?.();
@@ -141,35 +165,35 @@ export default function SwipeableCard({ direction, onAnimationEnd, children, onM
 
     return (
         <>
-        <div
-            // Apply conditional animation classes
-            className={`${styles.swipeable_card} 
+            <div
+                // Apply conditional animation classes
+                className={`${styles.swipeable_card} 
                 ${animation === "pass" ? styles.swipe_left : ""}
-                ${animation === "match"? styles.swipe_right: ""}`}
-            onAnimationEnd={handleAnimationEnd}    
-            // Mouse event handlers (desktop)
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
-            // Touch events (mobile)
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-            // Transform while dragging
-            // Apply transform while dragging for smooth movement
-            style={{
-                transform:
-                    isDragging && animation === "none"
-                        ? `translateX(${offsetX}px) rotate(${offsetX / 20}deg)`
-                        : undefined,
-                transition: isDragging ? "none" : "transform 0.3s ease",
-            }}
-        >
+                ${animation === "match" ? styles.swipe_right : ""}`}
+                onAnimationEnd={handleAnimationEnd}
+                // Mouse event handlers (desktop)
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onMouseLeave={handleMouseUp}
+                // Touch events (mobile)
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+                // Transform while dragging
+                // Apply transform while dragging for smooth movement
+                style={{
+                    transform:
+                        isDragging && animation === "none"
+                            ? `translateX(${offsetX}px) rotate(${offsetX / 20}deg)`
+                            : undefined,
+                    transition: isDragging ? "none" : "transform 0.3s ease",
+                }}
+            >
 
-            {/* The actual content of the card (passed as children) */}
-            {children}
-        </div>
+                {/* The actual content of the card (passed as children) */}
+                {children}
+            </div>
         </>
     );
 }

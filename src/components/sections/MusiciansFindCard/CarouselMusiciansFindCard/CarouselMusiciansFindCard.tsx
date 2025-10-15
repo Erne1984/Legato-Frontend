@@ -85,6 +85,9 @@ export default function CarouselMusiciansFindCard({
                             </div>
                         ))}
                     </div>
+                    <div className={styles.description}>
+                        Role para baixo e veja mais informações
+                    </div>
                 </div>
             </div>
 

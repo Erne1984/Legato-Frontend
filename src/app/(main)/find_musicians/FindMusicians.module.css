@@ -5,3 +5,27 @@
     flex-direction:row;
     padding: 1% 0%;
 }
+
+.title, .subtitle {
+    margin-left: 15px;
+}
+
+.container_description{
+    display: none;
+    justify-content: center;
+}
+
+.text_description{
+    width: 250px;
+    text-align: center;
+    font-size: 16px;
+}
+
+@media (max-width: 768px) {
+    .title, .subtitle{
+        display: none;
+    }
+    .container_description{
+        display: flex;
+    }
+}

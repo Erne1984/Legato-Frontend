@@ -5,7 +5,7 @@
 .container_card{
     position: relative;
     width: 335px;
-    height: 500px;
+    height: 450px;
     overflow-y:auto;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -116,4 +116,8 @@
     align-self: center;
 }
 
-
+@media (max-width: 768px) {
+    .container_card{
+        height: 475px;
+    }
+}
