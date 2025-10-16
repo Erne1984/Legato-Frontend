@@ -27,6 +27,7 @@ import {
   Clock,
   OctagonAlert,
   Ban,
+  Flame,
   Camera,
   Facebook,
   Instagram,
@@ -62,6 +63,7 @@ const icons = {
   octagonAlert: OctagonAlert,
   ban: Ban,
   camera:Camera,
+  flame: Flame,
   facebook: Facebook,
   instagram: Instagram,
 };
