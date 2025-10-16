@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
+  margin-bottom: 24px;
+}
+
+.cancelButton {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 16px;
+  background: none;
+  color: #555;
+  cursor: pointer;
+}
+
+.saveButton {
+  background-color: #6b21a8;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  color: white;
+  cursor: pointer;
+}

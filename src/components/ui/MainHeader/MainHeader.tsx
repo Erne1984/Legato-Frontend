@@ -49,18 +49,20 @@ export default function MainHeader({ className }: MainHeaderProps) {
   return (
     <header className={`${styles.container_wrapper} ${className || ""}`}>
       <div className={styles.container}>
-        <div className={styles.logo_area}>
-          <Image
-            src={theme === "dark" ? logo_dark : logo_light}
-            width={150}
-            height={45}
-            alt="Logo legato"
-          />
-        </div>
+        <Link href="/feed">
+          <div className={styles.logo_area}>
+            <Image
+              src={theme === "dark" ? logo_dark : logo_light}
+              width={150}
+              height={45}
+              alt="Logo legato"
+            />
+          </div>
+        </Link>
 
         <nav className={styles.nav}>
           <Link href="/feed">Feed</Link>
-          <Link href="/descoberta">Descoberta</Link>
+          <Link href="/find_musicians">Descoberta</Link>
           <Link href="/colaboracoes">Colaborações</Link>
         </nav>
 

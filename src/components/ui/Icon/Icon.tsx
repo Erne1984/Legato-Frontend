@@ -27,6 +27,7 @@ import {
   Clock,
   OctagonAlert,
   Ban,
+  Camera,
   Facebook,
   Instagram,
 } from "lucide-react";
@@ -60,6 +61,7 @@ const icons = {
   clock: Clock,
   octagonAlert: OctagonAlert,
   ban: Ban,
+  camera:Camera,
   facebook: Facebook,
   instagram: Instagram,
 };
