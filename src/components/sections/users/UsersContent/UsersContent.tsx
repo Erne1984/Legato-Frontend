@@ -1,21 +1,21 @@
 "use client";
 
 import { useState } from "react";
-import ProfileSidebar from "@/components/sections/ProfileSidebar/ProfileSidebar";
-import ProfileBanner from "@/components/sections/ProfileBanner/ProfileBanner";
-import ProfileTabs from "@/components/sections/ProfileTabs/ProfileTabs";
-import SuggestedProfiles from "@/components/sections/SuggestedProfiles/SuggestedProfiles";
-import BioCard from "@/components/sections/BioCard/BioCard";
-import StatsCardUser from "@/components/sections/StatsCardUser/StatsCardUser";
+import ProfileSidebar from "@/components/sections/users/ProfileSidebar/ProfileSidebar";
+import ProfileBanner from "@/components/sections/users/ProfileBanner/ProfileBanner";
+import ProfileTabs from "@/components/sections/users/ProfileTabs/ProfileTabs";
+import SuggestedProfiles from "@/components/ui/SuggestedProfiles/SuggestedProfiles";
+import BioCard from "@/components/sections/users/BioCard/BioCard";
+import StatsCardUser from "@/components/sections/users/StatsCardUser/StatsCardUser";
 import Post from "@/components/ui/Post/Post";
 import styles from "./UsersContent.module.css";
 import posts from "./data.json";
 import { useSearchParams } from "next/navigation";
 import ProfileAlbumBox from "../ProfileAlbumBox/ProfileAlbumBox";
-import TrackBox from "../../ui/TrackBox/TrackBox";
+import TrackBox from "../../../ui/TrackBox/TrackBox";
 import { Track } from "@/types/Track";
 import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
-import ColaborationCard from "../../ui/ColaborationCard/ColaborationCard";
+import ColaborationCard from "../../../ui/ColaborationCard/ColaborationCard";
 import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
 
 export default function UsersContent() {

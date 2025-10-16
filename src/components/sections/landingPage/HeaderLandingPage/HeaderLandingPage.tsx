@@ -2,14 +2,14 @@
 
 import Image from "next/image";
 import styles from "./HeaderLanginPage.module.css";
-import PrimaryButton from "../../ui/PrimaryButton/PrimaryButton";
-import SecondaryButton from "../../ui/SecondaryButton/SecondaryButton";
+import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
+import SecondaryButton from "../../../ui/SecondaryButton/SecondaryButton";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { useTheme } from "next-themes";
-import logo_light from "../../../assets/logo/legato_logo_light_version.png";
-import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
+import logo_light from "../../../../assets/logo/legato_logo_light_version.png";
+import logo_dark from "../../../../assets/logo/legato_logo_dark_version.png";
 import ThemeChanger from "@/components/ui/ThemeChanger/ThemeChanger";
 import { useEffect, useState } from "react";
 
@@ -17,8 +17,9 @@ type HeaderLandingPageProps = {
   className?: string;
 };
 
-
-export default function HeaderLanginPage({className}: HeaderLandingPageProps) {
+export default function HeaderLanginPage({
+  className,
+}: HeaderLandingPageProps) {
   const router = useRouter();
   const { theme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -27,18 +28,12 @@ export default function HeaderLanginPage({className}: HeaderLandingPageProps) {
     setMounted(true);
   }, []);
 
-    if (!mounted) {
-    return (
-      <Image
-        src={logo_light} 
-        width={150}
-        height={45}
-        alt="Logo legato"
-      />
-    );
+  if (!mounted) {
+    return <Image src={logo_light} width={150} height={45} alt="Logo legato" />;
   }
 
-  const currentTheme = theme === "dark" || resolvedTheme === "dark" ? "dark" : "light";
+  const currentTheme =
+    theme === "dark" || resolvedTheme === "dark" ? "dark" : "light";
 
   const navigateToLogin = () => {
     router.push("/login");

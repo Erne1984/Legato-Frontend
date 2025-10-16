@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense } from "react";
-import UsersContent from "@/components/sections/UsersContent/UsersContent";
+import UsersContent from "@/components/sections/users/UsersContent/UsersContent";
 
 export default function UsersPage() {
   return (

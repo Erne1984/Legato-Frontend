@@ -1,7 +1,7 @@
-import FeaturesSection from "@/components/sections/FeaturesSection/FeaturesSection";
-import Hero from "../../components/sections/Hero/Hero";
+import FeaturesSection from "@/components/sections/landingPage/FeaturesSection/FeaturesSection";
+import Hero from "../../components/sections/landingPage/Hero/Hero";
 import styles from "./page.module.css";
-import DiscoverMusiciansSection from "@/components/sections/DiscoverMusiciansSection/DiscoverMusiciansSection";
+import DiscoverMusiciansSection from "@/components/sections/landingPage/DiscoverMusiciansSection/DiscoverMusiciansSection";
 import Footer from "@/components/ui/Footer/Footer";
 
 export default function Home() {
@@ -9,11 +9,11 @@ export default function Home() {
     <div className={styles.container}>
       <Hero />
 
-      <FeaturesSection/>
+      <FeaturesSection />
 
-      <DiscoverMusiciansSection/>
+      <DiscoverMusiciansSection />
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }
