@@ -29,6 +29,7 @@ import {
   Ban,
   Flame,
   Camera,
+  Image,
   Facebook,
   Instagram,
 } from "lucide-react";
@@ -64,6 +65,7 @@ const icons = {
   ban: Ban,
   camera:Camera,
   flame: Flame,
+  image: Image,
   facebook: Facebook,
   instagram: Instagram,
 };
