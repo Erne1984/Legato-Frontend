@@ -8,7 +8,6 @@ import ActionButtons from "@/components/sections/settings/ActionButtons/ActionBu
 export default function SettingsPage() {
   return (
     <div className={styles.container_settings_wrapper}>
-      <h1>Olá Configurações</h1>
 
       <ProfileBannerUploader />
       <BasicInfoForm />
