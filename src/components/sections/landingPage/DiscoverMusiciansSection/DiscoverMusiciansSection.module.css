@@ -74,7 +74,7 @@
 .musician_bio {
   font-size: 0.875rem;
   line-height: 1.4;
-  color: var(--secondary-text-color);
+  color: var(--text-color);
   text-align: left !important ;
 }
 
@@ -82,7 +82,7 @@
 .genres_section h4 {
   font-size: 0.875rem;
   margin-bottom: 0.25rem;
-  color: var(--secondary-text-color);
+  color: var( --card-subtext);
 }
 
 .tags {
@@ -92,9 +92,9 @@
 }
 
 .tag {
-  background-color: #2b2440;
+  background-color: var(--tag-background);
   padding: 0.3rem 0.7rem;
   border-radius: 12px;
   font-size: 0.75rem;
-  color: #c7a2ff;
+  color: #fff;
 }
