@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
 import { useRouter } from "next/navigation";
-import PrimaryButton from "../../ui/PrimaryButton/PrimaryButton";
+import PrimaryButton from "../../../ui/PrimaryButton/PrimaryButton";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -20,7 +20,11 @@ export default function Hero() {
           colabore com artistas que compartilham da sua paixão pela música.
         </p>
 
-        <PrimaryButton content="Descobrir músicos" size="large" onClick={navigateToSignup} />
+        <PrimaryButton
+          content="Descobrir músicos"
+          size="large"
+          onClick={navigateToSignup}
+        />
       </div>
 
       <div className={styles.metrics}>

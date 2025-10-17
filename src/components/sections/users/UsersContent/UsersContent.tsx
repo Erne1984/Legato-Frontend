@@ -1,20 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import ProfileSidebar from "@/components/sections/ProfileSidebar/ProfileSidebar";
-import ProfileBanner from "@/components/sections/ProfileBanner/ProfileBanner";
-import ProfileTabs from "@/components/sections/ProfileTabs/ProfileTabs";
-import SuggestedProfiles from "@/components/sections/SuggestedProfiles/SuggestedProfiles";
-import BioCard from "@/components/sections/BioCard/BioCard";
-import StatsCardUser from "@/components/sections/StatsCardUser/StatsCardUser";
+import ProfileSidebar from "@/components/sections/users/ProfileSidebar/ProfileSidebar";
+import ProfileBanner from "@/components/sections/users/ProfileBanner/ProfileBanner";
+import ProfileTabs from "@/components/sections/users/ProfileTabs/ProfileTabs";
+import SuggestedProfiles from "@/components/ui/SuggestedProfiles/SuggestedProfiles";
+import BioCard from "@/components/sections/users/BioCard/BioCard";
+import StatsCardUser from "@/components/sections/users/StatsCardUser/StatsCardUser";
 import Post from "@/components/ui/Post/Post";
 import styles from "./UsersContent.module.css";
 import posts from "./data.json";
 import { useSearchParams } from "next/navigation";
 import ProfileAlbumBox from "../ProfileAlbumBox/ProfileAlbumBox";
-import TrackBox from "../../ui/TrackBox/TrackBox";
+import TrackBox from "../../../ui/TrackBox/TrackBox";
 import { Track } from "@/types/Track";
 import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
+import ColaborationCard from "../../../ui/ColaborationCard/ColaborationCard";
+import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
@@ -24,7 +26,7 @@ export default function UsersContent() {
 
   const handleSelectTrack = (track: Track) => {
     setCurrentTrack(track);
-    setPlayerVisible(true); 
+    setPlayerVisible(true);
   };
 
   const linkBanner =
@@ -69,6 +71,32 @@ export default function UsersContent() {
               <>
                 <TrackBox onSelectTrack={handleSelectTrack} />
                 <ProfileAlbumBox />
+              </>
+            )}
+
+            {tab === "videos" && (
+              <div className={styles.videosGrid}>
+                {[
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+                ].map((videoUrl, idx) => (
+                  <ShortVideoCard key={idx} videoUrl={videoUrl} />
+                ))}
+              </div>
+            )}
+
+            {tab === "collaborations" && (
+              <>
+                <ColaborationCard
+                  imageUrl="https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480"
+                  title="Looking for a producer to make 1 R&B track"
+                  author="erne"
+                  royalties="% of royalties, % of publishing"
+                  genres="R&B / Soul, House"
+                  remote={true}
+                  deadline="Needed within 25 days"
+                  timeAgo="2 days ago"
+                />
               </>
             )}
 

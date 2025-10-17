@@ -1,6 +1,4 @@
-
-
-import HeaderLandingPage from "@/components/sections/HeaderLandingPage/HeaderLandingPage";
+import HeaderLandingPage from "@/components/sections/landingPage/HeaderLandingPage/HeaderLandingPage";
 import HeaderMobileLandingPage from "@/components/ui/HeaderMobile/HeaderMobileLandingPage";
 
 export default function LandingLayout({
@@ -10,7 +8,7 @@ export default function LandingLayout({
 }) {
   return (
     <>
-      <HeaderLandingPage  />
+      <HeaderLandingPage />
 
       <HeaderMobileLandingPage />
       {children}

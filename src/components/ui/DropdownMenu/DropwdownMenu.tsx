@@ -13,7 +13,6 @@ export default function DropdownMenu() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
-  // Fecha o menu se clicar fora dele
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (
@@ -44,10 +43,10 @@ export default function DropdownMenu() {
       </button>
 
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-        <Link href="/perfil" onClick={() => setOpen(false)}>
+        <Link href="/users" onClick={() => setOpen(false)}>
           <Icon name="user" size={18} /> Perfil
         </Link>
-        <Link href="/configuracoes" onClick={() => setOpen(false)}>
+        <Link href="/settings" onClick={() => setOpen(false)}>
           <Icon name="settings" size={18} /> Configurações
         </Link>
         <Link href="/notificacoes" onClick={() => setOpen(false)}>

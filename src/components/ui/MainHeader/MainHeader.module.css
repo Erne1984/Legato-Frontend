@@ -48,7 +48,7 @@
 }
 
 .nav a:hover {
-  color: #5b21b6;
+  color: var(--primary-color);
 }
 
 .search_area {
