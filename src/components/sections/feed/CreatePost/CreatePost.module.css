@@ -2,7 +2,7 @@
   width: 100%;
   display: flex;
   justify-content: center;
-  margin: 10px 0;
+  margin: 0 0 20px 0 ;
 }
 
 .create_post_box {
@@ -13,7 +13,6 @@
   border-radius: 12px;
   padding: 8px 14px;
   width: 100%;
-  max-width: 600px;
   transition: border 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
@@ -41,7 +40,7 @@
   background: transparent;
   border: none;
   cursor: pointer;
-  color: var(--primary-color);
+  color: var(--color-text);
   display: flex;
   align-items: center;
   justify-content: center;
