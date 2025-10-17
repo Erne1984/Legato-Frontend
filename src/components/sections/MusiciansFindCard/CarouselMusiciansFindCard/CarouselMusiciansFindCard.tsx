@@ -13,12 +13,14 @@ type CarouselCardProps = {
     slides: SlideItem[];
     name: string;
     skills: string[];
+    distance: string;
 };
 
 export default function CarouselMusiciansFindCard({
     slides,
     name,
-    skills
+    skills,
+    distance
 }: CarouselCardProps) {
     // Active estate slide
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -30,7 +32,7 @@ export default function CarouselMusiciansFindCard({
 
     // Function to go for the prev slide
     const prevSlide = () => {
-        setCurrentSlide((prev) => (prev - 1 + + slides.length) % slides.length); //loop infinito
+        setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length); //loop infinito
     }
 
     return (
@@ -72,7 +74,7 @@ export default function CarouselMusiciansFindCard({
             {/* Musician info */}
             <div className={styles.overlay_content}>
                 <p className={styles.distance_tag}>
-                    <Icon name="mapPin" className={styles.mapPin_icon}></Icon> 3km
+                    <Icon name="mapPin" className={styles.mapPin_icon}></Icon> {distance} km
                 </p>
                 <div className={styles.container_intro_info}>
                     <h1 className={styles.musician_name}>
@@ -112,8 +114,7 @@ export default function CarouselMusiciansFindCard({
                     </div>
                 ))}
             </div>
-
         </div>
-    )
+    );
 }
 

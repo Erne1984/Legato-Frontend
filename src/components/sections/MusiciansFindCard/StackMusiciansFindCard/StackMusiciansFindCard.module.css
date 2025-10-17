@@ -1,0 +1,28 @@
+/* Container that holds the stack */
+.stack_container {
+    position: relative;
+    width: 335px;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+
+}
+
+/* Each card in the stack */
+.card_layer{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+
+@media (max-width: 768px) {
+    .stack_container{
+        height: 475px;
+        margin-top: 5px;
+    }
+}

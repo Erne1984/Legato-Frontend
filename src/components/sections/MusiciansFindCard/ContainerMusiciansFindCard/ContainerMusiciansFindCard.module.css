@@ -29,6 +29,7 @@
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     z-index: 2;
+    background-color: var(--background);
 }
 
 .view_profile_button{
