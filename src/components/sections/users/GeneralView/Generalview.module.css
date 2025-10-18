@@ -40,7 +40,7 @@
 }
 
 .tag {
-  background: #7c3aed;
+  background: var(--primary-color);
   color: #fff;
   padding: 6px 12px;
   border-radius: 6px;
@@ -51,7 +51,7 @@
 }
 
 .tag:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .artists {
@@ -60,20 +60,27 @@
   gap: 6px;
 }
 
-.artist {
+.artistWrapper {
   width: 45px;
   height: 45px;
   border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.artist {
   object-fit: cover;
 }
 
 .seeAll {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #7c3aed;
+  color: var(--primary-color);
+  cursor: pointer;
+  
   text-decoration: none;
 }
 
 .seeAll:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
