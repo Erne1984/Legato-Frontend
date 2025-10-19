@@ -5,7 +5,6 @@ import ProfileSidebar from "@/components/sections/users/ProfileSidebar/ProfileSi
 import ProfileBanner from "@/components/sections/users/ProfileBanner/ProfileBanner";
 import ProfileTabs from "@/components/sections/users/ProfileTabs/ProfileTabs";
 import SuggestedProfiles from "@/components/ui/SuggestedProfiles/SuggestedProfiles";
-import BioCard from "@/components/sections/users/BioCard/BioCard";
 import StatsCardUser from "@/components/sections/users/StatsCardUser/StatsCardUser";
 import Post from "@/components/ui/Post/Post";
 import styles from "./UsersContent.module.css";
@@ -17,6 +16,7 @@ import { Track } from "@/types/Track";
 import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
 import ColaborationCard from "../../../ui/ColaborationCard/ColaborationCard";
 import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
+import GeneralView from "@/components/sections/users/GeneralView/GeneralView";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
@@ -52,7 +52,7 @@ export default function UsersContent() {
           <div className={styles.center_content}>
             <ProfileTabs />
 
-            {tab === "overview" && <BioCard />}
+            {tab === "overview" && <GeneralView />}
 
             {tab === "activity" &&
               posts.map((post, index) => (

@@ -29,10 +29,6 @@ export default function ProfileOptionsMenu() {
       </button>
 
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-        <button>
-          <Icon name="users" size={16} /> Convidar para a banda
-        </button>
-        <hr />
         <button className={styles.danger}>
           <Icon name="octagonAlert" size={16} /> Reportar
         </button>

@@ -30,7 +30,7 @@ export default function Sidebar() {
 
   return (
     <>
-      {/* Menu Mobile - Tabs Style */}
+      {/* Menu Mobile */}
       <div className={styles.mobile_menu}>
         <button
           className={styles.mobile_menu_button}
