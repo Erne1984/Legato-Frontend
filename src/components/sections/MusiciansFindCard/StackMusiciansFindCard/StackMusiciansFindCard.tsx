@@ -4,69 +4,30 @@ import { useState, useRef } from "react";
 import ContainerMusiciansFindCard from "../ContainerMusiciansFindCard/ContainerMusiciansFindCard";
 import DraggableCard, { DraggableCardHandle } from "../DraggableMusiciansFindCard/DraggableMusiciansFindCard";
 import SwipeButtons from "../SwipeButtonsMusiciansFindCard/SwipeButtonsMusiciansFindCard";
-import { useSwipeHistory } from "@/hooks/useSwipeHistory";
+import { useSwipeHistory } from "@/context/SwipeHistoryContext";
 import styles from "./StackMusiciansFindCard.module.css"
+import { CardType } from "@/types/cards";
 
 
-//Define type for each musician card
-type MusicianCardData = {
-    name: string;
-    bio: string;
-    skills: string[];
-    images: { type: "image" | "video"; src: string }[];
-    distance: string;
+type StackCardsMusiciansProps = {
+  cards: CardType[];
+  setCards: React.Dispatch<React.SetStateAction<CardType[]>>;
 };
 
-export default function StackCardsMusicians() {
-    //Example stack data
-    const cardsData: MusicianCardData[] = [
-        {
-            name: "Renan",
-            bio: "Sou cantor e compositor, apaixonado por transformar sentimentos em música.",
-            skills: ["Vocalista", "Guitarrista"],
-            images: [
-                { type: "image", src: "/imgs/black-boy-playing-guitar_1.jpg" },
-                { type: "image", src: "/imgs/black-boy-playing-guitar_2.jpg" },
-                { type: "image", src: "/imgs/black-boy-playing-guitar_3.jpg" },
-            ],
-            distance: "3",
-        },
-        {
-            name: "Ana",
-            bio: "Cantora apaixonada por rock e música brasileira.",
-            skills: ["Compositora", "Vocalista"],
-            images: [
-                { type: "image", src: "/imgs/white-girl-singing_1.jpg" },
-                { type: "image", src: "/imgs/white-girl-singing_2.jpg" },
-                { type: "image", src: "/imgs/white-girl-singing_3.jpg" },
-                { type: "image", src: "/imgs/white-girl-singing_4.jpg" }
-            ],
-            distance: "1",
-        },
-        {
-            name: "David",
-            bio: "Baterista já há 5 anos interessado em juntar uma banda de rock progressivo.",
-            skills: ["Baterista", "Vocalista"],
-            images: [
-                { type: "image", src: "/imgs/latino-guy-playing-drum_1.jpg" },
-                { type: "image", src: "/imgs/latino-guy-playing-drum_2.jpg" },
-                { type: "image", src: "/imgs/latino-guy-playing-drum_3.jpg" }
-            ],
-            distance: "7",
-        },
-    ];
+export default function StackCardsMusicians({cards, setCards}: StackCardsMusiciansProps) {
 
-    const [cards, setCards] = useState(cardsData);
-    const {history, addSwipe} = useSwipeHistory();
+    const {addSwipe} = useSwipeHistory();
 
     //Ref for top card so buttons can trigger swipe
     const topCardRef = useRef<DraggableCardHandle | null>(null);
 
     //Remove top card after swipe animation ends
-    const handleRemoveTop = (card: MusicianCardData, action: "match" | "pass") => {
-        addSwipe(card, action); //save history
-        setCards((prev) => prev.slice(1)); //remove top card
-    };
+const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
+    addSwipe(card, action); // save to history
+    setCards((prev) => prev.slice(1)); // remove top card
+};
+
+
 
     const handlePass = () => topCardRef.current?.triggerSwipe("left");
     const handleMatch = () => topCardRef.current?.triggerSwipe("right");
