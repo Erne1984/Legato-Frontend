@@ -1,10 +1,12 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 import ContainerMusiciansFindCard from "../ContainerMusiciansFindCard/ContainerMusiciansFindCard";
-import SwipeableCard from "../SwipeableMusiciansFindCard/SwipeableMusiciansFindCard";
+import DraggableCard, { DraggableCardHandle } from "../DraggableMusiciansFindCard/DraggableMusiciansFindCard";
 import SwipeButtons from "../SwipeButtonsMusiciansFindCard/SwipeButtonsMusiciansFindCard";
+import { useSwipeHistory } from "@/hooks/useSwipeHistory";
 import styles from "./StackMusiciansFindCard.module.css"
+
 
 //Define type for each musician card
 type MusicianCardData = {
@@ -16,7 +18,7 @@ type MusicianCardData = {
 };
 
 export default function StackCardsMusicians() {
-    //Example stack data - for now just 2 cards
+    //Example stack data
     const cardsData: MusicianCardData[] = [
         {
             name: "Renan",
@@ -55,56 +57,57 @@ export default function StackCardsMusicians() {
     ];
 
     const [cards, setCards] = useState(cardsData);
+    const {history, addSwipe} = useSwipeHistory();
 
-    //When user swipes left(pass) or right (match)
-    const handleSwipe = (direction: "left" | "right") => {
-        console.log("swiped:", direction);
-        //remove top card from stack
-        setCards((prev) => prev.slice(1));
-    }
+    //Ref for top card so buttons can trigger swipe
+    const topCardRef = useRef<DraggableCardHandle | null>(null);
 
-    //Reset animation (not used heavily here, but needed for SwipeableCard)
-    const handleAnimationEnd = () => { }
+    //Remove top card after swipe animation ends
+    const handleRemoveTop = (card: MusicianCardData, action: "match" | "pass") => {
+        addSwipe(card, action); //save history
+        setCards((prev) => prev.slice(1)); //remove top card
+    };
 
-    return (
-        <div className={styles.stack_container}>
-            {/* Map cards in reverse so top card has higher z-index */}
-            {cards
-                .map((card, index) => (
-                    <div
-                        key={card.name}
-                        className={styles.card_layer}
-                        style={{
-                            zIndex: cards.length - index,
-                            transform: `translate(-50%, -50%) translateY(${index * 8
-                                }px) scale(${1 - index * 0.05})`,
-                        }}
-                    >
-                        {/* Wrap each card in the swipeable component */}
-                        <SwipeableCard
-                            direction={null} //initially no animation
-                            onPass={() => handleSwipe("left")}
-                            onMatch={() => handleSwipe("right")}
-                            onAnimationEnd={handleAnimationEnd}
-                        >
-                            {/* Use the existing single card component */}
-                            <ContainerMusiciansFindCard
-                                name={card.name}
-                                bio={card.bio}
-                                skills={card.skills}
-                                slides={card.images}
-                                distance={card.distance}
-                            />
-                        </SwipeableCard>
-                    </div>
-                ))
-                .reverse()}
+    const handlePass = () => topCardRef.current?.triggerSwipe("left");
+    const handleMatch = () => topCardRef.current?.triggerSwipe("right");
 
-            {/* Swipe buttons remain static at bottom */}
-            <SwipeButtons
-                onPass={() => handleSwipe("left")}
-                onMatch={() => handleSwipe("right")}
-            />
-        </div>
-    );
+  return (
+    <div className={styles.stack_container}>
+      {/* Map cards: top card is last in DOM for proper stacking */}
+      {cards
+        .map((card, index) => {
+          const isTop = index === 0;
+          return (
+            <div
+              key={card.name}
+              className={styles.card_layer}
+              style={{
+                zIndex: cards.length - index,
+                transform: `translate(-50%, -50%) translateY(${index * 8}px) scale(${
+                  1 - index * 0.05
+                })`,
+              }}
+            >
+              <DraggableCard
+                ref={isTop ? topCardRef : null} // Only top card needs ref
+                onPass={() => handleRemoveTop(card, "pass")}
+                onMatch={() => handleRemoveTop(card, "match")}
+              >
+                <ContainerMusiciansFindCard
+                  name={card.name}
+                  bio={card.bio}
+                  skills={card.skills}
+                  slides={card.images}
+                  distance={card.distance}
+                />
+              </DraggableCard>
+            </div>
+          );
+        })
+        .reverse() /* Reverse so top card renders last for proper z-index */}
+
+      {/* Swipe buttons */}
+      <SwipeButtons onPass={handlePass} onMatch={handleMatch} />
+    </div>
+  );
 }

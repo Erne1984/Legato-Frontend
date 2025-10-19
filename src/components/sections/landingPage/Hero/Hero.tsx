@@ -15,7 +15,7 @@ export default function Hero() {
     <div className={styles.container_hero}>
       <div className={styles.call_to_action_box}>
         <h1>Conecte-se através da música</h1>
-        <p>
+        <p className={styles.all_white}>
           Encontre parceiros musicais, forme bandas, participe de jam sessions e
           colabore com artistas que compartilham da sua paixão pela música.
         </p>
@@ -29,13 +29,13 @@ export default function Hero() {
 
       <div className={styles.metrics}>
         <span>
-          <strong>10k+</strong> <span>músicos ativos</span>
+          <strong>10k+</strong> <span className={styles.all_white}>músicos ativos</span>
         </span>
         <span>
-          <strong>500+</strong> <span>bandas formadas</span>
+          <strong>500+</strong> <span className={styles.all_white}>bandas formadas</span>
         </span>
         <span>
-          <strong>1k+</strong> <span>jam sessions</span>
+          <strong>1k+</strong> <span className={styles.all_white}>jam sessions</span>
         </span>
       </div>
     </div>
