@@ -30,7 +30,7 @@ export default function FeedPage() {
               location={post.location}
               content={post.content}
               likes={post.likes}
-              comments={post.comments}
+              commentsLikes={post.commentsLikes}
             />
           ))}
         </div>

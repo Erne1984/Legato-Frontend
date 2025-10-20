@@ -1,13 +1,20 @@
+"use client";
 import { useState } from "react";
 import Icon from "../Icon/Icon";
 import styles from "./Post.module.css";
 
 type PostFooterProps = {
   likes: number;
-  comments: number;
+  commentsLikes: number;
+  modalShow: boolean;
+  onOpenModal: () => void;
 };
 
-export default function PostFooter({ likes, comments }: PostFooterProps) {
+export default function PostFooter({
+  likes,
+  commentsLikes,
+  onOpenModal,
+}: PostFooterProps) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
 
@@ -25,8 +32,8 @@ export default function PostFooter({ likes, comments }: PostFooterProps) {
         >
           <Icon name="heart" size={18} /> {likeCount}
         </button>
-        <button className={styles.footerButton}>
-          <Icon name="message_square" size={18} /> {comments}
+        <button className={styles.footerButton} onClick={onOpenModal}>
+          <Icon name="message_square" size={18} /> {commentsLikes}
         </button>
       </div>
       <button className={styles.footerButton}>

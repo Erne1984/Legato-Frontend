@@ -12,7 +12,7 @@
       "imageUrl": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&h=400&fit=crop"
     },
     "likes": 124,
-    "comments": 23
+    "commentsLikes": 23
   },
   {
     "author": {
@@ -27,7 +27,7 @@
       "videoUrl": "https://www.youtube.com/watch?v=Gu9HhYv0C7E&list=RDGu9HhYv0C7E&start_radio=1"
     },
     "likes": 230,
-    "comments": 58
+    "commentsLikes": 58
   },
   {
     "author": {
@@ -42,7 +42,7 @@
       "videoUrl": "https://www.youtube.com/watch?v=2H76LUCBIUg&list=RD2H76LUCBIUg&start_radio=1"
     },
     "likes": 312,
-    "comments": 41
+    "commentsLikes": 41
   },
   {
     "author": {
@@ -57,6 +57,6 @@
       "audioUrl": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
     },
     "likes": 312,
-    "comments": 41
+    "commentsLikes": 41
   }
 ]

@@ -10,6 +10,11 @@
   transition: box-shadow 0.2s ease;
 }
 
+.post a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .post:hover {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
@@ -19,6 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  cursor: pointer;
 }
 
 .headerLeft {
@@ -38,17 +44,19 @@
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
+  text-decoration: none;
 }
 
 .userName {
   font-weight: 600;
   color: var(--text-color);
   width: fit-content;
+  text-decoration: none;
 }
 
 .userName:hover {
-    text-decoration: underline;
-    cursor: pointer;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .userMeta {
@@ -63,7 +71,7 @@
 
 .icon_post_header:hover {
   color: var(--primary-color);
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /* CONTEÚDO */
