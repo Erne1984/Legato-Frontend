@@ -1,0 +1,86 @@
+{
+  "id": "u12345",
+  "username": "Marcel123",
+  "displayName": "Marcelo Duarte",
+  "artistName": "Marcelo Groove",
+  "bio": "Baixista e produtor apaixonado por groove, jazz e R&B. Trabalho com trilhas, arranjos e colaborações remotas.",
+  "profilePicture": "https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480",
+  "profileBanner": "https://i.pinimg.com/736x/d1/79/be/d179be883aae4362fe022465d3fee356.jpg",
+  "skillLevel": "ADVANCED",
+  "instruments": ["Bass", "Guitar", "Synth"],
+  "favoriteArtists": ["Marcus Miller", "Jacob Collier", "D'Angelo"],
+  "genres": ["Jazz", "Funk", "R&B"],
+  "goals": ["COLLABORATION", "NETWORKING", "JAM_SESSION"],
+  "location": {
+    "latitude": -23.561,
+    "longitude": -46.656,
+    "city": "São Paulo",
+    "state": "SP",
+    "country": "Brasil"
+  },
+  "links": {
+    "spotify": "https://open.spotify.com/artist/3example",
+    "soundcloud": "https://soundcloud.com/marcel123",
+    "youtube": "https://youtube.com/@marcelogroove"
+  },
+  "stats": {
+    "followers": 128,
+    "following": 56,
+    "connections": 4,
+    "posts": 12,
+    "collaborations": 3
+  },
+  "tracks": [
+    {
+      "id": "t001",
+      "title": "Midnight Jam",
+      "url": "https://cdn.example.com/audio/midnight-jam.mp3",
+      "coverUrl": "https://cdn.example.com/images/cover-midnight.jpg",
+      "duration": 214
+    },
+    {
+      "id": "t002",
+      "title": "Lo-Fi Groove",
+      "url": "https://cdn.example.com/audio/lofi-groove.mp3",
+      "duration": 178
+    }
+  ],
+  "albums": [
+    {
+      "id": "a001",
+      "title": "Groove Sessions Vol.1",
+      "coverUrl": "https://cdn.example.com/images/album1.jpg",
+      "releaseYear": 2023
+    }
+  ],
+  "videos": [
+    {
+      "id": "v001",
+      "title": "Live in São Paulo",
+      "url": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+      "thumbnailUrl": "https://cdn.example.com/thumbnails/live.jpg"
+    }
+  ],
+  "collaborations": [
+    {
+      "id": "c001",
+      "title": "Looking for a producer to make 1 R&B track",
+      "description": "Busco alguém para mixar e masterizar um single R&B com influência soul.",
+      "genres": ["R&B", "Soul", "House"],
+      "remote": true,
+      "participants": [
+        { "id": "u678", "username": "erne" },
+        { "id": "u910", "username": "laramusic" }
+      ],
+      "timeAgo": "2 days ago"
+    }
+  ],
+  "emailVerified": true,
+  "email": "marcelo.duarte@example.com",
+  "followers": [],
+  "connections": [],
+  "blockedUsers": [],
+  "createdAt": "2024-10-01T12:00:00Z",
+  "updatedAt": "2025-10-10T16:30:00Z",
+  "joinedAt": "2024-10-01T12:00:00Z"
+}

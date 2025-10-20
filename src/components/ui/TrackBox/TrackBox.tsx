@@ -38,7 +38,6 @@ const tracks = [
     <div className={styles.card}>
       <div className={styles.header}>
         <h3 className={styles.title}>Faixas</h3>
-        <a href="#" className={styles.viewAll}>Visualizar tudo</a>
       </div>
 
       <ul className={styles.list}>

@@ -1,13 +1,15 @@
-import { useState } from "react";
-import Icon from "../Icon/Icon";
-import styles from "./Post.module.css";
+"use client";
 
-type PostFooterProps = {
+import { useState } from "react";
+import Icon from "@/components/ui/Icon/Icon";
+import styles from "./AlbumFooter.module.css";
+
+type AlbumFooterProps = {
   likes: number;
   comments: number;
 };
 
-export default function PostFooter({ likes, comments }: PostFooterProps) {
+export default function AlbumFooter({ likes, comments }: AlbumFooterProps) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
 

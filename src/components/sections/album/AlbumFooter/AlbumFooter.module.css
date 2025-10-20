@@ -1,0 +1,41 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.6rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-top: 1rem;
+}
+
+.footerButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footerButton {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: var(--text-color);
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.footerButton:hover {
+  color: var(--primary-color);
+}
+
+.footerButton svg {
+  stroke-width: 1.6;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+  fill: none;
+}
+
+.liked svg {
+  fill: var(--primary-color);
+  stroke: var(--primary-color);
+}

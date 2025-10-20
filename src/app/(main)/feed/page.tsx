@@ -1,3 +1,5 @@
+"use client";
+
 import Sidebar from "@/components/sections/feed/Sidebar/Sidebar";
 import styles from "./FeedPage.module.css";
 import CreatePost from "@/components/sections/feed/CreatePost/CreatePost";

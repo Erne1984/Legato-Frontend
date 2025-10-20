@@ -127,4 +127,11 @@
 
 .footerButton svg {
   stroke-width: 1.6;
+  transition: fill 0.2s ease, stroke 0.2s ease;
+  fill: none;
+}
+
+.liked svg {
+  fill: var(--primary-color);
+  stroke: var(--primary-color);
 }
