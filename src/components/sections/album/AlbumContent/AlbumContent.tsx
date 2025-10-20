@@ -25,7 +25,7 @@ export default function AlbumContent({ tracks }: AlbumContentProps) {
 
         <ul className={styles.trackList}>
           {tracks.map((track, index) => (
-            <TrackBox onSelectTrack={handleSelectTrack} key={index} />
+            <TrackBox showSeeAll={false} onSelectTrack={handleSelectTrack} key={index} />
           ))}
         </ul>
 
