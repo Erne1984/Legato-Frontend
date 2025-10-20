@@ -69,8 +69,8 @@ export default function UsersContent() {
 
             {tab === "musics" && (
               <>
-                <TrackBox onSelectTrack={handleSelectTrack} />
-                <ProfileAlbumBox />
+                <TrackBox showSeeAll={true} onSelectTrack={handleSelectTrack} />
+                <ProfileAlbumBox showSeeAll={true} />
               </>
             )}
 

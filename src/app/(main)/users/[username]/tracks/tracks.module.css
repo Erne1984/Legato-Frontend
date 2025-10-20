@@ -1,0 +1,13 @@
+.tracks_page {
+  height: 80vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.tracks_page_wrapper {
+  width: 100%;
+  margin: 20px auto 0 auto;
+  max-width: var(--max-width);
+}

@@ -32,15 +32,13 @@
 .album {
   display: flex;
   align-items: center;
-  background: #111;
+  background: var(--track-box);
+  box-shadow: 0 4px 5.7px rgba(0, 0, 0, 0.25);
   padding: 10px;
   border-radius: 8px;
   transition: background 0.2s;
 }
 
-.album:hover {
-  background: #1a1a1a;
-}
 
 .cover {
   width: 60px;
@@ -59,7 +57,7 @@
 .albumTitle {
   font-size: 1rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-color);
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
@@ -72,10 +70,10 @@
 
 .details {
   font-size: 0.85rem;
-  color: #aaa;
+  color: var(--text-color);
 }
 
 .meta {
   font-size: 0.8rem;
-  color: #999;
+  color: var(--text-color);
 }

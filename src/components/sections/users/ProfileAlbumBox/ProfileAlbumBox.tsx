@@ -2,7 +2,11 @@ import Image from "next/image";
 import styles from "./ProfileAlbumBox.module.css";
 import Link from "next/link";
 
-export default function ProfileAlbumBox() {
+type ProfileAlbumBoxProps = {
+  showSeeAll: boolean;
+};
+
+export default function ProfileAlbumBox({ showSeeAll }: ProfileAlbumBoxProps) {
   const albums = [
     {
       title: "Reflexões sobre notas de inverno",
@@ -23,9 +27,11 @@ export default function ProfileAlbumBox() {
           Álbuns
         </Link>
 
-        <a href="#" className={styles.viewAll}>
-          Visualizar tudo
-        </a>
+        {showSeeAll && (
+          <Link href="/users/erne/albums" className={styles.viewAll}>
+            Visualizar tudo
+          </Link>
+        )}
       </div>
 
       {albums.map((album, index) => (
