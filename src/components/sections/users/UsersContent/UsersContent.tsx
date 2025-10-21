@@ -63,7 +63,7 @@ export default function UsersContent() {
                   location={post.location}
                   content={post.content}
                   likes={post.likes}
-                  comments={post.comments}
+                  commentsLikes={post.commentsLikes}
                 />
               ))}
 
