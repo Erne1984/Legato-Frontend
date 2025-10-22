@@ -1,4 +1,4 @@
-.sidebar {
+.sidebar_desktop {
   width: 320px;
   border-right: 1px solid var(--secondary-color);
   background-color: var(--background);
@@ -78,6 +78,7 @@
 .chat_avatar {
   width: 40px;
   height: 40px;
+  border-radius: 8px;
 }
 
 .chat_info {
@@ -95,19 +96,48 @@
   color: var(--secondary-text-color);
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    transform: translateX(-100%);
-    z-index: 99;
-    padding: 20px;
-  }
+.sidebar_mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 320px;
+  border-right: 1px solid var(--secondary-color);
+  background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 100;
+}
 
-  .sidebar.open {
-    transform: translateX(0);
-    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+.sidebar_mobile.open {
+  transform: translateX(0);
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 768px) {
+  .sidebar_desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .sidebar_mobile {
+    display: none;
   }
 }

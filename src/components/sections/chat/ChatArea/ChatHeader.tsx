@@ -19,6 +19,9 @@ export default function ChatHeader({
   return (
     <div className={styles.chat_header}>
       <div className={styles.user_info}>
+        {
+
+        }
         <button className={styles.menu_button} onClick={onToggleSidebar}>
           <Icon name="list" size={22} />
         </button>
