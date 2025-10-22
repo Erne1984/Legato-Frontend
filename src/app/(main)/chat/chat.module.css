@@ -1,0 +1,27 @@
+.container_chat_wrapper {
+  display: flex;
+  height: calc(100vh - 80px);
+  background: var(--background);
+  color: var(--text-color);
+  position: relative;
+}
+
+.mobile_menu_button {
+  display: none;
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  z-index: 100;
+  color: var(--text-color);
+  background-color: none;
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobile_menu_button {
+    display: block;
+  }
+}

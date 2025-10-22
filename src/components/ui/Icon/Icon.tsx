@@ -30,6 +30,8 @@ import {
   Flame,
   Camera,
   Image,
+  Send,
+  List,
   Facebook,
   Instagram,
 } from "lucide-react";
@@ -66,6 +68,8 @@ const icons = {
   camera:Camera,
   flame: Flame,
   image: Image,
+  send: Send,
+  list: List,
   facebook: Facebook,
   instagram: Instagram,
 };

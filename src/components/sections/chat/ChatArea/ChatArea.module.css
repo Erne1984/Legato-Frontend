@@ -1,0 +1,145 @@
+.chat_area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--background);
+  position: relative;
+}
+
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Mensagens */
+.message {
+  max-width: 60%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.user {
+  background: var(--secondary-color);
+  align-self: flex-start;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.me {
+  background: var(--primary-color);
+  align-self: flex-end;
+}
+
+.me p {
+  color: white;
+}
+
+.timestamp {
+  font-size: 12px;
+  opacity: 0.6;
+  margin-left: 6px;
+}
+
+/* HEADER */
+.chat_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  background: var(--background);
+}
+
+.menu_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.user_info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user_text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.user_text h3 {
+  font-size: 15px;
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+.user_text p {
+  font-size: 12px;
+  color: var(--secondary-text-color);
+}
+
+.header_actions {
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.header_actions:hover {
+  color: var(--primary-color);
+  transition: 0.2s ease;
+}
+
+
+/* INPUT  */
+.input_area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--background);
+  border: 1px solid var(--text-color);
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.input_area input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: var(--font-size-base);
+  color: var(--text-color);
+}
+
+.input_area input::placeholder {
+  color: #999;
+}
+
+.input_icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.input_icons svg:hover {
+  opacity: 0.8;
+  transition: 0.2s ease;
+  color: var(--primary-color);
+}
