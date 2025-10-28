@@ -41,8 +41,8 @@
 
 .container_hero p {
   font-size: 1.125rem;
-  font-weight: bold;
-  color: #a7a8a8;
+  font-weight: 520;
+  color: #fff;
   max-width: 700px;
   margin-bottom: 2.5rem;
 }
@@ -61,6 +61,6 @@
 }
 
 .metrics span {
-  color: var(--secondary-text-color);
+  color: #fff;
   font-weight: bold;
 }
