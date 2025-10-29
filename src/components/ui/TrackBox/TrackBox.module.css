@@ -39,14 +39,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #111;
+  background: var(--track-box);
+  box-shadow: 0 4px 5.7px rgba(0, 0, 0, 0.25);
   padding: 8px 12px;
   border-radius: 8px;
   transition: background 0.2s;
-}
-
-.item:hover {
-  background: #1a1a1a;
 }
 
 .cover {
@@ -62,10 +59,15 @@
 .trackTitle {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #fff;
+  color: var(--text-color);
   display: flex;
   align-items: center;
   gap: 4px;
+  width: fit-content;
+}
+
+.trackTitle:hover {
+  cursor: pointer;
 }
 
 .explicit {
@@ -83,8 +85,5 @@
 
 .duration {
   font-size: 0.85rem;
-  color: #ccc;
+  color: var(--text-color);
 }
-
-
-

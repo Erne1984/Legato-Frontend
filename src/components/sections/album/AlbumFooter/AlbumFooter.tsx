@@ -1,20 +1,15 @@
 "use client";
-import { useState } from "react";
-import Icon from "../Icon/Icon";
-import styles from "./Post.module.css";
 
-type PostFooterProps = {
+import { useState } from "react";
+import Icon from "@/components/ui/Icon/Icon";
+import styles from "./AlbumFooter.module.css";
+
+type AlbumFooterProps = {
   likes: number;
-  commentsLikes: number;
-  modalShow: boolean;
-  onOpenModal: () => void;
+  comments: number;
 };
 
-export default function PostFooter({
-  likes,
-  commentsLikes,
-  onOpenModal,
-}: PostFooterProps) {
+export default function AlbumFooter({ likes, comments }: AlbumFooterProps) {
   const [liked, setLiked] = useState(false);
   const [likeCount, setLikeCount] = useState(likes);
 
@@ -32,8 +27,8 @@ export default function PostFooter({
         >
           <Icon name="heart" size={18} /> {likeCount}
         </button>
-        <button className={styles.footerButton} onClick={onOpenModal}>
-          <Icon name="message_square" size={18} /> {commentsLikes}
+        <button className={styles.footerButton}>
+          <Icon name="message_square" size={18} /> {comments}
         </button>
       </div>
       <button className={styles.footerButton}>

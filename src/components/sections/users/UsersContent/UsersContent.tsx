@@ -63,14 +63,14 @@ export default function UsersContent() {
                   location={post.location}
                   content={post.content}
                   likes={post.likes}
-                  comments={post.comments}
+                  commentsLikes={post.commentsLikes}
                 />
               ))}
 
             {tab === "musics" && (
               <>
-                <TrackBox onSelectTrack={handleSelectTrack} />
-                <ProfileAlbumBox />
+                <TrackBox showSeeAll={true} onSelectTrack={handleSelectTrack} />
+                <ProfileAlbumBox showSeeAll={true} />
               </>
             )}
 

@@ -4,6 +4,8 @@ import { contentPost } from "@/types/contentPost";
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 import PostFooter from "./PostFooter";
+import { useState } from "react";
+import PostModal from "../PostModal/PostModal";
 
 export interface PostProps {
   author: authorPost;
@@ -11,7 +13,7 @@ export interface PostProps {
   location?: string;
   content: contentPost;
   likes: number;
-  comments: number;
+  commentsLikes: number;
 }
 
 export default function Post({
@@ -20,13 +22,31 @@ export default function Post({
   location,
   content,
   likes,
-  comments,
+  commentsLikes,
 }: PostProps) {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  function handleModal() {
+    setModalOpen((prev) => !prev);
+  }
+
   return (
     <article className={styles.post}>
       <PostHeader author={author} timestamp={timestamp} location={location} />
       <PostContent content={content} />
-      <PostFooter likes={likes} comments={comments} />
+
+      <PostFooter
+        likes={likes}
+        commentsLikes={commentsLikes}
+        modalShow={modalOpen}
+        onOpenModal={() => handleModal()}
+      />
+
+      <PostModal
+        isOpen={modalOpen}
+        onClose={() => handleModal()}
+        post={{ author, timestamp, location, content, likes, commentsLikes }}
+      />
     </article>
   );
 }

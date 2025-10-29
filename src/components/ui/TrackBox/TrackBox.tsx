@@ -1,44 +1,54 @@
 import Image from "next/image";
 import styles from "./TrackBox.module.css";
 import { Track } from "@/types/Track";
+import Link from "next/link";
 
 interface TrackBoxProps {
   onSelectTrack: (track: Track) => void;
+    showSeeAll: boolean;
 }
 
-export default function TrackBox({ onSelectTrack }: TrackBoxProps) {
-const tracks = [
-  {
-    title: "I do it (4 Flows)",
-    artist: "Bvnita",
-    duration: "3:07",
-    cover: "https://preview.redd.it/e-se-quando-pesquisarem-steve-huffman-aparecesse-o-v0-u9tw7pgbe27b1.jpg?width=320&crop=smart&auto=webp&s=2413a97ecdbdd9e989f9e78fe85adbea8022ac3f",
-    explicit: true,
-    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  },
-  {
-    title: "RID3 4 ME",
-    artist: "Bvnita",
-    duration: "6:12",
-    cover: "https://preview.redd.it/e-se-quando-pesquisarem-steve-huffman-aparecesse-o-v0-u9tw7pgbe27b1.jpg?width=320&crop=smart&auto=webp&s=2413a97ecdbdd9e989f9e78fe85adbea8022ac3f",
-    explicit: true,
-    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  },
-  {
-    title: "Purple fanta",
-    artist: "Bvnita",
-    duration: "1:39",
-    cover: "https://preview.redd.it/e-se-quando-pesquisarem-steve-huffman-aparecesse-o-v0-u9tw7pgbe27b1.jpg?width=320&crop=smart&auto=webp&s=2413a97ecdbdd9e989f9e78fe85adbea8022ac3f",
-    explicit: true,
-    audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-  },
-];
+export default function TrackBox({ onSelectTrack, showSeeAll }: TrackBoxProps) {
+  const tracks = [
+    {
+      title: "I do it (4 Flows)",
+      artist: "Bvnita",
+      duration: "3:07",
+      cover:
+        "https://preview.redd.it/e-se-quando-pesquisarem-steve-huffman-aparecesse-o-v0-u9tw7pgbe27b1.jpg?width=320&crop=smart&auto=webp&s=2413a97ecdbdd9e989f9e78fe85adbea8022ac3f",
+      explicit: true,
+      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    },
+    {
+      title: "RID3 4 ME",
+      artist: "Bvnita",
+      duration: "6:12",
+      cover:
+        "https://preview.redd.it/e-se-quando-pesquisarem-steve-huffman-aparecesse-o-v0-u9tw7pgbe27b1.jpg?width=320&crop=smart&auto=webp&s=2413a97ecdbdd9e989f9e78fe85adbea8022ac3f",
+      explicit: true,
+      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    },
+    {
+      title: "Purple fanta",
+      artist: "Bvnita",
+      duration: "1:39",
+      cover:
+        "https://preview.redd.it/e-se-quando-pesquisarem-steve-huffman-aparecesse-o-v0-u9tw7pgbe27b1.jpg?width=320&crop=smart&auto=webp&s=2413a97ecdbdd9e989f9e78fe85adbea8022ac3f",
+      explicit: true,
+      audio: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+    },
+  ];
 
   return (
     <div className={styles.card}>
       <div className={styles.header}>
         <h3 className={styles.title}>Faixas</h3>
-        <a href="#" className={styles.viewAll}>Visualizar tudo</a>
+
+        {showSeeAll && (
+          <Link href="/users/erne/tracks" className={styles.viewAll}>
+            Visualizar tudo
+          </Link>
+        )}
       </div>
 
       <ul className={styles.list}>
@@ -58,7 +68,7 @@ const tracks = [
             <div className={styles.info}>
               <h4 className={styles.trackTitle}>
                 {track.title}
-                {track.explicit && <span className={styles.explicit}>E</span>}
+
               </h4>
               <p className={styles.artist}>{track.artist}</p>
             </div>
