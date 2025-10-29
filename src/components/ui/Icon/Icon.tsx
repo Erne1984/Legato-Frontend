@@ -32,6 +32,7 @@ import {
   Image,
   Send,
   List,
+  Funnel,
   Facebook,
   Instagram,
 } from "lucide-react";
@@ -70,6 +71,7 @@ const icons = {
   image: Image,
   send: Send,
   list: List,
+  filter: Funnel,
   facebook: Facebook,
   instagram: Instagram,
 };

@@ -63,7 +63,7 @@ export default function MainHeader({ className }: MainHeaderProps) {
         <nav className={styles.nav}>
           <Link href="/feed">Feed</Link>
           <Link href="/find_musicians">Descoberta</Link>
-          <Link href="/colaboracoes">Colaborações</Link>
+          <Link href="/colaborations">Colaborações</Link>
         </nav>
 
         <div className={styles.search_area}>

@@ -1,0 +1,155 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: var(--secondary-color, #111);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 580px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+ 
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.userText {
+  display: flex;
+  flex-direction: column;
+}
+
+.displayName {
+  font-weight: 600;
+}
+
+.username {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s ease;
+}
+
+/* Formulário */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  background: transparent;
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: var(--primary-color, #b833e1);
+  outline: none;
+}
+
+.textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+.inlineGroup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Preview */
+.previewContainer {
+  margin-top: 8px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.previewMedia {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.previewAudio {
+  width: 100%;
+}
+
+/* Footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.iconButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.2s ease;
+}
+
+.iconButton:hover {
+  color: var(--primary-color, #b833e1);
+}
+
+.publishButton {
+  background: var(--primary-color, #b833e1);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.publishButton:hover {
+  background: var(--primary-color-hover, #8b1bbf);
+}
