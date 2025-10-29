@@ -43,7 +43,7 @@ export default function DropdownMenu() {
       </button>
 
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-        <Link href="/users" onClick={() => setOpen(false)}>
+        <Link href="/users/1" onClick={() => setOpen(false)}>
           <Icon name="user" size={18} /> Perfil
         </Link>
         <Link href="/settings" onClick={() => setOpen(false)}>

@@ -82,9 +82,10 @@ type IconProps = {
   name: IconName;
   size?: number;
   className?: string;
+  onAction?: () => void;
 };
 
-export default function Icon({ name, size = 24, className }: IconProps) {
+export default function Icon({ name, size = 24, className, onAction }: IconProps) {
   const Component = icons[name];
-  return <Component size={size} className={className} />;
+  return <Component size={size} className={className} onClick={onAction} />;
 }

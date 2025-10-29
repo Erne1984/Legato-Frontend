@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";  
 import styles from "./MainHeader.module.css";
 import Icon from "@/components/ui/Icon/Icon";
 import { useTheme } from "next-themes";
@@ -19,11 +20,16 @@ type MainHeaderProps = {
 export default function MainHeader({ className }: MainHeaderProps) {
   const { theme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const router = useRouter();  
 
   React.useEffect(() => {
     const timeout = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(timeout);
   }, []);
+
+  const handleChatNavigation = () => {
+    router.push("/chat");
+  };
 
   if (!mounted) {
     return (
@@ -77,7 +83,12 @@ export default function MainHeader({ className }: MainHeaderProps) {
 
         <div className={styles.actions}>
           <Icon name="bell" className={styles.action_icon} />
-          <Icon name="message_square" className={styles.action_icon} />
+
+          <Icon
+            name="message_square"
+            className={styles.action_icon}
+            onAction={handleChatNavigation}
+          />
 
           <DropdownMenu />
         </div>
