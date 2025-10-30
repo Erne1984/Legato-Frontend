@@ -1,0 +1,6 @@
+.container_search_wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 1rem;
+  padding: 0 20px;
+}
