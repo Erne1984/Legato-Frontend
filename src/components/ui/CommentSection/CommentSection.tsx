@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./CommentSection.module.css";
 import Comment from "./Comment";
+ 
 
 type CommentType = {
   id?: number;
@@ -32,6 +33,7 @@ export default function CommentSection({ comments }: CommentSectionProps) {
           onChange={(e) => setInput(e.target.value)}
           className={styles.textarea}
         />
+ 
         <button type="submit" className={styles.submit_button}>
           Enviar
         </button>

@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "author": {
       "name": "Ana Silva",
       "username": "anasilva",
@@ -15,6 +16,7 @@
     "commentsLikes": 23
   },
   {
+        "id": 2,
     "author": {
       "name": "Bruno Martins",
       "username": "brunomartins",
@@ -30,6 +32,7 @@
     "commentsLikes": 58
   },
   {
+        "id": 3,
     "author": {
       "name": "Carla Menezes",
       "username": "carlamenezes",
@@ -45,6 +48,7 @@
     "commentsLikes": 41
   },
   {
+        "id": 4,
     "author": {
       "name": "Carla Menezes",
       "username": "carlamenezes",

@@ -33,6 +33,7 @@ import {
   Send,
   List,
   Funnel,
+  Check,
   Facebook,
   Instagram,
 } from "lucide-react";
@@ -72,6 +73,7 @@ const icons = {
   send: Send,
   list: List,
   filter: Funnel,
+  check: Check,
   facebook: Facebook,
   instagram: Instagram,
 };

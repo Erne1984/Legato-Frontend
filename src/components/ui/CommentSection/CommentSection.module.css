@@ -3,6 +3,7 @@
   padding: 16px;
   background-color: var(--secondary-color);
   border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .title {
@@ -20,28 +21,33 @@
 }
 
 .textarea {
-  background-color: var(--bg-input, #1e1e1e);
-  color: var(--text-primary, #fff);
-  border: 1px solid var(--border-color, #333);
-  border-radius: 8px;
-  padding: 10px;
+  width: 100%;
+  min-height: 140px;
+  padding: 12px 14px;
+  outline: none;
   resize: none;
-  height: 70px;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  background: transparent;
+  border: 1px solid #555;
+  border-radius: 8px;
+  transition: 250ms;
 }
 
 .textarea:focus {
-  outline: none;
-  border-color: var(--accent-color, #555);
+  border-color: var(--primary-color);
 }
 
 .submit_button {
   align-self: flex-end;
-  background-color: var(--accent-color, #3a3a3a);
+  background-color: var(--primary-color);
+  font-weight: bold;
   color: white;
   border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
   transition: background 0.2s;
 }

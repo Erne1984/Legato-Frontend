@@ -31,7 +31,7 @@ export default function ColaborationsPage() {
   return (
     <div className={styles.container_colaborations_wrapper}>
       <div className={styles.container_main_content}>
-        <Sidebar />
+        <Sidebar tab="" />
 
         <div className={styles.center_content}>
           <div className={styles.header}>

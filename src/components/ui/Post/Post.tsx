@@ -4,10 +4,10 @@ import { contentPost } from "@/types/contentPost";
 import PostHeader from "./PostHeader";
 import PostContent from "./PostContent";
 import PostFooter from "./PostFooter";
-import { useState } from "react";
-import PostModal from "../PostModal/PostModal";
+import { useRouter } from "next/navigation";
 
 export interface PostProps {
+  postId: number;
   author: authorPost;
   timestamp: string;
   location?: string;
@@ -17,6 +17,7 @@ export interface PostProps {
 }
 
 export default function Post({
+  postId,
   author,
   timestamp,
   location,
@@ -24,29 +25,23 @@ export default function Post({
   likes,
   commentsLikes,
 }: PostProps) {
-  const [modalOpen, setModalOpen] = useState(false);
+  const router = useRouter();
 
-  function handleModal() {
-    setModalOpen((prev) => !prev);
-  }
+  const handlePostNavigation = () => {
+    router.push(`/post/${postId}`);
+  };
 
   return (
-    <article className={styles.post}>
+    <article className={styles.post} >
       <PostHeader author={author} timestamp={timestamp} location={location} />
-      <PostContent content={content} />
+      <PostContent onClick={handlePostNavigation} content={content} />
 
       <PostFooter
+        postId={postId}
         likes={likes}
         commentsLikes={commentsLikes}
-        modalShow={modalOpen}
-        onOpenModal={() => handleModal()}
       />
 
-      <PostModal
-        isOpen={modalOpen}
-        onClose={() => handleModal()}
-        post={{ author, timestamp, location, content, likes, commentsLikes }}
-      />
     </article>
   );
 }
