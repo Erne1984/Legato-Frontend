@@ -48,7 +48,6 @@ export default function ModalFiltersColaboration({
         </div>
 
         <div className={styles.content}>
-
           <select
             value={filters.genre}
             onChange={(e) => handleChange("genre", e.target.value)}

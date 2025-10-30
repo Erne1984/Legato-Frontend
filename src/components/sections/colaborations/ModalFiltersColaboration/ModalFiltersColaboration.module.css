@@ -9,6 +9,10 @@
   justify-content: center;
   align-items: center;
   z-index: 50;
+  max-width: var(--max-width);
+  margin: 0 auto;
+
+  padding: 0 20px;
 }
 
 .modal {
@@ -48,6 +52,10 @@
   border-radius: 8px;
   background: var(--secondary-color);
   border: 1px solid #ccc;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .content select option {
