@@ -12,6 +12,7 @@ import logo_dark from "../../../assets/logo/legato_logo_dark_version.png";
 import logo_light from "../../../assets/logo/legato_logo_light_version.png";
 
 import DropdownMenu from "../DropdownMenu/DropwdownMenu";
+import DropdownMenuNotification from "../DropdownMenuNotification/DropdownMenuNotification";
 
 type MainHeaderProps = {
   className?: string;
@@ -82,7 +83,7 @@ export default function MainHeader({ className }: MainHeaderProps) {
         </div>
 
         <div className={styles.actions}>
-          <Icon name="bell" className={styles.action_icon} />
+            <DropdownMenuNotification />
 
           <Icon
             name="message_square"

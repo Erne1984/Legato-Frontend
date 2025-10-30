@@ -89,7 +89,7 @@
 }
 
 .action_icon:hover {
-  color: #5b21b6;
+  color: var(--primary-color);
 }
 
 .avatar {
@@ -108,8 +108,6 @@
     display: none;
   }
 }
-
-
 
 /* SKELETON STATE */
 .skeleton > div {
@@ -163,4 +161,3 @@
     opacity: 0.6;
   }
 }
-
