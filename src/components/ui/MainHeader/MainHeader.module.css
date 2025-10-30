@@ -63,6 +63,10 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.search_area_focus {
+  border: 1px solid var(--primary-color);
+}
+
 .search_icon {
   color: #666;
   margin-right: 8px;
@@ -74,10 +78,6 @@
   flex: 1;
   font-size: 0.9rem;
   background: none;
-}
-
-.search_input:focus {
-  border: 1px solid var(--primary-color);
 }
 
 .actions {
