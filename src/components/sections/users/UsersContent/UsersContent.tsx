@@ -58,6 +58,7 @@ export default function UsersContent() {
               posts.map((post, index) => (
                 <Post
                   key={index}
+                  postId={post.id}
                   author={post.author}
                   timestamp={post.timestamp}
                   location={post.location}
