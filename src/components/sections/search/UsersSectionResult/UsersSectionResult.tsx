@@ -19,7 +19,8 @@ const users: User[] = [
     username: "@666_cherry_666",
     followers: 12,
     following: 0,
-    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Epikouros_BM_1843.jpg/500px-Epikouros_BM_1843.jpg",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Epikouros_BM_1843.jpg/500px-Epikouros_BM_1843.jpg",
   },
   {
     id: 2,
@@ -27,7 +28,8 @@ const users: User[] = [
     username: "@666k",
     followers: 17,
     following: 0,
-    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Epikouros_BM_1843.jpg/500px-Epikouros_BM_1843.jpg",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Epikouros_BM_1843.jpg/500px-Epikouros_BM_1843.jpg",
   },
   {
     id: 3,
@@ -35,14 +37,19 @@ const users: User[] = [
     username: "@666nowornever",
     followers: 5,
     following: 0,
-    avatar: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Epikouros_BM_1843.jpg/500px-Epikouros_BM_1843.jpg",
+    avatar:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Epikouros_BM_1843.jpg/500px-Epikouros_BM_1843.jpg",
   },
 ];
 
 export default function UsersSectionResult() {
   return (
     <div className={styles.container_users_result}>
-      <h3>Usuários</h3>
+      <div className={styles.header_users_result}>
+        <h3>Usuários</h3>
+
+        <span className={styles.view_all}>Visualizar tudo</span>
+      </div>
 
       <ul className={styles.user_list}>
         {users.map((user) => (
@@ -67,8 +74,6 @@ export default function UsersSectionResult() {
           </li>
         ))}
       </ul>
-
-      <button className={styles.view_all}>Visualizar tudo</button>
     </div>
   );
 }

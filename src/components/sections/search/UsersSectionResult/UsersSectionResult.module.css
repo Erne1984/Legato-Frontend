@@ -4,9 +4,14 @@
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
   padding: 16px;
   width: 100%;
-  max-width: 360px;
   height: fit-content;
   color: var(--text-color);
+}
+
+.header_users_result {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .container_users_result h3 {
@@ -14,6 +19,17 @@
   font-weight: 600;
   margin-bottom: 14px;
 }
+
+.view_all {
+    font-size: 0.9rem;
+}
+
+.view_all:hover {
+  text-decoration: underline;
+  cursor: pointer;
+
+}
+
 
 .user_list {
   list-style: none;
@@ -75,19 +91,4 @@
 
 .options_btn:hover {
   color: var(--text-hover);
-}
-
-.view_all {
-  display: block;
-  margin-top: 8px;
-  margin-left: auto;
-  background: none;
-  border: none;
-  color: var(--accent-color);
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-.view_all:hover {
-  text-decoration: underline;
 }
