@@ -1,66 +1,56 @@
-
+.card_wrapper{
+    position: relative;
+}
 
 .container_card{
-    width: 25%;
+    position: relative;
+    width: 335px;
+    height: 450px;
+    overflow-y:auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
     display: inline-block;
     /* border-color: chartreuse;
     border-width: 1px;
     border-style: solid; */
     border-radius: 15px;
-    box-shadow: 0 1px 5px #ffffffbe;
+    box-shadow: 0 1px 5px var(--foreground);
+    z-index: 2;
 }
 
-.image_container_section_card{
-    aspect-ratio: 1/0.75;
-    /* border-color: crimson;
-    border-width: 1px;
-    border-style: solid; */
-    height: 50%;
-    position: relative;
-    background-image: url("/imgs/musician_image_profile.png");
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-}
+
+
 
 .description_container_card{
     /* border-color: rgb(20, 213, 220);
     border-width: 1px;
     border-style: solid; */
-    height: 50%;
-    padding: 3% 2% 3% 2%;
+    padding: 3% 2% 3% 3%;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-}
-
-.distance_tag{
-    background: var(--primary-color);;
-    border-radius: 15px;
-    width: 17%;
-    height: 11%;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 3% 3% 0 0;
+    z-index: 2;
+    background-color: var(--background);
 }
 
 .view_profile_button{
     background: var(--primary-color);;
     border-radius: 15px;
-    width: 19%;
-    height: 11%;
-    position: absolute;
+    width: 37%;
+    height: 25px;
+    position: relative;
     bottom: 0;
     left: 50%;
     transform: translate(-50%);
-    margin: 0% 0% 2% 0%;
+    margin: 3% 0% 2% 0%;
 }
 
-.distance_tag,
+
 .view_profile_button {
   font-size: 0.7rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 .musician_name{
@@ -119,38 +109,16 @@
     align-items: center;
 }
 
-.pass_musician_button{
-    background-color: red;
-}
-
-.match_musician_button{
-    background-color: var(--primary-color);
-}
-.pass_musician_button,
-.match_musician_button{
-    border-radius: 100%;
-    width: 5%;
-    margin: 0% 2%;
-    aspect-ratio: 1/1;
-    display: flex;
-}
-
 
 .plus_icon{
     color: var(--primary-color);
-}
-
-.x_icon,
-.link_icon,
-.plus_icon{
-    margin-left: auto;
+        margin-left: auto;
     margin-right: auto;
     align-self: center;
 }
 
-.mapPin_icon{
-    width: 25%;
+@media (max-width: 768px) {
+    .container_card{
+        height: 475px;
+    }
 }
-
-
-

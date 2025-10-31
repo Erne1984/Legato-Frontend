@@ -36,6 +36,9 @@ import {
   Check,
   Facebook,
   Instagram,
+  ChevronRight, 
+  ChevronLeft,
+  History
 } from "lucide-react";
 
 const icons = {
@@ -76,6 +79,9 @@ const icons = {
   check: Check,
   facebook: Facebook,
   instagram: Instagram,
+  LeftArrow: ChevronLeft,
+  RightArrow: ChevronRight,
+  history: History
 };
 
 export type IconName = keyof typeof icons;
