@@ -41,7 +41,7 @@ export default function MusiciansFindCard({
                         <div className={styles.musician_skills}>
                             <div className={styles.musician_skills_title}>Habilidades</div>
                             {skills.map((skill, index) => (
-                                <div className={styles.musician_skills_item}>
+                                <div key={`${skill}-${index}`} className={styles.musician_skills_item}>
                                     {skill}
                                 </div>
                             ))}

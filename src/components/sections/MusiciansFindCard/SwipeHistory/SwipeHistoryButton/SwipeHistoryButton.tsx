@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import SwipeHistoryModal from "../SwipeHistoryModal/SwipeHistoryModal.tsx";
+import SwipeHistoryModal from "../SwipeHistoryModal/SwipeHistoryModal";
 import { useSwipeHistory } from "@/context/SwipeHistoryContext";
 import Icon from "@/components/ui/Icon/Icon";
 import styles from "./SwipeHistoryButton.module.css";
@@ -13,7 +13,9 @@ type Props = {
 export default function SwipeHistoryButton({ onUndo }: Props){
     const [open, setOpen] = useState(false);
 
-    console.log("Swipe history inside button:", history); // <-- log
+     const { history } = useSwipeHistory();
+
+     console.log("Swipe history inside button:", history);
 
     return (
         <>
