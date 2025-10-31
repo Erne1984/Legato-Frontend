@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   z-index: 2000;
+
   max-width: var(--max-width);
   margin: 0 auto;
 
@@ -16,13 +17,12 @@
   background: var(--secondary-color, #111);
   border-radius: 12px;
   width: 100%;
-  max-width: 520px;
-  padding: 16px;
+  max-width: 580px;
+  padding: 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  color: #fff;
+  gap: 14px;
 }
 
 .header {
@@ -64,77 +64,83 @@
   transition: color 0.2s ease;
 }
 
-.closeButton:hover {
-  color: #fff;
+/* Formulário */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-/* Campo de texto */
+.input,
 .textarea {
   width: 100%;
-  min-height: 140px;
-  padding: 12px 14px;
-  outline: none;
-  resize: none;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #fff;
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 1rem;
 }
 
+.input:focus,
 .textarea:focus {
   border-color: var(--primary-color, #b833e1);
+  outline: none;
 }
 
-/* Pré-visualizações */
-.imagePreviewContainer,
-.videoPreviewContainer,
-.audioPreviewContainer {
+.textarea {
+  min-height: 100px;
+  resize: none;
+}
+
+.inlineGroup {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Preview */
+.previewContainer {
   margin-top: 8px;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.imagePreview,
-.videoPreview {
+.previewMedia {
   width: 100%;
   border-radius: 10px;
 }
 
-.audioPreview {
+.previewAudio {
   width: 100%;
 }
 
 /* Footer */
 .footer {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-.left {
-  display: flex;
   align-items: center;
-  gap: 12px;
+  margin-top: 12px;
 }
 
 .iconButton {
   background: transparent;
   border: none;
   cursor: pointer;
-  font-size: 1.2rem;
-  color: #aaa;
+  color: var(--text-color);
   transition: color 0.2s ease;
 }
 
 .iconButton:hover {
   color: var(--primary-color, #b833e1);
-}
-
-.charCount {
-  font-size: 0.85rem;
-  color: #aaa;
 }
 
 .publishButton {

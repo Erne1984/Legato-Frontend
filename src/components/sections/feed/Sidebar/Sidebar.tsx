@@ -10,8 +10,12 @@ type MenuItem = {
   label: string;
 };
 
-export default function Sidebar() {
-  const [activeItem, setActiveItem] = useState("Em Destaque");
+type SidebarProps = {
+  tab: string;
+}
+
+export default function Sidebar({ tab }: SidebarProps) {
+  const [activeItem, setActiveItem] = useState(tab);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const menuItems: MenuItem[] = [

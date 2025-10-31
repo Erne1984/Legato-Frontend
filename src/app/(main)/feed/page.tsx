@@ -16,7 +16,7 @@ export default function FeedPage() {
   return (
     <div className={styles.container_feed_wrapper}>
       <div className={styles.container_main_content}>
-        <Sidebar />
+        <Sidebar tab="Em Destaque" />
 
         <div className={styles.center_content}>
           <CreatePost
@@ -30,6 +30,7 @@ export default function FeedPage() {
           {posts.map((post, index) => (
             <Post
               key={index}
+              postId={post.id}
               author={post.author}
               timestamp={post.timestamp}
               location={post.location}

@@ -11,6 +11,7 @@ interface ColaborationCardProps {
   remote: boolean;
   deadline: string;
   timeAgo: string;
+  onClick?: () => void;
 }
 
 export default function ColaborationCard({
@@ -22,9 +23,10 @@ export default function ColaborationCard({
   remote,
   deadline,
   timeAgo,
+  onClick
 }: ColaborationCardProps) {
   return (
-    <div className={styles.card}>
+    <div className={styles.card} onClick={onClick}>
       <div className={styles.imageContainer}>
         <Image src={imageUrl} alt={title} fill style={{ objectFit: "cover" }} />
       </div>

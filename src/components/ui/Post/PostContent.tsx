@@ -5,11 +5,12 @@ import { getYouTubeEmbedUrl } from "@/utils/getYouTubeEmbedUrl ";
 
 type PostContentProps = {
   content: contentPost;
+  onClick?: () => void;
 };
 
-export default function PostContent({ content }: PostContentProps) {
+export default function PostContent({ content, onClick }: PostContentProps) {
   return (
-    <div className={styles.content}>
+    <div className={styles.content} onClick={onClick}>
       {content.text && <p className={styles.text}>{content.text}</p>}
 
       {content.imageUrl && (

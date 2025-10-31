@@ -32,6 +32,8 @@ import {
   Image,
   Send,
   List,
+  Funnel,
+  Check,
   Facebook,
   Instagram,
   ChevronRight, 
@@ -73,6 +75,8 @@ const icons = {
   image: Image,
   send: Send,
   list: List,
+  filter: Funnel,
+  check: Check,
   facebook: Facebook,
   instagram: Instagram,
   LeftArrow: ChevronLeft,
@@ -86,9 +90,10 @@ type IconProps = {
   name: IconName;
   size?: number;
   className?: string;
+  onAction?: () => void;
 };
 
-export default function Icon({ name, size = 24, className }: IconProps) {
+export default function Icon({ name, size = 24, className, onAction }: IconProps) {
   const Component = icons[name];
-  return <Component size={size} className={className} />;
+  return <Component size={size} className={className} onClick={onAction} />;
 }
