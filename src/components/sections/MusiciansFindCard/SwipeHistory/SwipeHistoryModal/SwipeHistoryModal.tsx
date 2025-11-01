@@ -2,26 +2,32 @@
 
 import React, { useState } from "react";
 import { useSwipeHistory } from "@/context/SwipeHistoryContext";
-import styles from "./SwipeHistoryModal.module.css"
+import styles from "./SwipeHistoryModal.module.css";
 import Icon from "@/components/ui/Icon/Icon";
+import { CardType } from "@/types/cards";
+import Image from "next/image";
+
+export type SwipeEvent = {
+  card: CardType;
+  action: "match" | "pass";
+  timestamp: Date;
+};
 
 type Props = {
   onClose: () => void;
-  onUndo: (card: SwipeEvent["card"]) => void;
+  onUndo: (card: CardType) => void;
 };
 
 export default function SwipeHistoryModal({ onClose, onUndo }: Props) {
   const { history, removeSwipe } = useSwipeHistory();
   const [sortAscending, setSortAscending] = useState(false);
 
-  //Sort history by timestamp
-  const sortedHistory = [...history].sort((a, b) =>
+  const sortedHistory = [...(history as SwipeEvent[])].sort((a, b) =>
     sortAscending
       ? a.timestamp.getTime() - b.timestamp.getTime()
       : b.timestamp.getTime() - a.timestamp.getTime()
   );
 
-  //Group history by day
   const groupedByDay = sortedHistory.reduce<Record<string, SwipeEvent[]>>(
     (acc, item) => {
       const day = item.timestamp.toLocaleDateString();
@@ -33,12 +39,9 @@ export default function SwipeHistoryModal({ onClose, onUndo }: Props) {
   );
 
   const handleUndo = (event: SwipeEvent) => {
-    //Remove from history
     removeSwipe(event);
-    onUndo(event.card); 
-
-    //TODO: Add the card back to stack in parent component
-  }
+    onUndo(event.card);
+  };
 
   return (
     <div className={styles.modal_overlay}>
@@ -52,7 +55,10 @@ export default function SwipeHistoryModal({ onClose, onUndo }: Props) {
 
         <div className={styles.sort_controls}>
           <button onClick={() => setSortAscending(!sortAscending)}>
-            Ordenar: {sortAscending ? "Mais Antigo → Mais Recente" : "Mais Recente → Mais Antigo"}
+            Ordenar:{" "}
+            {sortAscending
+              ? "Mais Antigo → Mais Recente"
+              : "Mais Recente → Mais Antigo"}
           </button>
         </div>
 
@@ -62,11 +68,7 @@ export default function SwipeHistoryModal({ onClose, onUndo }: Props) {
               <h3>{day}</h3>
               {groupedByDay[day].map((item, index) => (
                 <div key={index} className={styles.history_item}>
-                  <img
-                    src={item.card.image_profile.src}
-                    alt={`${item.card.name} profile`}
-                    className={styles.profile_img}
-                  />
+                  <Image src={item.card.image_profile.src} height={50} width={50} alt={item.card.name}  className={styles.profile_img} />
                   <div className={styles.item_info}>
                     <span className={styles.name}>{item.card.name}</span>
                     <span
@@ -78,15 +80,16 @@ export default function SwipeHistoryModal({ onClose, onUndo }: Props) {
                     >
                       {item.action === "match" ? (
                         <>
-                          <Icon name="link" className={styles.status_icon} /> Conexão
+                          <Icon name="link" className={styles.status_icon} />{" "}
+                          Conexão
                         </>
                       ) : (
                         <>
-                          <Icon name="close" className={styles.status_icon} /> Recusado
+                          <Icon name="close" className={styles.status_icon} />{" "}
+                          Recusado
                         </>
                       )}
                     </span>
-
 
                     <span className={styles.timestamp}>
                       {item.timestamp.toLocaleTimeString()}

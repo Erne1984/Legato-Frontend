@@ -54,7 +54,7 @@ export default function FindMusicians() {
     const [cards, setCards] = useState<CardType[]>(initialCards);
 
     const handleUndoCard = (card: CardType) => {
-        setCards((prev) => [card, ...prev]); // 👈 card volta pro topo
+        setCards((prev) => [card, ...prev]); 
     };
 
 

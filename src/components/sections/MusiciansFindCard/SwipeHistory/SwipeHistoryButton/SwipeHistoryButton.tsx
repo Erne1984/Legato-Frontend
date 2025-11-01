@@ -5,9 +5,10 @@ import SwipeHistoryModal from "../SwipeHistoryModal/SwipeHistoryModal";
 import { useSwipeHistory } from "@/context/SwipeHistoryContext";
 import Icon from "@/components/ui/Icon/Icon";
 import styles from "./SwipeHistoryButton.module.css";
+import { CardType } from "@/types/cards";
 
 type Props = {
-    onUndo: (card: any) => void;
+    onUndo: (card: CardType) => void;
 }
 
 export default function SwipeHistoryButton({ onUndo }: Props){

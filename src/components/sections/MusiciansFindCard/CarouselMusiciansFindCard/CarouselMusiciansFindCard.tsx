@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react"
+import React, { useState } from "react"
 import styles from './CarouselMusiciansFindCard.module.css'
 import Icon from '@/components/ui/Icon/Icon'
 

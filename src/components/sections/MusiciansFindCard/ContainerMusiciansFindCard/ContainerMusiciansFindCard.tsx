@@ -1,10 +1,7 @@
 "use client";
-import { useState } from "react";
 import styles from "./ContainerMusiciansFindCard.module.css"
 import Icon from "@/components/ui/Icon/Icon"
 import CarouselCard from "../CarouselMusiciansFindCard/CarouselMusiciansFindCard"
-import SwipeableCard from "../DraggableMusiciansFindCard/DraggableMusiciansFindCard";
-import SwipeButtons from "../SwipeButtonsMusiciansFindCard/SwipeButtonsMusiciansFindCard";
 
 type ContainerMusiciansFindCardProps = {
     name: string;
