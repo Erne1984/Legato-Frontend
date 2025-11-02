@@ -8,13 +8,19 @@ type ContainerMusiciansFindCardProps = {
     bio: string;
     skills: string[];
     slides: { type: "image" | "video"; src: string }[];
-    distance: string;
+    distance: number;
+    gender: string;
+    musicGenres: string[];
+    age: number;
 };
 export default function MusiciansFindCard({
     name,
     bio,
+    musicGenres,
+    gender,
     skills,
     slides,
+    age,
     distance,
 }: ContainerMusiciansFindCardProps) {
     return (
@@ -28,20 +34,27 @@ export default function MusiciansFindCard({
                         name={name}
                         skills={skills}
                         distance={distance}
+                        age={age}
                     />
 
                     {/* Musician info section */}
                     <div className={styles.description_container_card}>
                         <p className={styles.musician_bio}>{bio}</p>
 
-                        {/* Skills */}
+                        {/* Music Genres */}
                         <div className={styles.musician_skills}>
-                            <div className={styles.musician_skills_title}>Habilidades</div>
-                            {skills.map((skill, index) => (
-                                <div key={`${skill}-${index}`} className={styles.musician_skills_item}>
-                                    {skill}
+                            <div className={styles.musician_skills_title}>Gêneros Musicais</div>
+                            {musicGenres.map((genre, index) => (
+                                <div key={`${genre}-${index}`} className={styles.musician_skills_item}>
+                                    {genre}
                                 </div>
                             ))}
+                        </div>
+
+                        {/* Gender */}
+                        <div className={styles.musician_skills}>
+                            <div className={styles.musician_skills_title}>Gênero</div>
+                            <div className={styles.musician_skills_item}>{gender}</div>
                         </div>
 
                         {/* Common artists */}

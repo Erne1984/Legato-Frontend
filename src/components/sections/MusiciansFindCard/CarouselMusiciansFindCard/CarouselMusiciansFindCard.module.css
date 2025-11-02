@@ -35,6 +35,11 @@
     object-fit: cover;
 }
 
+.separator {
+  font-size: 0.6rem;
+  color: var(--primary-color);
+}
+
 .arrow{
     position: absolute;
     top: 50%;
@@ -166,6 +171,9 @@
 .musician_name {
     font-size: 1.5rem;
     color: var(--primary-color);
+      display: flex;
+  align-items: center;
+  gap: 0.4rem; /* espaço entre nome, círculo e idade */
 }
 
 .musician_skills_item {
