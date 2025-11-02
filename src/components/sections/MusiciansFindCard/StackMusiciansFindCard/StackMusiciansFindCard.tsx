@@ -27,21 +27,21 @@ export default function StackCardsMusicians({ cards, setCards }: StackCardsMusic
 
 
 
-  const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
-    addSwipe(card, action); // salva no histórico
+const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
+  if (action === "match") {
+    // abrir modal e remover temporariamente o card da stack
+    setMatchedUser(card);
+    setShowModal(true);
+    setCards((prev) => prev.filter((c) => c.name !== card.name));
+    
+    // **não registrar match ainda**
+  } else {
+    // Pass: remove e registra no histórico imediatamente
+    addSwipe(card, action);
+    setCards((prev) => prev.filter((c) => c.name !== card.name));
+  }
+};
 
-    if (action === "match") {
-      // abrir modal
-      setMatchedUser(card);
-      setShowModal(true);
-
-      // remove temporariamente o card da stack
-      setCards((prev) => prev.filter((c) => c.name !== card.name));
-    } else {
-      // Pass: remover imediatamente
-      setCards((prev) => prev.filter((c) => c.name !== card.name));
-    }
-  };
 
   // cancelar match
   const handleCancelMatch = () => {
@@ -52,12 +52,16 @@ export default function StackCardsMusicians({ cards, setCards }: StackCardsMusic
     }
   };
 
-  // enviar match
-  const handleSendMatch = () => {
-    console.log("Enviar match para:", matchedUser?.name);
+const handleSendMatch = () => {
+  if (matchedUser) {
+    addSwipe(matchedUser, "match"); // só aqui registra o match
+    console.log("Enviar match para:", matchedUser.name);
+    
     setMatchedUser(null);
-    setShowModal(false); // fecha modal
-  };
+    setShowModal(false);
+  }
+};
+
 
 
 
