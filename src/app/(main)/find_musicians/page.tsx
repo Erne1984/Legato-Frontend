@@ -81,13 +81,25 @@ function InnerFindMusicians({ allCards, cards, setCards }: any) {
             </div>
 
             <div className={styles.find_musicians_card_section}>
-                <StackMusiciansFindCard cards={cards} setCards={setCards} />
+                {cards.length === 0 ? (
+                    <p className={styles.no_cards_message}>
+                        Não há mais músicos disponíveis 😔
+                    </p>
+                ) : (
+                    <StackMusiciansFindCard cards={cards} setCards={setCards} />
+                )}
             </div>
 
+
             <div className={styles.container_description}>
-                <p className={styles.text_description}>
-                    Arraste o card para a esquerda para ignorar, ou para a direita para conversar
-                </p>
+                {cards.length === 0 ? (
+                    <p></p>
+                ) : (
+                    <p className={styles.text_description}>
+                        Arraste o card para a esquerda para ignorar, ou para a direita para conversar
+                    </p>
+                )}
+
             </div>
         </>
     );

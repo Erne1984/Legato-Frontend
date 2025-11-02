@@ -23,41 +23,41 @@ export default function StackCardsMusicians({ cards, setCards }: StackCardsMusic
   const topCardRef = useRef<DraggableCardHandle | null>(null);
 
   const [showModal, setShowModal] = useState(false);
-const [matchedUser, setMatchedUser] = useState<CardType | null>(null);
+  const [matchedUser, setMatchedUser] = useState<CardType | null>(null);
 
 
 
-const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
-  addSwipe(card, action); // salva no histórico
+  const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
+    addSwipe(card, action); // salva no histórico
 
-  if (action === "match") {
-    // abrir modal
-    setMatchedUser(card);
-    setShowModal(true);
+    if (action === "match") {
+      // abrir modal
+      setMatchedUser(card);
+      setShowModal(true);
 
-    // remove temporariamente o card da stack
-    setCards((prev) => prev.filter((c) => c.name !== card.name));
-  } else {
-    // Pass: remover imediatamente
-    setCards((prev) => prev.filter((c) => c.name !== card.name));
-  }
-};
+      // remove temporariamente o card da stack
+      setCards((prev) => prev.filter((c) => c.name !== card.name));
+    } else {
+      // Pass: remover imediatamente
+      setCards((prev) => prev.filter((c) => c.name !== card.name));
+    }
+  };
 
-// cancelar match
-const handleCancelMatch = () => {
-  if (matchedUser) {
-    setCards((prev) => [matchedUser, ...prev]); // re-adiciona card
+  // cancelar match
+  const handleCancelMatch = () => {
+    if (matchedUser) {
+      setCards((prev) => [matchedUser, ...prev]); // re-adiciona card
+      setMatchedUser(null);
+      setShowModal(false); // fecha modal
+    }
+  };
+
+  // enviar match
+  const handleSendMatch = () => {
+    console.log("Enviar match para:", matchedUser?.name);
     setMatchedUser(null);
     setShowModal(false); // fecha modal
-  }
-};
-
-// enviar match
-const handleSendMatch = () => {
-  console.log("Enviar match para:", matchedUser?.name);
-  setMatchedUser(null);
-  setShowModal(false); // fecha modal
-};
+  };
 
 
 
@@ -109,13 +109,13 @@ const handleSendMatch = () => {
       </div>
 
       {/* ✅ Match modal */}
-<MatchModal
-  show={showModal}
-  onClose={() => setShowModal(false)}
-  onCancel={handleCancelMatch} // cancelar re-adiciona card
-  onSend={handleSendMatch}     // envia match
-  user={matchedUser!}
-/>
+      <MatchModal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        onCancel={handleCancelMatch} // cancelar re-adiciona card
+        onSend={handleSendMatch}     // envia match
+        user={matchedUser!}
+      />
 
 
     </>
