@@ -9,6 +9,16 @@
     position: relative;
 }
 
+.no_cards_message {
+  text-align: center;
+  vertical-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+  margin-top: 10rem;
+}
+
+
+
 .introduction_container {
     display: flex;
     flex-direction: column;

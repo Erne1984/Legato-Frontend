@@ -1,0 +1,26 @@
+.filterButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--tag-background, #4b4bff); /* same color system */
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton:hover {
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--tag-background);
+    color: var(--tag-background);
+    background-color: var(--background);
+}
+
+.filter_icon {
+  width: 14px;
+  height: 14px;
+}

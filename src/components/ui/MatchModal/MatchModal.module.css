@@ -35,7 +35,7 @@
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 1.4rem;
-  color: #fff;
+  color: var(--text-color);
 }
 
 .title span {
@@ -48,16 +48,16 @@
   height: 100px;
   resize: none;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  border: 1px solid var(--primary-color);
+  background: var(--secondary-color);
+  color: var(--primary-color);
   padding: 0.8rem;
   margin-bottom: 1.4rem;
   font-size: 0.95rem;
 }
 
 .textarea::placeholder {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--primary-color);
 }
 
 .send_button {

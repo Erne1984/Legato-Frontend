@@ -12,13 +12,15 @@ type SlideItem = {
 type CarouselCardProps = {
     slides: SlideItem[];
     name: string;
+    age: number;
     skills: string[];
-    distance: string;
+    distance: number;
 };
 
 export default function CarouselMusiciansFindCard({
     slides,
     name,
+    age,
     skills,
     distance
 }: CarouselCardProps) {
@@ -78,7 +80,7 @@ export default function CarouselMusiciansFindCard({
                 </p>
                 <div className={styles.container_intro_info}>
                     <h1 className={styles.musician_name}>
-                        {name}
+                        {name} <span className={styles.separator}>●</span> {age}
                     </h1>
                     <div className={styles.musician_skills}>
                         {skills.map((skill, i) => (

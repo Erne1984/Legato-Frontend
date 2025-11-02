@@ -1,0 +1,320 @@
+/* === Overlay === */
+.modal_overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+/* === Modal Container === */
+.dropdown {
+  width: 420px;
+  background-color: var(--secondary-color);
+  padding: 1.8rem 1.4rem;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* (restante igual ao seu código CSS acima) */
+
+
+/* === Header (optional, in case you add a title or close button) === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.header h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.close_button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
+
+.close_button:hover {
+  transform: scale(1.1);
+}
+
+/* === Filter Section === */
+.filterSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterSection h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.3rem;
+}
+
+/* Skills options */
+.optionButton {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+}
+
+.optionButton:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.optionButton.selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+
+.closeX {
+  font-size: 0.8rem;
+  margin-left: 4px;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.option {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.option:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+/* === Actions === */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 0.5rem;
+}
+
+.cancel,
+.apply {
+  flex: 1;
+  padding: 0.6rem 0;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+}
+
+.cancel {
+  background-color: transparent;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+}
+
+.cancel:hover {
+  background-color: red;
+  color: white;
+  border: 1px solid red;
+}
+
+.apply {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+}
+
+.apply:hover {
+  background-color: green;
+}
+
+/* === Custom Select === */
+.customSelect {
+  position: relative;
+  width: 100%;
+  background-color: var(--background);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  transition: border-color 0.2s ease;
+}
+
+.customSelect:hover {
+  border-color: var(--primary-color);
+}
+
+.selectedOption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 10px;
+}
+
+.arrow {
+  font-size: 0.7rem;
+  color: var(--primary-color);
+  transition: transform 0.2s ease;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+/* === Dropdown Menu === */
+.dropdownOptions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--background);
+  border: 1px solid var(--secondary-color);
+  border-radius: 8px;
+  z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 3px 8px;
+  overflow: hidden;
+}
+
+.optionItem {
+  padding: 8px 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.optionItem:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.optionItem.selected {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+
+
+/* Double slider */
+.doubleSlider {
+  position: relative;
+  height: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--secondary-color);
+}
+
+.doubleSlider input[type="range"] {
+  pointer-events: all;
+  -webkit-appearance: none;
+  position: absolute;
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  margin: 0;
+}
+
+.doubleSlider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.rangeTrack {
+  position: absolute;
+  height: 8px;
+  width: 100%;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--background);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.rangeFill {
+  position: absolute;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+
+}
+
+/* Texto abaixo do slider */
+.doubleSlider p {
+  margin-top: 35px;
+  text-align: center;
+  color: var(--text-color);
+  font-size: 0.85rem;
+}
+
+/* === Animations === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === Scrollbar styling (for filter scroll) === */
+.dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* === Mobile Version === */
+@media (max-width: 768px) {
+  .dropdown {
+    width: 90%;
+    margin: 0 16px;
+    max-height: 85vh;
+  }
+}

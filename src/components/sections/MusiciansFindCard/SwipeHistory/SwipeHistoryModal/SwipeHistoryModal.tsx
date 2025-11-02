@@ -4,14 +4,11 @@ import React, { useState } from "react";
 import { useSwipeHistory } from "@/context/SwipeHistoryContext";
 import styles from "./SwipeHistoryModal.module.css";
 import Icon from "@/components/ui/Icon/Icon";
-import { CardType } from "@/types/cards";
+import { CardType, SwipeEvent } from "@/types/cards";
 import Image from "next/image";
 
-export type SwipeEvent = {
-  card: CardType;
-  action: "match" | "pass";
-  timestamp: Date;
-};
+
+
 
 type Props = {
   onClose: () => void;
@@ -22,7 +19,7 @@ export default function SwipeHistoryModal({ onClose, onUndo }: Props) {
   const { history, removeSwipe } = useSwipeHistory();
   const [sortAscending, setSortAscending] = useState(false);
 
-  const sortedHistory = [...(history as SwipeEvent[])].sort((a, b) =>
+  const sortedHistory = [...(history as unknown as SwipeEvent[])].sort((a, b) =>
     sortAscending
       ? a.timestamp.getTime() - b.timestamp.getTime()
       : b.timestamp.getTime() - a.timestamp.getTime()

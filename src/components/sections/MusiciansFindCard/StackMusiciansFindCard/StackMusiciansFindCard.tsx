@@ -25,18 +25,45 @@ export default function StackCardsMusicians({ cards, setCards }: StackCardsMusic
   const [showModal, setShowModal] = useState(false);
   const [matchedUser, setMatchedUser] = useState<CardType | null>(null);
 
-  //Remove top card after swipe animation ends
-  const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
-    addSwipe(card, action); // save to history
 
-    if (action === "match") {
-      // ✅ open modal for matched user
-      setMatchedUser(card);
-      setShowModal(true);
+
+const handleRemoveTop = (card: CardType, action: "match" | "pass") => {
+  if (action === "match") {
+    // abrir modal e remover temporariamente o card da stack
+    setMatchedUser(card);
+    setShowModal(true);
+    setCards((prev) => prev.filter((c) => c.name !== card.name));
+    
+    // **não registrar match ainda**
+  } else {
+    // Pass: remove e registra no histórico imediatamente
+    addSwipe(card, action);
+    setCards((prev) => prev.filter((c) => c.name !== card.name));
+  }
+};
+
+
+  // cancelar match
+  const handleCancelMatch = () => {
+    if (matchedUser) {
+      setCards((prev) => [matchedUser, ...prev]); // re-adiciona card
+      setMatchedUser(null);
+      setShowModal(false); // fecha modal
     }
-
-    setCards((prev) => prev.slice(1)); // remove top card
   };
+
+const handleSendMatch = () => {
+  if (matchedUser) {
+    addSwipe(matchedUser, "match"); // só aqui registra o match
+    console.log("Enviar match para:", matchedUser.name);
+    
+    setMatchedUser(null);
+    setShowModal(false);
+  }
+};
+
+
+
 
 
 
@@ -70,6 +97,9 @@ export default function StackCardsMusicians({ cards, setCards }: StackCardsMusic
                     bio={card.bio}
                     skills={card.skills}
                     slides={card.images}
+                    age={card.age}
+                    gender={card.gender}
+                    musicGenres={card.musicGenres}
                     distance={card.distance}
                   />
                 </DraggableCard>
@@ -83,16 +113,15 @@ export default function StackCardsMusicians({ cards, setCards }: StackCardsMusic
       </div>
 
       {/* ✅ Match modal */}
-      {matchedUser && (
-        <MatchModal
-          show={showModal}
-          onClose={() => setShowModal(false)}
-          user={{
-            name: matchedUser.name,
-            image_profile: matchedUser.image_profile,
-          }}
-        />
-      )}
+      <MatchModal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        onCancel={handleCancelMatch} // cancelar re-adiciona card
+        onSend={handleSendMatch}     // envia match
+        user={matchedUser!}
+      />
+
+
     </>
   );
 }

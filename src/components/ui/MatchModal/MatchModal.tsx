@@ -9,22 +9,27 @@ type MatchModalProps = {
     name: string;
     image_profile: { type: string; src: string };
   };
+    onCancel?: () => void; // nova prop
+    onSend?: () => void
 };
 
-export default function MatchModal({ show, onClose, user }: MatchModalProps) {
+export default function MatchModal({ show, onClose, user, onCancel, onSend }: MatchModalProps) {
   const [message, setMessage] = useState("");
 
   if (!show) return null;
 
   const handleSend = () => {
     console.log("Enviar pedido de conexão:", message);
+      if (onSend) onSend();
+
     onClose();
   };
 
-  const handleCancel = () => {
-    console.log("Cancelar envio de conexão");
-    onClose();
-  };
+const handleCancel = () => {
+  console.log("Cancelar envio de conexão");
+  if (onCancel) onCancel(); // chama função do pai
+  onClose();
+};
 
   return (
     <div className={styles.modal_overlay}>

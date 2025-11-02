@@ -1,38 +1,26 @@
 "use client";
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-
-type SwipeEvent = {
-  card: {
-    name: string;
-    bio: string;
-    skills: string[];
-    image_profile?: { type: "image"; src: string };
-    images: { type: "image" | "video"; src: string }[];
-    distance: string;
-  };
-  action: "match" | "pass";
-  timestamp: Date;
-};
+import { CardType, SwipeEvent as SwipeEventType } from "@/types/cards"; // importa os tipos unificados
 
 type SwipeHistoryContextType = {
-  history: SwipeEvent[];
-  addSwipe: (card: SwipeEvent["card"], action: "match" | "pass") => void;
-  removeSwipe: (event: SwipeEvent) => void;
+  history: SwipeEventType[];
+  addSwipe: (card: CardType, action: "match" | "pass") => void;
+  removeSwipe: (event: SwipeEventType) => void;
 };
 
 const SwipeHistoryContext = createContext<SwipeHistoryContextType | undefined>(undefined);
 
 export function SwipeHistoryProvider({ children }: { children: ReactNode }) {
-  const [history, setHistory] = useState<SwipeEvent[]>([]);
+  const [history, setHistory] = useState<SwipeEventType[]>([]);
 
-  const addSwipe = (card: SwipeEvent["card"], action: "match" | "pass") => {
-    const newEvent: SwipeEvent = { card, action, timestamp: new Date() };
+  const addSwipe = (card: CardType, action: "match" | "pass") => {
+    const newEvent: SwipeEventType = { card, action, timestamp: new Date() };
     console.log("Adding swipe to global context:", newEvent);
     setHistory((prev) => [...prev, newEvent]);
   };
 
-  const removeSwipe = (event: SwipeEvent) => {
+  const removeSwipe = (event: SwipeEventType) => {
     setHistory((prev) => prev.filter((e) => e !== event));
   };
 
