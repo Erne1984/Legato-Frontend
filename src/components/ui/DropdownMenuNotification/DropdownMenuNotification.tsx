@@ -86,7 +86,7 @@ export default function DropdownMenuNotification() {
           )}
         </div>
 
-        <Link href="/notificacoes" className={styles.view_all}>
+        <Link href="/notifications" className={styles.view_all}>
           Ver todas
         </Link>
       </div>
