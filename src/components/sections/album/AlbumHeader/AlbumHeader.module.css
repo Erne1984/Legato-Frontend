@@ -10,17 +10,21 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .albumCover {
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  flex-shrink: 0;
 }
 
 .albumInfo {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  flex: 1;
+  min-width: 220px;
 }
 
 .albumTitle {
@@ -41,4 +45,23 @@
 .meta {
   font-size: 0.9rem;
   color: #777;
+}
+
+@media (max-width: 700px) {
+  .albumHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .albumCover {
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+    max-width: 300px;
+  }
+
+  .albumTitle {
+    font-size: 1.5rem;
+  }
 }
