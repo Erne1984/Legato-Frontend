@@ -11,7 +11,7 @@ export default function SuggestedProfiles({userImg}: SuggestedProfilesProps) {
 
     return(
         <aside className={styles.suggested_profiles_container}>
-            <h3>Perfils semelhantes</h3>
+            <h3>Perfils para seguir</h3>
 
             <div className={styles.user_suggested_row}>
 

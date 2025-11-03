@@ -1,0 +1,21 @@
+.filter_row {
+  display: flex;
+  gap: 1rem;
+}
+
+.filter_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.active_filters {
+  display: flex;
+  gap: 10px;
+}

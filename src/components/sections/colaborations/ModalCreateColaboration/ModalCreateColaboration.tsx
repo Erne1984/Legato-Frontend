@@ -4,17 +4,20 @@ import Image from "next/image";
 import styles from "./ModalCreateColaboration.module.css";
 import Icon from "@/components/ui/Icon/Icon";
 import PrimaryButton from "@/components/ui/PrimaryButton/PrimaryButton";
+import { Colaboration } from "@/components/sections/colaborations/ColaborationsList/ColaborationsList";
 
 type ModalCreateColaborationProps = {
   imgUrl: string;
   username: string;
   onClose: () => void;
+  onCreate: (colab: Omit<Colaboration, "id" | "timeAgo">) => void;
 };
 
 export default function ModalCreateColaboration({
   imgUrl,
   username,
   onClose,
+  onCreate,
 }: ModalCreateColaborationProps) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -28,7 +31,6 @@ export default function ModalCreateColaboration({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Upload genérico
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -55,23 +57,25 @@ export default function ModalCreateColaboration({
   };
 
   const handleSubmit = () => {
-    const newColab = {
+    if (!title.trim()) return;
+
+    onCreate({
       title,
       description,
       genres,
       royalties,
       deadline,
       remote,
-      media: imagePreview || videoPreview || audioPreview,
-    };
-    console.log("Nova colaboração:", newColab);
+      author: username,
+      imageUrl: imagePreview || "/default-placeholder.png",
+    });
+
     onClose();
   };
 
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
-        {/* Header */}
         <div className={styles.header}>
           <div className={styles.userInfo}>
             <Image
@@ -91,11 +95,10 @@ export default function ModalCreateColaboration({
           </button>
         </div>
 
-        {/* Formulário */}
         <div className={styles.form}>
           <input
             type="text"
-            placeholder="Título da colaboração (ex: Looking for a drummer)"
+            placeholder="Título da colaboração"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             className={styles.input}
@@ -103,7 +106,7 @@ export default function ModalCreateColaboration({
 
           <textarea
             className={styles.textarea}
-            placeholder="Descreva o projeto ou a ideia..."
+            placeholder="Descreva o projeto..."
             value={description}
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -111,14 +114,14 @@ export default function ModalCreateColaboration({
           <div className={styles.inlineGroup}>
             <input
               type="text"
-              placeholder="Gêneros (ex: Rock, R&B)"
+              placeholder="Gêneros"
               value={genres}
               onChange={(e) => setGenres(e.target.value)}
               className={styles.input}
             />
             <input
               type="text"
-              placeholder="Royalties (ex: % de publishing)"
+              placeholder="Royalties"
               value={royalties}
               onChange={(e) => setRoyalties(e.target.value)}
               className={styles.input}
@@ -128,12 +131,11 @@ export default function ModalCreateColaboration({
           <div className={styles.inlineGroup}>
             <input
               type="text"
-              placeholder="Prazo (ex: dentro de 25 dias)"
+              placeholder="Prazo"
               value={deadline}
               onChange={(e) => setDeadline(e.target.value)}
               className={styles.input}
             />
-
             <label className={styles.checkboxLabel}>
               <input
                 type="checkbox"
@@ -144,7 +146,6 @@ export default function ModalCreateColaboration({
             </label>
           </div>
 
-          {/* Uploads */}
           {(imagePreview || videoPreview || audioPreview) && (
             <div className={styles.previewContainer}>
               {imagePreview && (
@@ -176,7 +177,6 @@ export default function ModalCreateColaboration({
             >
               <Icon name="image" />
             </button>
-
             <input
               type="file"
               ref={fileInputRef}
@@ -184,11 +184,10 @@ export default function ModalCreateColaboration({
               accept="image/*,video/*,audio/*"
               style={{ display: "none" }}
             />
-
             <PrimaryButton
               content="Publicar Colaboração"
               onClick={handleSubmit}
-            ></PrimaryButton>
+            />
           </div>
         </div>
       </div>
