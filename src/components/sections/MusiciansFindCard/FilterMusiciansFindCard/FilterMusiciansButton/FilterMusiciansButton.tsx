@@ -6,16 +6,26 @@ import Icon from "@/components/ui/Icon/Icon";
 import styles from "./FilterMusciansButton.module.css";
 import { CardType } from "@/types/cards";
 
+export type FiltersType = {
+  skills: string[];
+  gender: string;
+  ageMin: number;
+  ageMax: number;
+  musicGenres: string[];
+  distanceMin: number;
+  distanceMax: number;
+};
+
 type FilterMusiciansButtonProps = {
   onUndo: (card: CardType) => void;
-  onApplyFilters: (filters: any) => void;
-  onResetFilters: () => void; // nova prop
+  onApplyFilters: (filters: FiltersType) => void;
+  onResetFilters: () => void;
 };
 
 export default function FilterMusiciansButton({
   onUndo,
   onApplyFilters,
-  onResetFilters, // recebe a função de reset
+  onResetFilters,
 }: FilterMusiciansButtonProps) {
   const [open, setOpen] = useState(false);
 
@@ -30,18 +40,17 @@ export default function FilterMusiciansButton({
         {open ? "Fechar Filtros" : "Filtrar"}
       </button>
 
-      {/* Render modal only when open */}
       {open && (
         <FilterMusiciansModal
           onClose={() => setOpen(false)}
           onUndo={onUndo}
-          onApplyFilters={(filters) => {
+          onApplyFilters={(filters: FiltersType) => {
             onApplyFilters(filters);
             setOpen(false);
           }}
           onResetFilters={() => {
             onResetFilters();
-            setOpen(false); // opcional: fecha o modal ao resetar
+            setOpen(false);
           }}
         />
       )}

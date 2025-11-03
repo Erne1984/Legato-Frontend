@@ -16,7 +16,7 @@ type Props = {
     distanceMin: number;
     distanceMax: number;
   }) => void;
-   onResetFilters: () => void; // nova prop
+   onResetFilters: () => void;  
 };
 
 
@@ -26,7 +26,7 @@ const options = ["Todos", "Masculino", "Feminino", "Outro"];
 
 
 export default function FilterMusiciansModal({ onClose, onUndo, onApplyFilters, onResetFilters }: Props) {
-  const [skills, setSkills] = useState<string[]>(allSkills); // ← inicializa todas selecionadas
+  const [skills, setSkills] = useState<string[]>(allSkills);  
   const [musicGenres, setMusicGenres] = useState<string[]>(allGenres);
   const [gender, setGender] = useState("Todos");
   const [open, setOpen] = useState(false);
