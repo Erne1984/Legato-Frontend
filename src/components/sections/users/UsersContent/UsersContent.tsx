@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ProfileSidebar from "@/components/ui/ProfileSidebar/ProfileSidebar";
+import ProfileSidebar from "@/components/sections/users/ProfileSidebar/ProfileSidebar";
 import ProfileBanner from "@/components/sections/users/ProfileBanner/ProfileBanner";
 import ProfileTabs from "@/components/sections/users/ProfileTabs/ProfileTabs";
 import SuggestedProfiles from "@/components/ui/SuggestedProfiles/SuggestedProfiles";
