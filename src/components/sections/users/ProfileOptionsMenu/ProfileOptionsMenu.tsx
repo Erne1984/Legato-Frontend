@@ -20,7 +20,6 @@ export default function ProfileOptionsMenu() {
 
   const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // fecha o menu ao clicar fora
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -31,14 +30,12 @@ export default function ProfileOptionsMenu() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // alterna o estado de seguir
   const handleFollowToggle = () => {
     setIsFollowing((prev) => !prev);
   };
 
   return (
     <div className={styles.menuWrapper} ref={menuRef}>
-      {/* botão principal de abrir menu */}
       <button
         className={styles.iconButton}
         onClick={() => setOpen((prev) => !prev)}
@@ -47,9 +44,7 @@ export default function ProfileOptionsMenu() {
         <Icon name="ellipsis" />
       </button>
 
-      {/* menu */}
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-        {/* botão seguir / seguindo */}
         <button className={styles.primary} onClick={handleFollowToggle}>
           {isFollowing ? (
             <>
@@ -77,7 +72,6 @@ export default function ProfileOptionsMenu() {
         </button>
       </div>
 
-      {/* modais */}
       <ReportUserModal
         show={showReportModal}
         onClose={() => setShowReportModal(false)}

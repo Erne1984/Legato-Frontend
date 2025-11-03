@@ -17,22 +17,21 @@ export default function ArtistsSection() {
     {
       name: "Tame Impala",
       image:
-        "https://upload.wikimedia.org/wikipedia/en/1/15/Macdemarco2cover.png",
+        "https://upload.wikimedia.org/wikipedia/pt/2/2d/Currents_Tame_Impala.png",
     },
     {
-      name: "Arctic Monkeys",
-      image:
-        "https://upload.wikimedia.org/wikipedia/en/1/15/Macdemarco2cover.png",
+      name: "Vacations",
+      image: "https://i.scdn.co/image/ab6761610000e5eb080c868c83bba9ba37f13639",
     },
     {
-      name: "Gorillaz",
+      name: "Fall of Troy",
       image:
-        "https://upload.wikimedia.org/wikipedia/en/1/15/Macdemarco2cover.png",
+        "https://is1-ssl.mzstatic.com/image/thumb/Music114/v4/e9/8f/2f/e98f2f80-f0bf-228b-d5e2-67939a0c9df7/artwork.jpg/1200x630bb.jpg",
     },
     {
       name: "Radiohead",
       image:
-        "https://upload.wikimedia.org/wikipedia/en/1/15/Macdemarco2cover.png",
+        "https://akamai.sscdn.co/tb/letras-blog/wp-content/uploads/2021/09/3b1d2f8-radiohead-1024x683.jpg",
     },
   ];
 

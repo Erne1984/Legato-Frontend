@@ -58,6 +58,14 @@
   text-align: center;
 }
 
+.artistCard:hover {
+  cursor: pointer;
+}
+
+.artistCard:hover .artistName {
+  text-decoration: underline;
+}
+
 .artistWrapper {
   width: 90px;
   height: 90px;
@@ -78,8 +86,8 @@
 }
 
 .artistName {
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.85rem;
+  font-weight: bold;
   color: var(--text-color);
 }
 
