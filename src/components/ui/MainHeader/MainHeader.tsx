@@ -91,7 +91,7 @@ export default function MainHeader({ className }: MainHeaderProps) {
         </Link>
 
         <nav className={styles.nav}>
-          <Link href="/feed">Feed</Link>
+          {/* <Link href="/feed">Feed</Link> */}
           <Link href="/find_musicians">Descoberta</Link>
           <Link href="/colaborations">Colaborações</Link>
         </nav>

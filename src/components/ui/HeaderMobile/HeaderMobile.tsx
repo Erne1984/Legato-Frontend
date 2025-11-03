@@ -29,12 +29,13 @@ export default function HeaderMobile() {
     );
   }
 
-  const currentTheme = theme === "dark" || resolvedTheme === "dark" ? "dark" : "light";
+  const currentTheme =
+    theme === "dark" || resolvedTheme === "dark" ? "dark" : "light";
 
   return (
     <header className={styles.mobile_header}>
       <div className={styles.header_top}>
-        <Link href={"/"}>
+        <Link href={"/find_musicians"}>
           <Image
             src={currentTheme === "dark" ? logo_dark : logo_light}
             width={130}
@@ -71,19 +72,19 @@ export default function HeaderMobile() {
         </div>
 
         <div className={styles.menu_links}>
-          <Link href="/feed" onClick={() => setMenuOpen(false)}>
+          {/* <Link href="/feed" onClick={() => setMenuOpen(false)}>
             <Icon name="home" size={20} /> Feed
-          </Link>
+          </Link>*/}
           <Link href="/descoberta" onClick={() => setMenuOpen(false)}>
             <Icon name="search" size={20} /> Descoberta
           </Link>
-          <Link href="/colaboracoes" onClick={() => setMenuOpen(false)}>
+          <Link href="/colaborations" onClick={() => setMenuOpen(false)}>
             <Icon name="users" size={20} /> Colaborações
           </Link>
-          <Link href="/notificacoes" onClick={() => setMenuOpen(false)}>
+          <Link href="/notifications" onClick={() => setMenuOpen(false)}>
             <Icon name="bell" size={20} /> Notificações
           </Link>
-          <Link href="/mensagens" onClick={() => setMenuOpen(false)}>
+          <Link href="/chat" onClick={() => setMenuOpen(false)}>
             <Icon name="message_square" size={20} /> Mensagens
           </Link>
 

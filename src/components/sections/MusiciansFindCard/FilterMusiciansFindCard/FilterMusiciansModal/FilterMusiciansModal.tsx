@@ -16,17 +16,26 @@ type Props = {
     distanceMin: number;
     distanceMax: number;
   }) => void;
-   onResetFilters: () => void;  
+  onResetFilters: () => void;
 };
 
-
-const allSkills = ["Vocalista", "Guitarrista", "Baterista", "Produtor", "Compositor"];
+const allSkills = [
+  "Vocalista",
+  "Guitarrista",
+  "Baterista",
+  "Produtor",
+  "Compositor",
+];
 const allGenres = ["Rock", "Jazz", "Pop", "MPB", "Eletrônica", "Reggae"];
 const options = ["Todos", "Masculino", "Feminino", "Outro"];
 
-
-export default function FilterMusiciansModal({ onClose, onUndo, onApplyFilters, onResetFilters }: Props) {
-  const [skills, setSkills] = useState<string[]>(allSkills);  
+export default function FilterMusiciansModal({
+  onClose,
+  onUndo,
+  onApplyFilters,
+  onResetFilters,
+}: Props) {
+  const [skills, setSkills] = useState<string[]>(allSkills);
   const [musicGenres, setMusicGenres] = useState<string[]>(allGenres);
   const [gender, setGender] = useState("Todos");
   const [open, setOpen] = useState(false);
@@ -39,7 +48,7 @@ export default function FilterMusiciansModal({ onClose, onUndo, onApplyFilters, 
     );
   };
 
-const handleApply = () => {
+  const handleApply = () => {
     onApplyFilters({
       skills,
       gender,
@@ -52,14 +61,12 @@ const handleApply = () => {
   };
 
   const handleReset = () => {
-    // reset dos estados internos
     setSkills(allSkills);
     setMusicGenres(allGenres);
     setGender("Todos");
     setAgeRange([18, 99]);
     setDistance([0, 100]);
 
-    // chama a função de reset externa
     onResetFilters();
   };
   return (
@@ -85,61 +92,58 @@ const handleApply = () => {
                 <button
                   key={skill}
                   type="button"
-                  className={`${styles.optionButton} ${selected ? styles.selected : ""}`}
+                  className={`${styles.optionButton} ${
+                    selected ? styles.selected : ""
+                  }`}
                   onClick={() => handleSkillChange(skill)}
                 >
                   {skill} {selected && <span className={styles.closeX}>✕</span>}
                 </button>
               );
             })}
-
           </div>
         </div>
 
-
-{/* Gender */}
-<div className={styles.filterSection}>
-  <h4>Gênero</h4>
-  <div
-    className={styles.customSelect}
-    onClick={() => setOpen((prev) => !prev)}
-  >
-    <div className={styles.selectedOption}>
-      <span>{gender}</span>
-      <span
-        className={`${styles.arrow} ${open ? styles.arrowOpen : ""}`}
-      >
-        ▼
-      </span>
-    </div>
-
-    {open && (
-      <div
-        className={styles.dropdownOptions}
-        onClick={(e) => e.stopPropagation()} // 🔹 impede que o clique feche/reabra o menu
-      >
-        {options.map((opt) => (
+        <div className={styles.filterSection}>
+          <h4>Gênero</h4>
           <div
-            key={opt}
-            className={`${styles.optionItem} ${
-              gender === opt ? styles.selected : ""
-            }`}
-            onClick={(e) => {
-              e.stopPropagation(); // 🔹 também aqui, por segurança
-              setGender(opt);
-              setOpen(false);
-            }}
+            className={styles.customSelect}
+            onClick={() => setOpen((prev) => !prev)}
           >
-            {opt}
+            <div className={styles.selectedOption}>
+              <span>{gender}</span>
+              <span
+                className={`${styles.arrow} ${open ? styles.arrowOpen : ""}`}
+              >
+                ▼
+              </span>
+            </div>
+
+            {open && (
+              <div
+                className={styles.dropdownOptions}
+                onClick={(e) => e.stopPropagation()}
+              >
+                {options.map((opt) => (
+                  <div
+                    key={opt}
+                    className={`${styles.optionItem} ${
+                      gender === opt ? styles.selected : ""
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setGender(opt);
+                      setOpen(false);
+                    }}
+                  >
+                    {opt}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
-        ))}
-      </div>
-    )}
-  </div>
-</div>
+        </div>
 
-
-        {/* Age Range */}
         <div className={styles.filterSection}>
           <h4>Idade</h4>
           <div className={styles.doubleSlider}>
@@ -149,7 +153,10 @@ const handleApply = () => {
               max={99}
               value={ageRange[0]}
               onChange={(e) =>
-                setAgeRange([Math.min(+e.target.value, ageRange[1]), ageRange[1]])
+                setAgeRange([
+                  Math.min(+e.target.value, ageRange[1]),
+                  ageRange[1],
+                ])
               }
             />
             <input
@@ -158,7 +165,10 @@ const handleApply = () => {
               max={99}
               value={ageRange[1]}
               onChange={(e) =>
-                setAgeRange([ageRange[0], Math.max(+e.target.value, ageRange[0])])
+                setAgeRange([
+                  ageRange[0],
+                  Math.max(+e.target.value, ageRange[0]),
+                ])
               }
             />
             <div className={styles.rangeTrack}>
@@ -170,21 +180,24 @@ const handleApply = () => {
                 }}
               />
             </div>
-            <p>{ageRange[0]} – {ageRange[1]} anos</p>
+            <p>
+              {ageRange[0]} – {ageRange[1]} anos
+            </p>
           </div>
         </div>
 
-        {/* Music Genre */}
         <div className={styles.filterSection}>
           <h4>Gênero Musical</h4>
           <div className={styles.options}>
             {allGenres.map((genre) => {
-              const selected = musicGenres.includes(genre); // vamos mudar musicGenre para string[]
+              const selected = musicGenres.includes(genre);
               return (
                 <button
                   key={genre}
                   type="button"
-                  className={`${styles.optionButton} ${selected ? styles.selected : ""}`}
+                  className={`${styles.optionButton} ${
+                    selected ? styles.selected : ""
+                  }`}
                   onClick={() => {
                     if (selected) {
                       setMusicGenres((prev: string[]) =>
@@ -202,8 +215,6 @@ const handleApply = () => {
           </div>
         </div>
 
-
-        {/* Distance */}
         <div className={styles.filterSection}>
           <h4>Distância (km)</h4>
           <div className={styles.doubleSlider}>
@@ -213,7 +224,10 @@ const handleApply = () => {
               max={100}
               value={distance[0]}
               onChange={(e) =>
-                setDistance([Math.min(+e.target.value, distance[1]), distance[1]])
+                setDistance([
+                  Math.min(+e.target.value, distance[1]),
+                  distance[1],
+                ])
               }
             />
             <input
@@ -222,7 +236,10 @@ const handleApply = () => {
               max={100}
               value={distance[1]}
               onChange={(e) =>
-                setDistance([distance[0], Math.max(+e.target.value, distance[0])])
+                setDistance([
+                  distance[0],
+                  Math.max(+e.target.value, distance[0]),
+                ])
               }
             />
             <div className={styles.rangeTrack}>
@@ -234,7 +251,9 @@ const handleApply = () => {
                 }}
               />
             </div>
-            <p>{distance[0]} km – {distance[1]} km</p>
+            <p>
+              {distance[0]} km – {distance[1]} km
+            </p>
           </div>
         </div>
 
