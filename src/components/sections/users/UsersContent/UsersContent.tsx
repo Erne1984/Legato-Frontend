@@ -17,12 +17,15 @@ import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
 import ColaborationCard from "../../../ui/ColaborationCard/ColaborationCard";
 import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
 import GeneralView from "@/components/sections/users/GeneralView/GeneralView";
+import CreatePost from "../../feed/CreatePost/CreatePost";
+import ModalCreatePost from "../../feed/ModalCreatePost/ModalCreatePost";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab") || "overview";
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [playerVisible, setPlayerVisible] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   const handleSelectTrack = (track: Track) => {
     setCurrentTrack(track);
@@ -54,20 +57,28 @@ export default function UsersContent() {
 
             {tab === "overview" && <GeneralView />}
 
-            {tab === "activity" &&
-              posts.map((post, index) => (
-                <Post
-                  key={index}
-                  postId={post.id}
-                  author={post.author}
-                  timestamp={post.timestamp}
-                  location={post.location}
-                  content={post.content}
-                  likes={post.likes}
-                  commentsLikes={post.commentsLikes}
+            {tab === "activity" && (
+              <div>
+                <CreatePost
+                  imgUrl="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdkHhjzlsAqhkYuCH0Ly2ClT2jM_EZGqfqP179vw1jo5TCFdjZiL5Q3iYiUhj6L3XokuhpdaTY-mJY4ehQ08JR_LB4G_yjZYllBAnkEuX1"
+                  username="ErnePlayson"
+                  onClick={() => setIsModalOpen(true)}
                 />
-              ))}
 
+                {posts.map((post, index) => (
+                  <Post
+                    key={index}
+                    postId={post.id}
+                    author={post.author}
+                    timestamp={post.timestamp}
+                    location={post.location}
+                    content={post.content}
+                    likes={post.likes}
+                    commentsLikes={post.commentsLikes}
+                  />
+                ))}
+              </div>
+            )}
             {tab === "musics" && (
               <>
                 <TrackBox showSeeAll={true} onSelectTrack={handleSelectTrack} />
@@ -111,6 +122,14 @@ export default function UsersContent() {
           <SuggestedProfiles userImg={linkBanner} />
         </div>
       </div>
+
+      {isModalOpen && (
+        <ModalCreatePost
+          imgUrl="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdkHhjzlsAqhkYuCH0Ly2ClT2jM_EZGqfqP179vw1jo5TCFdjZiL5Q3iYiUhj6L3XokuhpdaTY-mJY4ehQ08JR_LB4G_yjZYllBAnkEuX1"
+          username="ErnePlayson"
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
