@@ -4,13 +4,13 @@ import { useState } from "react";
 import Icon, { IconName } from "@/components/ui/Icon/Icon";
 import styles from "./Sidebar.module.css";
 
-type MenuItem = {
+export type MenuItem = {
   key: string;
   icon: IconName;
   label: string;
 };
 
-type SidebarProps = {
+export type SidebarProps = {
   tab: string;
 }
 

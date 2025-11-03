@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./ProfileSidebar.module.css";
 import PrimaryButton from "@/components/ui/PrimaryButton/PrimaryButton";
-import ProfileOptionsMenu from "../ProfileOptionsMenu/ProfileOptionsMenu";
+import ProfileOptionsMenu from "../../sections/users/ProfileOptionsMenu/ProfileOptionsMenu";
 import { useState } from "react";
 import SecondaryButton from "@/components/ui/SecondaryButton/SecondaryButton";
 

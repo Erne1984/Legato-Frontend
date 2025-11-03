@@ -21,15 +21,14 @@
 }
 
 .view_all {
-    font-size: 0.9rem;
+  font-size: 0.9rem;
+  color: var(--primary-color);
 }
 
 .view_all:hover {
   text-decoration: underline;
   cursor: pointer;
-
 }
-
 
 .user_list {
   list-style: none;

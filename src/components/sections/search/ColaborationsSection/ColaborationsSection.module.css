@@ -1,0 +1,36 @@
+.container {
+ 
+  border-radius: 12px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  width: 100%;
+  color: var(--text-color);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.view_all {
+  font-size: 0.9rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.view_all:hover {
+  text-decoration: underline;
+}
+
+.list {
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+}

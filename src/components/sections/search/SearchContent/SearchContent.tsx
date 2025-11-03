@@ -1,17 +1,31 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import styles from "./SearchContent.module.css";
 import UsersSectionResult from "@/components/sections/search/UsersSectionResult/UsersSectionResult";
+import ProfileAlbumBox from "../../users/ProfileAlbumBox/ProfileAlbumBox";
+import MenuMobileSearch from "../MenuMobile/MenuMobileSearch";
+import SidebarSearch from "../SidebarSearch/SidebarSearch";
+import ColaborationsSection from "../ColaborationsSection/ColaborationsSection";
+import Footer from "@/components/ui/Footer/Footer";
 
 export default function SearchContent() {
-  const searchParams = useSearchParams();
-  const query = searchParams.get("q");
-
   return (
     <div className={styles.container_search_wrapper}>
-      <h1>{query}</h1>
-      <UsersSectionResult />
+      <div className={styles.container_search_content}>
+        <SidebarSearch tab="Tudo" />
+
+        <div className={styles.center_content}>
+          <MenuMobileSearch tab="Tudo" />
+
+          <UsersSectionResult />
+
+          <ColaborationsSection />
+
+          <ProfileAlbumBox showSeeAll={true} />
+        </div>
+      </div>
+
+      <Footer/>
     </div>
   );
 }

@@ -5,3 +5,24 @@
   padding: 0 20px;
   width: 100%;
 }
+
+.container_search_content {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.center_content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filter_btn {
+  background: var(--primary-color);
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
