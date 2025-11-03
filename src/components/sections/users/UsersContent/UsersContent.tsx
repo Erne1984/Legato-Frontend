@@ -46,7 +46,7 @@ export default function UsersContent() {
               username="Marcel123"
               userImg={userImg}
             />
-            <StatsCardUser connections={4} followers={10} posts={3} />
+            <StatsCardUser connections={2} followers={2} posts={3} />
           </div>
 
           <div className={styles.center_content}>

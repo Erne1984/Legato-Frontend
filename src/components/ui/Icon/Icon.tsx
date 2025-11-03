@@ -35,11 +35,12 @@ import {
   Funnel,
   Check,
   Disc,
+  UserPlus,
   Facebook,
   Instagram,
-  ChevronRight, 
+  ChevronRight,
   ChevronLeft,
-  History
+  History,
 } from "lucide-react";
 
 const icons = {
@@ -71,7 +72,7 @@ const icons = {
   clock: Clock,
   octagonAlert: OctagonAlert,
   ban: Ban,
-  camera:Camera,
+  camera: Camera,
   flame: Flame,
   image: Image,
   send: Send,
@@ -79,11 +80,12 @@ const icons = {
   filter: Funnel,
   check: Check,
   disc: Disc,
+  userPlus: UserPlus,
   facebook: Facebook,
   instagram: Instagram,
   LeftArrow: ChevronLeft,
   RightArrow: ChevronRight,
-  history: History
+  history: History,
 };
 
 export type IconName = keyof typeof icons;
@@ -95,7 +97,12 @@ type IconProps = {
   onAction?: () => void;
 };
 
-export default function Icon({ name, size = 24, className, onAction }: IconProps) {
+export default function Icon({
+  name,
+  size = 24,
+  className,
+  onAction,
+}: IconProps) {
   const Component = icons[name];
   return <Component size={size} className={className} onClick={onAction} />;
 }

@@ -14,10 +14,13 @@ const fakeUser = {
 
 export default function ProfileOptionsMenu() {
   const [open, setOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement | null>(null);
+  const [isFollowing, setIsFollowing] = useState(false);
   const [showReportModal, setShowReportModal] = useState(false);
   const [showBlockModal, setShowBlockModal] = useState(false);
 
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  // fecha o menu ao clicar fora
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
@@ -28,8 +31,14 @@ export default function ProfileOptionsMenu() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // alterna o estado de seguir
+  const handleFollowToggle = () => {
+    setIsFollowing((prev) => !prev);
+  };
+
   return (
     <div className={styles.menuWrapper} ref={menuRef}>
+      {/* botão principal de abrir menu */}
       <button
         className={styles.iconButton}
         onClick={() => setOpen((prev) => !prev)}
@@ -38,12 +47,19 @@ export default function ProfileOptionsMenu() {
         <Icon name="ellipsis" />
       </button>
 
+      {/* menu */}
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-        <button
-          className={styles.danger}
-          onClick={() => setShowReportModal(true)}
-        >
-          <Icon name="octagonAlert" size={16} /> Reportar
+        {/* botão seguir / seguindo */}
+        <button className={styles.primary} onClick={handleFollowToggle}>
+          {isFollowing ? (
+            <>
+              <Icon name="check" size={16} /> Seguindo
+            </>
+          ) : (
+            <>
+              <Icon name="userPlus" size={16} /> Seguir
+            </>
+          )}
         </button>
 
         <button
@@ -52,8 +68,16 @@ export default function ProfileOptionsMenu() {
         >
           <Icon name="ban" size={16} /> Bloquear
         </button>
+
+        <button
+          className={styles.danger}
+          onClick={() => setShowReportModal(true)}
+        >
+          <Icon name="octagonAlert" size={16} /> Reportar
+        </button>
       </div>
 
+      {/* modais */}
       <ReportUserModal
         show={showReportModal}
         onClose={() => setShowReportModal(false)}
