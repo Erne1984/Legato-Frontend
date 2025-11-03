@@ -5,7 +5,7 @@ export interface Colaboration {
   id: number;
   title: string;
   author: string;
-  description: string;
+  description: string
   royalties: string;
   genres: string;
   remote: boolean;

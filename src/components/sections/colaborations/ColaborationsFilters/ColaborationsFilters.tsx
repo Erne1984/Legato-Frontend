@@ -1,6 +1,6 @@
 import Icon from "@/components/ui/Icon/Icon";
 import styles from "./ColaborationsFilters.module.css";
-import { FilterState } from "@/components/sections/colaborations/ModalFiltersColaboration/ModalFiltersColaboration";
+import { FilterState } from "@/types/ColaborationFilters";
 
 interface Props {
   filters: FilterState | null;
@@ -20,7 +20,7 @@ export default function ColaborationsFilters({ filters, onOpenFilters }: Props) 
             .filter(([_, value]) => value)
             .map(([key, value]) => (
               <span key={key} className={styles.filter_tag}>
-                {key}: {value}
+                {value}
               </span>
             ))}
         </div>

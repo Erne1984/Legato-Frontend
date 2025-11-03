@@ -4,17 +4,17 @@ import { useState } from "react";
 import styles from "./ModalFiltersColaboration.module.css";
 import PrimaryButton from "@/components/ui/PrimaryButton/PrimaryButton";
 import Icon from "@/components/ui/Icon/Icon";
+import {
+  FilterState,
+  Genre,
+  CollaborationType,
+  Royalties,
+  Deadline,
+} from "@/types/ColaborationFilters";
 
 interface ModalFiltersColaborationProps {
   onClose: () => void;
   onApplyFilters: (filters: FilterState) => void;
-}
-
-export interface FilterState {
-  genre: string;
-  type: string;
-  royalties: string;
-  deadline: string;
 }
 
 export default function ModalFiltersColaboration({
@@ -22,20 +22,51 @@ export default function ModalFiltersColaboration({
   onApplyFilters,
 }: ModalFiltersColaborationProps) {
   const [filters, setFilters] = useState<FilterState>({
-    genre: "",
-    type: "",
-    royalties: "",
-    deadline: "",
+    genre: null,
+    type: null,
+    royalties: null,
+    deadline: null,
   });
 
-  const handleChange = (field: keyof FilterState, value: string) => {
-    setFilters((prev) => ({ ...prev, [field]: value }));
+  const toggleFilter = <K extends keyof FilterState>(
+    field: K,
+    value: FilterState[K]
+  ) => {
+    setFilters((prev) => ({
+      ...prev,
+      [field]: prev[field] === value ? null : value, // desmarca se clicar novamente
+    }));
   };
 
   const handleApply = () => {
     onApplyFilters(filters);
     onClose();
   };
+
+  const renderFilterGroup = (
+    label: string,
+    field: keyof FilterState,
+    values: FilterState[keyof FilterState][],
+    current: FilterState[keyof FilterState] | null
+  ) => (
+    <div className={styles.filter_group}>
+      <h4 className={styles.group_title}>{label}</h4>
+      <div className={styles.tags_row}>
+        {values.map((val) => (
+          <button
+            key={val as string}
+            type="button"
+            className={`${styles.filter_tag} ${
+              current === val ? styles.selected : ""
+            }`}
+            onClick={() => toggleFilter(field, val)}
+          >
+            {val}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 
   return (
     <div className={styles.overlay}>
@@ -48,43 +79,30 @@ export default function ModalFiltersColaboration({
         </div>
 
         <div className={styles.content}>
-          <select
-            value={filters.genre}
-            onChange={(e) => handleChange("genre", e.target.value)}
-          >
-            <option value="">Gênero</option>
-            <option value="rnb">R&B</option>
-            <option value="rock">Rock</option>
-            <option value="pop">Pop</option>
-          </select>
-
-          <select
-            value={filters.type}
-            onChange={(e) => handleChange("type", e.target.value)}
-          >
-            <option value="">Tipo</option>
-            <option value="remote">Remoto</option>
-            <option value="in-person">Presencial</option>
-          </select>
-
-          <select
-            value={filters.royalties}
-            onChange={(e) => handleChange("royalties", e.target.value)}
-          >
-            <option value="">Participação</option>
-            <option value="royalties">Com royalties</option>
-            <option value="no-royalties">Sem royalties</option>
-          </select>
-
-          <select
-            value={filters.deadline}
-            onChange={(e) => handleChange("deadline", e.target.value)}
-          >
-            <option value="">Prazo</option>
-            <option value="7">Até 7 dias</option>
-            <option value="30">Até 30 dias</option>
-            <option value="60">Até 60 dias</option>
-          </select>
+          {renderFilterGroup(
+            "Gênero",
+            "genre",
+            Object.values(Genre),
+            filters.genre ?? null
+          )}
+          {renderFilterGroup(
+            "Tipo",
+            "type",
+            Object.values(CollaborationType),
+            filters.type ?? null
+          )}
+          {renderFilterGroup(
+            "Participação",
+            "royalties",
+            Object.values(Royalties),
+            filters.royalties ?? null
+          )}
+          {renderFilterGroup(
+            "Prazo",
+            "deadline",
+            Object.values(Deadline),
+            filters.deadline ?? null
+          )}
         </div>
 
         <div className={styles.actions}>

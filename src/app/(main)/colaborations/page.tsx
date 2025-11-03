@@ -6,15 +6,19 @@ import styles from "./colaborations_page.module.css";
 import ModalCreateColaboration from "@/components/sections/colaborations/ModalCreateColaboration/ModalCreateColaboration";
 import SuggestedProfiles from "@/components/ui/SuggestedProfiles/SuggestedProfiles";
 import { useRouter } from "next/navigation";
-import ModalFiltersColaboration, {
-  FilterState,
-} from "@/components/sections/colaborations/ModalFiltersColaboration/ModalFiltersColaboration";
+import ModalFiltersColaboration from "@/components/sections/colaborations/ModalFiltersColaboration/ModalFiltersColaboration";
 
 import ColaborationsHeader from "@/components/sections/colaborations/ColaborationsHeader/ColaborationsHeader";
 import ColaborationsFilters from "@/components/sections/colaborations/ColaborationsFilters/ColaborationsFilters";
 import ColaborationsList, {
   Colaboration,
 } from "@/components/sections/colaborations/ColaborationsList/ColaborationsList";
+import {
+  FilterState,
+  CollaborationType,
+  Royalties,
+  Deadline,
+} from "@/types/ColaborationFilters";
 
 export default function ColaborationsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,7 +64,9 @@ export default function ColaborationsPage() {
     setFilters(newFilters);
   };
 
-  const handleAddColaboration = (newColab: Omit<Colaboration, "id" | "timeAgo">) => {
+  const handleAddColaboration = (
+    newColab: Omit<Colaboration, "id" | "timeAgo">
+  ) => {
     const newEntry: Colaboration = {
       ...newColab,
       id: colaborations.length + 1,
@@ -79,19 +85,23 @@ export default function ColaborationsPage() {
 
       const matchType =
         !filters.type ||
-        (filters.type === "remote" && colab.remote) ||
-        (filters.type === "in-person" && !colab.remote);
+        (filters.type === CollaborationType.Production && colab.remote) ||
+        (filters.type === CollaborationType.Feature && !colab.remote);
 
       const matchRoyalties =
         !filters.royalties ||
-        (filters.royalties === "royalties" &&
+        (filters.royalties === Royalties.Paid &&
           colab.royalties.toLowerCase().includes("royalties")) ||
-        (filters.royalties === "no-royalties" &&
+        (filters.royalties === Royalties.Free &&
           !colab.royalties.toLowerCase().includes("royalties"));
 
       const matchDeadline =
         !filters.deadline ||
-        parseInt(colab.deadline) <= parseInt(filters.deadline);
+        (filters.deadline === Deadline.OneWeek &&
+          parseInt(colab.deadline) <= 7) ||
+        (filters.deadline === Deadline.OneMonth &&
+          parseInt(colab.deadline) <= 30) ||
+        filters.deadline === Deadline.Flexible;
 
       return matchGenre && matchType && matchRoyalties && matchDeadline;
     });
