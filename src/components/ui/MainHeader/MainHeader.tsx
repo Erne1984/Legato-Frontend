@@ -79,7 +79,7 @@ export default function MainHeader({ className }: MainHeaderProps) {
   return (
     <header className={`${styles.container_wrapper} ${className || ""}`}>
       <div className={styles.container}>
-        <Link href="/feed">
+        <Link href="/find_musicians">
           <div className={styles.logo_area}>
             <Image
               src={theme === "dark" ? logo_dark : logo_light}

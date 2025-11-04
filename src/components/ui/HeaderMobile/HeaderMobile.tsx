@@ -35,7 +35,7 @@ export default function HeaderMobile() {
   return (
     <header className={styles.mobile_header}>
       <div className={styles.header_top}>
-        <Link href={"/find_musicians"}>
+        <Link href={"/find_musicians"} onClick={() => setMenuOpen(false)}>
           <Image
             src={currentTheme === "dark" ? logo_dark : logo_light}
             width={130}
@@ -60,17 +60,18 @@ export default function HeaderMobile() {
       />
 
       <nav className={`${styles.side_menu} ${menuOpen ? styles.open : ""}`}>
-        <div className={styles.menu_header}>
-          <Image
-            src={user}
-            alt="User avatar"
-            width={50}
-            height={50}
-            className={styles.avatar}
-          />
-          <p className={styles.username}>Olá, Músico!</p>
-        </div>
-
+        <Link href="/users/victor">
+          <div className={styles.menu_header}>
+            <Image
+              src={user}
+              alt="User avatar"
+              width={50}
+              height={50}
+              className={styles.avatar}
+            />
+            <p className={styles.username}>Olá, Músico!</p>
+          </div>
+        </Link>
         <div className={styles.menu_links}>
           {/* <Link href="/feed" onClick={() => setMenuOpen(false)}>
             <Icon name="home" size={20} /> Feed
