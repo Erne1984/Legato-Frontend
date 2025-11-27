@@ -4,17 +4,25 @@ import ArtistsSection from "./ArtistsSection";
 import BioSection from "./BioSection";
 import ObjectiveSection from "./ObjectiveSection";
 
-export default function GeneralView() {
-  const skills = ["Guitarrista", "Vocalista", "Compositor"];
-  const genres = ["Rock", "MPB", "Indie", "Jazz"];
+type GeneralViewProps = {
+  bio: string,
+  goal: string | null,
+  skills: string[],
+  genres: string[],
+}
+
+
+export default function GeneralView(props: GeneralViewProps) {
+
+
   return (
     <div className={styles.card}>
-      <BioSection />
+      <BioSection bio={props.bio} />
 
-      <ObjectiveSection />
+      <ObjectiveSection goal={props.goal} />
 
-      <TagSection title="Habilidades" items={skills} />
-      <TagSection title="Gêneros Favoritos" items={genres} />
+      <TagSection title="Habilidades" items={props.skills} />
+      <TagSection title="Gêneros Favoritos" items={props.genres} />
 
       <ArtistsSection />
     </div>

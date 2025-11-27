@@ -123,7 +123,7 @@ export default function ColaborationsPage() {
         </div>
 
         <div className={styles.right_sidebar}>
-          <SuggestedProfiles userImg="https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480" />
+          <SuggestedProfiles />
         </div>
       </div>
 

@@ -25,6 +25,7 @@ export interface User {
   instruments: string[];
   favoriteArtistsSpotifyId: string[];
   genres: string[];
+  bio: string;
   goal: string | null;
   location: Location | null;
   links: string | null;

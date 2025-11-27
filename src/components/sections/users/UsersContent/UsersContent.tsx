@@ -74,7 +74,7 @@ export default function UsersContent() {
           <div className={styles.center_content}>
             <ProfileTabs />
 
-            {tab === "overview" && <GeneralView />}
+            {tab === "overview" && <GeneralView bio={profile.bio} goal={profile.goal} genres={profile.genres} skills={profile.instruments} />}
 
             {tab === "activity" && (
               <div>
