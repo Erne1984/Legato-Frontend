@@ -8,10 +8,21 @@ import styles from "./DropdownMenu.module.css";
 
 import user from "../../../assets/images/user.png";
 import ThemeChanger from "../ThemeChanger/ThemeChanger";
+import { logout } from "@/services/authService";
+import { useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 
 export default function DropdownMenu() {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const queryClient = useQueryClient();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout(queryClient);
+    router.push("/login");
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -56,7 +67,7 @@ export default function DropdownMenu() {
           <p>Tema: </p>
           <ThemeChanger />
         </div>
-        <button className={styles.logout_button}>
+        <button className={styles.logout_button} onClick={handleLogout}>
           <Icon name="log_out" size={18} /> Sair
         </button>
       </div>

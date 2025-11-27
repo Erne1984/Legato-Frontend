@@ -17,7 +17,16 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    const status = error.response?.status;
+    const token =
+      typeof window !== "undefined" ? localStorage.getItem("token") : null;
+
+    if (!token && (status === 401 || status === 403)) {
+      return Promise.reject(error);
+    }
+
     console.error("API Error:", error.response?.data || error.message);
+
     return Promise.reject(error);
   }
 );

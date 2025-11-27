@@ -19,6 +19,8 @@ import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
 import GeneralView from "@/components/sections/users/GeneralView/GeneralView";
 import CreatePost from "../../feed/CreatePost/CreatePost";
 import ModalCreatePost from "../../feed/ModalCreatePost/ModalCreatePost";
+import { useMe } from "@/hooks/useUser";
+import Login from "@/app/(landing)/login/page";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
@@ -36,6 +38,13 @@ export default function UsersContent() {
     "https://i.pinimg.com/736x/d1/79/be/d179be883aae4362fe022465d3fee356.jpg";
   const userImg =
     "https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480";
+
+  const { data: user, isLoading } = useMe();
+
+  //if (isLoading) return <LoadingScreen />;
+
+  if (!user) return <Login />;
+
 
   return (
     <div className={styles.users_container_wrapper}>

@@ -5,6 +5,7 @@ import PrimaryButton from "@/components/ui/PrimaryButton/PrimaryButton";
 import GoogleButton from "@/components/ui/GoogleButton/GoogleButton";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useLogin, useRegister } from "@/hooks/useAuth";
 
 type AuthFormProps = {
   type: "login" | "signup";
@@ -13,11 +14,39 @@ type AuthFormProps = {
 export default function AuthForm({ type }: AuthFormProps) {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const [name, setName] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
+  const [displayName, setDisplayName] = useState<string>("");
+  const [confirmPassword, setConfirmPassword] = useState<string>("");
   const [acceptTerms, setAcceptTerms] = useState<boolean>(false);
 
   const router = useRouter();
   const isLogin = type === "login";
+
+  const loginMutation = useLogin();
+  const registerMutation = useRegister();
+
+  const handleLogin = () => {
+    loginMutation.mutate({
+      email,
+      password,
+    });
+  };
+
+  const handleRegister = () => {
+    if (!acceptTerms) return;
+    if (password !== confirmPassword) {
+      alert("As senhas não coincidem!");
+      return;
+    }
+
+    registerMutation.mutate({
+      email,
+      password,
+      role: "USER",
+      username,
+      displayName,
+    });
+  };
 
   const navigateToLogin = () => router.push("/login");
   const navigateToSignup = () => router.push("/signup");
@@ -29,12 +58,24 @@ export default function AuthForm({ type }: AuthFormProps) {
 
       {!isLogin && (
         <InputField
-          label="Nome"
-          placeholder="Digite seu nome"
-          name="name"
+          label="Username"
+          placeholder="Seu @username único"
+          name="username"
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+      )}
+
+      {!isLogin && (
+        <InputField
+          label="Display Name"
+          placeholder="Como você quer aparecer?"
+          name="displayName"
+          type="text"
+          value={displayName}
+          onChange={(e) => setDisplayName(e.target.value)}
           required
         />
       )}
@@ -60,7 +101,9 @@ export default function AuthForm({ type }: AuthFormProps) {
       />
 
       {isLogin ? (
-        <p className={styles.forgot_password} onClick={navigateToResetPassword} >Esqueceu a senha?</p>
+        <p className={styles.forgot_password} onClick={navigateToResetPassword}>
+          Esqueceu a senha?
+        </p>
       ) : (
         <>
           <InputField
@@ -68,6 +111,8 @@ export default function AuthForm({ type }: AuthFormProps) {
             placeholder="Confirme sua senha"
             name="confirmPassword"
             type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
 
@@ -90,6 +135,13 @@ export default function AuthForm({ type }: AuthFormProps) {
       <PrimaryButton
         content={isLogin ? "Entrar" : "Inscreve-se"}
         fullWidth={true}
+        onClick={isLogin ? handleLogin : handleRegister}
+        disabled={
+          loginMutation.isPending ||
+          registerMutation.isPending ||
+          (!isLogin && !acceptTerms) ||
+          (!isLogin && password !== confirmPassword)
+        }
       />
 
       {isLogin ? (
