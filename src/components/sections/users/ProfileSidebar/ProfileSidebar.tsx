@@ -4,17 +4,20 @@ import PrimaryButton from "@/components/ui/PrimaryButton/PrimaryButton";
 import ProfileOptionsMenu from "../ProfileOptionsMenu/ProfileOptionsMenu";
 import { useState } from "react";
 import SecondaryButton from "@/components/ui/SecondaryButton/SecondaryButton";
+import { Camera } from "lucide-react";
 
 type ProfileSidebarProps = {
-  userImg: string;
+  userImg?: string | null;
   username: string;
   displayName: string;
+  isOwner: boolean;
 };
 
 export default function ProfileSidebar({
   userImg,
   username,
   displayName,
+  isOwner,
 }: ProfileSidebarProps) {
   const [follow, setFollow] = useState<boolean>(true);
 
@@ -22,31 +25,47 @@ export default function ProfileSidebar({
     setFollow((prev) => !prev);
   };
 
+  const hasImage = Boolean(userImg);
+
   return (
     <aside className={styles.container}>
       <div className={styles.avatar}>
-        <Image
-          src={userImg}
-          alt={displayName}
-          width={85}
-          height={85}
-          className={styles.avatarImg}
-        />
+        {hasImage ? (
+          <Image
+            src={userImg!}
+            alt={displayName}
+            width={85}
+            height={85}
+            className={styles.avatarImg}
+          />
+        ) : (
+          <div className={styles.placeholderAvatar}>
+            <Camera size={28} strokeWidth={1.4} />
+          </div>
+        )}
       </div>
-      <div className={styles.icon_user_options}>
-        <ProfileOptionsMenu />
-      </div>
+
+      {isOwner && (
+        <div className={styles.icon_user_options}>
+          <ProfileOptionsMenu />
+        </div>
+      )}
 
       <h2 className={styles.displayName}>{displayName}</h2>
       <p className={styles.username}>@{username}</p>
-      {follow ? (
-        <PrimaryButton
-          content="Conectado"
-          size="medium"
-          onClick={handleFollow}
-        />
-      ) : (
-        <SecondaryButton content="Conectar" onClick={handleFollow} />
+
+      {!isOwner && (
+        <>
+          {follow ? (
+            <PrimaryButton
+              content="Conectado"
+              size="medium"
+              onClick={handleFollow}
+            />
+          ) : (
+            <SecondaryButton content="Conectar" onClick={handleFollow} />
+          )}
+        </>
       )}
     </aside>
   );

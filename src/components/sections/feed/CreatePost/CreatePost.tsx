@@ -6,7 +6,7 @@ import { useState } from "react";
 import ModalCreatePost from "../ModalCreatePost/ModalCreatePost";
 
 type CreatePostProps = {
-  imgUrl: string;
+  imgUrl?: string | null;
   username: string;
   onClick?: () => void;
 };
@@ -21,13 +21,19 @@ export default function CreatePost({
   return (
     <div className={styles.container_create_post_wrapper}>
       <div className={styles.create_post_box} onClick={onClick}>
-        <Image
-          src={imgUrl}
-          alt={username}
-          width={40}
-          height={40}
-          className={styles.profile_image}
-        />
+        {imgUrl ? (
+          <Image
+            src={imgUrl}
+            alt={username}
+            width={40}
+            height={40}
+            className={styles.profile_image}
+          />
+        ) : (
+          <div className={styles.placeholderAvatar}>
+            <Icon name="camera" size={20} />
+          </div>
+        )}
 
         <div className={styles.fake_input}>O que há de novo?</div>
 

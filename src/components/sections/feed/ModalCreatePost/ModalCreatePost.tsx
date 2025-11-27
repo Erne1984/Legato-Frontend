@@ -5,7 +5,7 @@ import styles from "./ModalCreatePost.module.css";
 import Icon from "@/components/ui/Icon/Icon";
 
 type ModalCreatePostProps = {
-  imgUrl: string;
+  imgUrl?: string | null;
   username: string;
   onClose: () => void;
 };
@@ -23,7 +23,6 @@ export default function ModalCreatePost({
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // Função de upload genérica
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -55,13 +54,19 @@ export default function ModalCreatePost({
         {/* Header */}
         <div className={styles.header}>
           <div className={styles.userInfo}>
-            <Image
-              src={imgUrl}
-              alt={username}
-              width={40}
-              height={40}
-              className={styles.avatar}
-            />
+            {imgUrl ? (
+              <Image
+                src={imgUrl}
+                alt={username}
+                width={40}
+                height={40}
+                className={styles.avatar}
+              />
+            ) : (
+              <div className={styles.placeholderAvatar}>
+                <Icon name="camera" size={20} />
+              </div>
+            )}
             <div className={styles.userText}>
               <span className={styles.displayName}>{username}</span>
               <span className={styles.username}>@{username.toLowerCase()}</span>

@@ -1,64 +1,74 @@
 "use client";
 
 import { useState } from "react";
+import { useParams, useSearchParams } from "next/navigation";
+
 import ProfileSidebar from "@/components/sections/users/ProfileSidebar/ProfileSidebar";
 import ProfileBanner from "@/components/sections/users/ProfileBanner/ProfileBanner";
 import ProfileTabs from "@/components/sections/users/ProfileTabs/ProfileTabs";
 import SuggestedProfiles from "@/components/ui/SuggestedProfiles/SuggestedProfiles";
 import StatsCardUser from "@/components/sections/users/StatsCardUser/StatsCardUser";
 import Post from "@/components/ui/Post/Post";
+
 import styles from "./UsersContent.module.css";
 import posts from "./data.json";
-import { useSearchParams } from "next/navigation";
+
 import ProfileAlbumBox from "../ProfileAlbumBox/ProfileAlbumBox";
 import TrackBox from "../../../ui/TrackBox/TrackBox";
 import { Track } from "@/types/Track";
 import MusicPlayer from "@/components/ui/MusicPlayer/MusicPlayer";
 import ColaborationCard from "../../../ui/ColaborationCard/ColaborationCard";
 import ShortVideoCard from "../ShortVideoCard/ShortVideoCard";
+
 import GeneralView from "@/components/sections/users/GeneralView/GeneralView";
 import CreatePost from "../../feed/CreatePost/CreatePost";
 import ModalCreatePost from "../../feed/ModalCreatePost/ModalCreatePost";
-import { useMe } from "@/hooks/useUser";
+
+import { useMe, useFindByUsername } from "@/hooks/useUser";
 import Login from "@/app/(landing)/login/page";
 
 export default function UsersContent() {
   const searchParams = useSearchParams();
+  const { username } = useParams();
+
   const tab = searchParams.get("tab") || "overview";
+
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [playerVisible, setPlayerVisible] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleSelectTrack = (track: Track) => {
-    setCurrentTrack(track);
-    setPlayerVisible(true);
-  };
+  const { data: meData } = useMe();
+  const me = meData?.data;
 
-  const linkBanner =
-    "https://i.pinimg.com/736x/d1/79/be/d179be883aae4362fe022465d3fee356.jpg";
-  const userImg =
-    "https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480";
+  const { data: profileData, isLoading: profileLoading } =
+    useFindByUsername(username as string);
 
-  const { data: user, isLoading } = useMe();
+  const profile = profileData?.data;
 
-  //if (isLoading) return <LoadingScreen />;
+  if (!me) return <Login />;
+  if (profileLoading) return <div>Carregando...</div>;
+  if (!profile) return <div>Usuário não encontrado.</div>;
 
-  if (!user) return <Login />;
-
+  const isOwner = me.username === profile.username;
 
   return (
     <div className={styles.users_container_wrapper}>
       <div className={styles.users_container}>
-        <ProfileBanner imgUrl={linkBanner} />
+        <ProfileBanner imgUrl={profile.profileBanner} />
 
         <div className={styles.main_content}>
           <div className={styles.left_content}>
             <ProfileSidebar
-              displayName="Marcelo"
-              username="Marcel123"
-              userImg={userImg}
+              displayName={profile.displayName}
+              username={profile.username}
+              userImg={profile.profilePicture}
+              isOwner={isOwner}
             />
-            <StatsCardUser connections={2} followers={2} posts={3} />
+            <StatsCardUser
+              connections={profile.connectionIds.length}
+              followers={profile.followerIds.length}
+              posts={profile.postsIds.length}
+            />
           </div>
 
           <div className={styles.center_content}>
@@ -68,11 +78,13 @@ export default function UsersContent() {
 
             {tab === "activity" && (
               <div>
-                <CreatePost
-                  imgUrl="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdkHhjzlsAqhkYuCH0Ly2ClT2jM_EZGqfqP179vw1jo5TCFdjZiL5Q3iYiUhj6L3XokuhpdaTY-mJY4ehQ08JR_LB4G_yjZYllBAnkEuX1"
-                  username="ErnePlayson"
-                  onClick={() => setIsModalOpen(true)}
-                />
+                {isOwner && (
+                  <CreatePost
+                    imgUrl={me.profilePicture}
+                    username={me.username}
+                    onClick={() => setIsModalOpen(true)}
+                  />
+                )}
 
                 {posts.map((post, index) => (
                   <Post
@@ -88,38 +100,41 @@ export default function UsersContent() {
                 ))}
               </div>
             )}
+
             {tab === "musics" && (
               <>
-                <TrackBox showSeeAll={true} onSelectTrack={handleSelectTrack} />
+                <TrackBox
+                  showSeeAll={true}
+                  onSelectTrack={(track) => {
+                    setCurrentTrack(track);
+                    setPlayerVisible(true);
+                  }}
+                />
                 <ProfileAlbumBox showSeeAll={true} />
               </>
             )}
 
-            {tab === "videos" && (
+            { /*tab === "videos" && (
               <div className={styles.videosGrid}>
-                {[
-                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-                ].map((videoUrl, idx) => (
+                {profile.videos?.map((videoUrl: string, idx: number) => (
                   <ShortVideoCard key={idx} videoUrl={videoUrl} />
                 ))}
               </div>
-            )}
 
-            {tab === "collaborations" && (
-              <>
-                <ColaborationCard
-                  imageUrl="https://gruvgear.com/cdn/shop/articles/Guthrie_Govan_1200x.png?v=1600277480"
-                  title="Looking for a producer to make 1 R&B track"
-                  author="erne"
-                  royalties="% of royalties, % of publishing"
-                  genres="R&B / Soul, House"
-                  remote={true}
-                  deadline="Needed within 25 days"
-                  timeAgo="2 days ago"
-                />
-              </>
-            )}
+            ) */}
+
+            {/* tab === "collaborations" && (
+              <ColaborationCard
+                imageUrl={profile.profilePicture}
+                title="Looking for a producer to make 1 R&B track"
+                author={profile.username}
+                royalties="% of royalties, % of publishing"
+                genres="R&B / Soul, House"
+                remote={true}
+                deadline="Needed within 25 days"
+                timeAgo="2 days ago"
+              />
+            ) */}
 
             <MusicPlayer
               currentTrack={currentTrack}
@@ -128,14 +143,14 @@ export default function UsersContent() {
             />
           </div>
 
-          <SuggestedProfiles userImg={linkBanner} />
+          <SuggestedProfiles />
         </div>
       </div>
 
       {isModalOpen && (
         <ModalCreatePost
-          imgUrl="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdkHhjzlsAqhkYuCH0Ly2ClT2jM_EZGqfqP179vw1jo5TCFdjZiL5Q3iYiUhj6L3XokuhpdaTY-mJY4ehQ08JR_LB4G_yjZYllBAnkEuX1"
-          username="ErnePlayson"
+          imgUrl={me.profilePicture}
+          username={me.username}
           onClose={() => setIsModalOpen(false)}
         />
       )}

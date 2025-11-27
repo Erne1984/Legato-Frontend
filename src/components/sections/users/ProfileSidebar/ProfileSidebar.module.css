@@ -49,3 +49,14 @@
     width: 100%;
   }
 }
+
+.placeholderAvatar {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+}

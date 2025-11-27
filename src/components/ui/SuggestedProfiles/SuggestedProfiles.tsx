@@ -1,13 +1,10 @@
+"use client";
 import Image from "next/image";
 import styles from "./SuggestedProfiles.module.css";
 
+//                <Image width={40} height={40} src={userImg} alt="User Photo" />
 
-type SuggestedProfilesProps = {
-    userImg: string
-}
-
-
-export default function SuggestedProfiles({userImg}: SuggestedProfilesProps) {
+export default function SuggestedProfiles() {
 
     return(
         <aside className={styles.suggested_profiles_container}>
@@ -15,7 +12,7 @@ export default function SuggestedProfiles({userImg}: SuggestedProfilesProps) {
 
             <div className={styles.user_suggested_row}>
 
-                <Image width={40} height={40} src={userImg} alt="User Photo" />
+
 
                 <div className={styles.user_info}>
 

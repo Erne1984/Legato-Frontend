@@ -5,12 +5,15 @@ const api = axios.create({
   timeout: 10000,
 });
 
-api.interceptors.request.use((config) => {
-  const token =
-    typeof window !== "undefined" ? localStorage.getItem("token") : null;
-  if (token) {
+const publicRoutes = ["/auth/login", "/auth/register"];
+
+api.interceptors.request.use(config => {
+  const token = localStorage.getItem("token");
+
+  if (token && !publicRoutes.includes(config.url!)) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+
   return config;
 });
 
@@ -18,15 +21,12 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     const status = error.response?.status;
-    const token =
-      typeof window !== "undefined" ? localStorage.getItem("token") : null;
 
-    if (!token && (status === 401 || status === 403)) {
+    if (status === 401 || status === 403) {
       return Promise.reject(error);
     }
 
     console.error("API Error:", error.response?.data || error.message);
-
     return Promise.reject(error);
   }
 );

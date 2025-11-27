@@ -9,15 +9,16 @@ export default function LandingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data: user, isLoading } = useMe();
+  const { data, isLoading } = useMe();
   const router = useRouter();
 
   if (isLoading) return null;
 
-  if (user) {
-    router.push(`/users/${user.user.username}`);
+  if (data) {
+    router.push(`/users/${data.data.username}`);
     return null;
   }
+
   return (
     <>
       <HeaderLandingPage />
