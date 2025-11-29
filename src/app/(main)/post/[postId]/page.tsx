@@ -61,9 +61,10 @@ export default function PostPage() {
           <CommentSection comments={comments} />
         </div>
 
-        <SuggestedProfiles
+{/*         <SuggestedProfiles
           userImg="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTdkHhjzlsAqhkYuCH0Ly2ClT2jM_EZGqfqP179vw1jo5TCFdjZiL5Q3iYiUhj6L3XokuhpdaTY-mJY4ehQ08JR_LB4G_yjZYllBAnkEuX1"
-        />
+        />*/}
+
       </div>
 
       <Footer />
