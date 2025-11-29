@@ -8,18 +8,25 @@ export async function fetchCurrentUser(): Promise<ApiResponse<User>> {
 
 export async function fetchUserByUsername(username: string): Promise<ApiResponse<User>> {
     const res = await api.get(`/users/${username}`)
-
     return res.data;
 }
 
 export async function fetchUserConnections(): Promise<ApiResponse<User>> {
     const res = await api.get(`/users/connections`)
-
     return res.data;
 }
 
 export async function getUsers(): Promise<ApiResponse<User[]>> {
     const res = await api.get("/users");
+    return res.data;
+}
 
+export async function getUserConnections(): Promise<ApiResponse<User[]>> {
+    const res = await api.get("/users/connections");
+    return res.data;
+}
+
+export async function getUserFollowers(id: number): Promise<ApiResponse<User[]>> {
+    const res = await api.get(`/users/followers/${id}`);
     return res.data;
 }

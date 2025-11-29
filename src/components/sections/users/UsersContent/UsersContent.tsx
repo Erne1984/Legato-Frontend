@@ -64,10 +64,7 @@ export default function UsersContent() {
               userImg={profile.profilePicture}
               isOwner={isOwner}
             />
-            <StatsCardUser
-              connections={profile.connectionIds.length}
-              followers={profile.followerIds.length}
-              posts={profile.postsIds.length}
+            <StatsCardUser userUsername={profile.username} userId={profile.id} posts={profile.postsIds.length}
             />
           </div>
 

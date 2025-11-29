@@ -4,6 +4,7 @@ import Link from "next/link";
 import styles from "./SuggestedProfiles.module.css";
 import { useGetUsers } from "@/hooks/useUser";
 import { User as UserIcon } from "lucide-react";
+import { User } from "@/types/response";
 
 type SuggestedProfilesProps = {
   currentUserId: number;
@@ -37,7 +38,7 @@ export default function SuggestedProfiles({
   
   const filteredUsers = users
     .filter(
-      (user: any) =>
+      (user: User) =>
         user.id !== currentUserId && user.id !== currentProfileId
     )
     .slice(0, 5);
@@ -48,7 +49,7 @@ export default function SuggestedProfiles({
 
       {filteredUsers.length === 0 && <p>Nenhum perfil sugerido.</p>}
 
-      {filteredUsers.map((user: any) => (
+      {filteredUsers.map((user: User) => (
         <Link
           key={user.id}
           href={`/users/${user.username}`}

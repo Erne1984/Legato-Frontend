@@ -59,7 +59,7 @@
 }
 
 .user_item:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .user_item:hover .name {
@@ -126,6 +126,7 @@
     opacity: 0;
     transform: translateY(-8px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -136,4 +137,15 @@
   .modal_content {
     width: 90%;
   }
+}
+
+
+.placeholder {
+  width: 48;
+  height: 48;
+  border-radius: 50%;
+  background: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

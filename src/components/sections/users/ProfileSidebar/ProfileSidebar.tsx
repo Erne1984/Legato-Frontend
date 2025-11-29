@@ -45,7 +45,7 @@ export default function ProfileSidebar({
         )}
       </div>
 
-      {isOwner && (
+      {!isOwner && (
         <div className={styles.icon_user_options}>
           <ProfileOptionsMenu />
         </div>

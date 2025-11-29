@@ -1,4 +1,4 @@
-import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUsers } from "@/services/useService";
+import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUserConnections, getUserFollowers, getUsers } from "@/services/useService";
 import { useQuery } from "@tanstack/react-query";
 
 export function useMe() {
@@ -28,5 +28,19 @@ export function useGetUsers() {
     return useQuery({
         queryKey: ["users"],
         queryFn: () => getUsers()
+    })
+}
+
+export function useGetUsersConnections(id: number) {
+    return useQuery({
+        queryKey: ["usersConnections", id],
+        queryFn: () => getUserConnections()
+    })
+}
+
+export function useGetUsersFollowers(id: number) {
+    return useQuery({
+        queryKey: ["usersFollowers", id],
+        queryFn: () => getUserFollowers(id)
     })
 }

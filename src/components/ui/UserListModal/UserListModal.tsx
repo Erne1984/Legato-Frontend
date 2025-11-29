@@ -2,42 +2,32 @@
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { User as UserIcon } from "lucide-react";
 import styles from "./UserListModal.module.css";
-
-type User = {
-  id: number;
-  name: string;
-  username: string;
-  followers: number;
-  following: number;
-  avatar: string;
-};
+import { User } from "@/types/response";
 
 type UserListModalProps = {
+  username: string
   show: boolean;
   onClose: () => void;
   type: "connections" | "followers" | "posts";
   users?: User[];
 };
 
-export default function UserListModal({
-  show,
-  onClose,
-  type,
-  users = [],
-}: UserListModalProps) {
+export default function UserListModal({ username, show, onClose, type, users = [] }: UserListModalProps) {
   const router = useRouter();
 
   if (!show) return null;
 
-  const titleMap = {
-    connections: "Conexões",
-    followers: "Seguidores",
-    posts: "Posts",
-  };
+  const normalizedUsers = users.map((u) => ({
+    id: u.id,
+    name: u.displayName,
+    username: "@" + u.username,
+    avatar: u.profilePicture,
+  }));
 
   const handlePostRedirect = () => {
-    router.push("/users/1?tab=activity");
+    router.push(`/users/${username}?tab=activity`); 
     onClose();
   };
 
@@ -45,40 +35,49 @@ export default function UserListModal({
     <div className={styles.modal_overlay}>
       <div className={styles.modal_content}>
         <div className={styles.header}>
-          <h2>{titleMap[type]}</h2>
-          <button className={styles.close_btn} onClick={onClose}>
-            ✕
-          </button>
+          <h2>{type}</h2>
+          <button className={styles.close_btn} onClick={onClose}>✕</button>
         </div>
 
         {type === "posts" ? (
           <div className={styles.empty_state}>
             <p>Visualizar todos os posts?</p>
-            <button
-              className={styles.primary_button}
-              onClick={handlePostRedirect}
-            >
+            <button className={styles.primary_button} onClick={handlePostRedirect}>
               Ir para atividade
             </button>
           </div>
-        ) : users.length > 0 ? (
+        ) : normalizedUsers.length ? (
           <ul className={styles.user_list}>
-            {users.map((user) => (
+            {normalizedUsers.map((user) => (
               <li key={user.id} className={styles.user_item}>
                 <div className={styles.user_left}>
-                  <Image
-                    src={user.avatar}
-                    alt={`${user.name} avatar`}
-                    width={48}
-                    height={48}
-                    className={styles.avatar}
-                  />
+                  
+                  {user.avatar ? (
+                    <Image
+                      src={user.avatar}
+                      alt="avatar"
+                      width={48}
+                      height={48}
+                      className={styles.avatar}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = "";
+                      }}
+                    />
+                  ) : (
+                    <div
+                    className={styles.placeholder}
+                      style={{
+
+                      }}
+                    >
+                      <UserIcon size={24} color="white" />
+                    </div>
+                  )}
+
                   <div className={styles.user_info}>
                     <p className={styles.name}>{user.name}</p>
                     <p className={styles.username}>{user.username}</p>
-                    <p className={styles.follow_info}>
-                      {user.followers} seguidores • {user.following} seguindo
-                    </p>
                   </div>
                 </div>
               </li>
