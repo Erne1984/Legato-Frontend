@@ -11,6 +11,7 @@ import ThemeChanger from "../ThemeChanger/ThemeChanger";
 import { logout } from "@/services/authService";
 import { useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { useMe } from "@/hooks/useUser";
 
 export default function DropdownMenu() {
   const [open, setOpen] = useState(false);
@@ -18,6 +19,9 @@ export default function DropdownMenu() {
 
   const queryClient = useQueryClient();
   const router = useRouter();
+
+  const { data: meData } = useMe();
+  const me = meData?.data;
 
   const handleLogout = () => {
     logout(queryClient);
@@ -54,7 +58,7 @@ export default function DropdownMenu() {
       </button>
 
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>
-        <Link href="/users/1" onClick={() => setOpen(false)}>
+        <Link href={`/users/${me?.username}`} onClick={() => setOpen(false)}>
           <Icon name="user" size={18} /> Perfil
         </Link>
         <Link href="/settings" onClick={() => setOpen(false)}>

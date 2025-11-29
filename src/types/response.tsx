@@ -47,3 +47,28 @@ export interface AuthResponse {
   token: string;
   user: User;
 }
+
+// NOTIFICAÇAO
+
+export type NotificationType =
+  | "FOLLOW"
+  | "LIKE"
+  | "CONNECTION_REQUEST"
+  | "CONNECTION_ACCEPTED";
+
+export type NotificationTargetType =
+  | "USER"
+  | "POST"
+  | "CONNECTION_REQUEST";
+
+export interface Notification {
+  id: number;
+  senderName: string | null;
+  message: string;
+  read: boolean;
+  timeAgo: string;
+
+  type: NotificationType;
+  targetType: NotificationTargetType;
+  targetId: number | null;
+}

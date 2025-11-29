@@ -30,3 +30,8 @@ export async function getUserFollowers(id: number): Promise<ApiResponse<User[]>>
     const res = await api.get(`/users/followers/${id}`);
     return res.data;
 }
+
+export async function postSendConnectionUser(id: number): Promise<ApiResponse<User>> { 
+    const res = await api.post(`/users/followers/${id}`);
+    return res.data;
+}

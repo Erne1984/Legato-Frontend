@@ -4,24 +4,47 @@ import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Icon from "@/components/ui/Icon/Icon";
 import styles from "./DropdownMenuNotification.module.css";
+import { useGetNotifications, useMarkAllAsRead } from "@/hooks/useNotification";
+import { Notification } from "@/types/response";
 
-type Notification = {
-  id: number;
-  text: string;
-  link: string;
-  read: boolean;
-  time: string;
-};
+function mapNotificationToUI(n: Notification) {
+  let link = "/notifications";
+
+  switch (n.targetType) {
+    case "USER":
+      link = `/users/${n.targetId}`;
+      break;
+    case "POST":
+      link = `/posts/${n.targetId}`;
+      break;
+    case "CONNECTION_REQUEST":
+      link = `/connections/requests/${n.targetId}`;
+      break;
+  }
+
+  return {
+    id: n.id,
+    text: n.message,
+    link,
+    read: n.read,
+    time: n.timeAgo,
+  };
+}
 
 export default function DropdownMenuNotification() {
   const [open, setOpen] = useState(false);
-  const [notifications, setNotifications] = useState<Notification[]>([
-    { id: 1, text: "Novo seguidor: @joaomusico", link: "/users/3", read: false, time: "2 min" },
-    { id: 2, text: "Comentaram no seu post", link: "/post/14", read: false, time: "15 min" },
-    { id: 3, text: "Nova colaboração enviada", link: "/colaborations", read: true, time: "1h" },
-  ]);
-
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  const { data: apiNotifications } = useGetNotifications();
+  const markAllMutation = useMarkAllAsRead();
+
+  const notifications = apiNotifications?.map(mapNotificationToUI) ?? [];
+
+  const unreadCount = notifications.filter((n) => !n.read).length;
+
+  const handleMarkAllAsRead = () => {
+    markAllMutation.mutate();
+  };
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -32,12 +55,6 @@ export default function DropdownMenuNotification() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-  const unreadCount = notifications.filter((n) => !n.read).length;
-
-  const markAllAsRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
-  };
 
   return (
     <div className={styles.dropdown_wrapper} ref={dropdownRef}>
@@ -54,7 +71,7 @@ export default function DropdownMenuNotification() {
         <div className={styles.header}>
           <p>Notificações</p>
           {unreadCount > 0 && (
-            <button onClick={markAllAsRead} className={styles.mark_all}>
+            <button onClick={handleMarkAllAsRead} className={styles.mark_all}>
               Marcar todas como lidas
             </button>
           )}
@@ -69,13 +86,6 @@ export default function DropdownMenuNotification() {
                 href={n.link}
                 key={n.id}
                 className={`${styles.notification_item} ${!n.read ? styles.unread : ""}`}
-                onClick={() =>
-                  setNotifications((prev) =>
-                    prev.map((item) =>
-                      item.id === n.id ? { ...item, read: true } : item
-                    )
-                  )
-                }
               >
                 <div>
                   <p>{n.text}</p>

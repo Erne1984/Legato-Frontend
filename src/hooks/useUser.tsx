@@ -1,4 +1,4 @@
-import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUserConnections, getUserFollowers, getUsers } from "@/services/useService";
+import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUserConnections, getUserFollowers, getUsers } from "@/services/userService";
 import { useQuery } from "@tanstack/react-query";
 
 export function useMe() {

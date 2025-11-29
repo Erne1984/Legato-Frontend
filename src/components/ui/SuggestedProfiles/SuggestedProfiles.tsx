@@ -8,7 +8,7 @@ import { User } from "@/types/response";
 
 type SuggestedProfilesProps = {
   currentUserId: number;
-  currentProfileId: number;
+  currentProfileId?: number;
 };
 
 export default function SuggestedProfiles({

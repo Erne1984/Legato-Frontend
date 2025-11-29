@@ -19,11 +19,15 @@ import {
   Royalties,
   Deadline,
 } from "@/types/ColaborationFilters";
+import { useMe } from "@/hooks/useUser";
 
 export default function ColaborationsPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFiltersModalOpen, setIsFiltersModalOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState | null>(null);
+
+  const { data: meData } = useMe();
+  const me = meData?.data;
 
   const [colaborations, setColaborations] = useState<Colaboration[]>([
     {
@@ -123,7 +127,8 @@ export default function ColaborationsPage() {
         </div>
 
         <div className={styles.right_sidebar}>
-          <SuggestedProfiles />
+          {me && <SuggestedProfiles currentUserId={me?.id} currentProfileId={undefined} />}
+
         </div>
       </div>
 
