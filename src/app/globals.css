@@ -93,3 +93,6 @@ small {
   color: var(--secondary-text-color);
 }
 
+a {
+  text-decoration: none;
+}

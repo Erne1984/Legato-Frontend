@@ -143,7 +143,7 @@ export default function UsersContent() {
             />
           </div>
 
-          <SuggestedProfiles />
+          <SuggestedProfiles currentUserId={me.id} currentProfileId={profile.id} />
         </div>
       </div>
 

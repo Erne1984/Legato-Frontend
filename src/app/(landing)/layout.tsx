@@ -3,6 +3,7 @@ import HeaderLandingPage from "@/components/sections/landingPage/HeaderLandingPa
 import HeaderMobileLandingPage from "@/components/ui/HeaderMobile/HeaderMobileLandingPage";
 import { useMe } from "@/hooks/useUser";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function LandingLayout({
   children,
@@ -12,12 +13,16 @@ export default function LandingLayout({
   const { data, isLoading } = useMe();
   const router = useRouter();
 
-  if (isLoading) return null;
+  const user = data?.data;
 
-  if (data) {
-    router.push(`/users/${data.data.username}`);
-    return null;
-  }
+  useEffect(() => {
+    if (!isLoading && user) {
+      router.replace(`/users/${user.username}`);
+    }
+  }, [isLoading, data, router]);
+
+  if (isLoading)
+    return <div>Carregando...</div>;
 
   return (
     <>

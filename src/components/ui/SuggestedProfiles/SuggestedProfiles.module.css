@@ -16,7 +16,7 @@
 .user_suggested_row {
   display: flex;
   align-items: center;
-  margin-bottom: 14px;
+  margin: 1rem 0;
 }
 
 .user_suggested_row:last-child {
@@ -37,6 +37,10 @@
   line-height: 1.2;
 }
 
+.user_info:hover {
+  text-decoration: underline;
+}
+
 .user_info p:first-child {
   font-weight: 500;
   font-size: 0.95rem;
@@ -45,4 +49,14 @@
 .user_info p:last-child {
   color: gray;
   font-size: 0.85rem;
+}
+
+.placeholder {
+  width: 42;
+  height: 42;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10;
 }
