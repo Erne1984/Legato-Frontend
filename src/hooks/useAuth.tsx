@@ -1,17 +1,21 @@
 import { useMutation } from "@tanstack/react-query";
-import { loginUser, registerUser} from "@/services/authService";
+import { loginUser, registerUser } from "@/services/authService";
 import { useRouter } from "next/navigation";
 import { LoginDTO, RegisterUserDTO } from "@/types/DTOS";
 
 export function useRegister() {
   const router = useRouter();
-    return useMutation({
-        mutationFn: (data: RegisterUserDTO) => registerUser(data),
-        onSuccess: (data) => {
-            localStorage.setItem("token", data.token);
-            router.push(`/users/${data.user.username}`);
-        },
-    });
+  return useMutation({
+    mutationFn: (data: RegisterUserDTO) => registerUser(data),
+    onSuccess: (data) => {
+      localStorage.setItem("token", data.token);
+      router.push(`/users/${data.user.username}`);
+    },
+
+    onError: (error) => {
+      console.error("Email já está sendo usado:", error);
+    }
+  });
 }
 
 export function useLogin() {
@@ -22,5 +26,9 @@ export function useLogin() {
       localStorage.setItem("token", data.token);
       router.push(`/users/${data.user.username}`);
     },
+
+    onError: (error) => {
+      console.error("Erro no login:", error);
+    }
   });
 }

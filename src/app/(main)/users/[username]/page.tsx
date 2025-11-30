@@ -9,11 +9,15 @@ export default function UsersPage() {
 
   useEffect(() => {
     console.log(username);
-  }, []);
+    // Simula carregamento inicial do componente
+  }, [username]);
 
   return (
-    <Suspense fallback={<div>Carregando...</div>}>
-      <UsersContent />
-    </Suspense>
+    <>
+      <Suspense fallback={null}>
+        <UsersContent />
+      </Suspense>
+    </>
   );
 }
+

@@ -1,6 +1,7 @@
 "use client";
 import HeaderMobile from "@/components/ui/HeaderMobile/HeaderMobile";
 import MainHeader from "@/components/ui/MainHeader/MainHeader";
+import WarningModal from "@/components/ui/WarningModal/WarningModal";
 import { useMe } from "@/hooks/useUser";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -14,9 +15,6 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
       router.replace("/login");
     }
   }, [isLoading, user, router]);
-
-  if (isLoading)
-    return <div>Carregando...</div>;
 
   if (!user) return null;
 

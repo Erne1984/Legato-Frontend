@@ -1,9 +1,10 @@
 "use client";
 import HeaderLandingPage from "@/components/sections/landingPage/HeaderLandingPage/HeaderLandingPage";
 import HeaderMobileLandingPage from "@/components/ui/HeaderMobile/HeaderMobileLandingPage";
+import WarningModal from "@/components/ui/WarningModal/WarningModal";
 import { useMe } from "@/hooks/useUser";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function LandingLayout({
   children,
@@ -11,6 +12,7 @@ export default function LandingLayout({
   children: React.ReactNode;
 }) {
   const { data, isLoading } = useMe();
+  
   const router = useRouter();
 
   const user = data?.data;
@@ -21,8 +23,6 @@ export default function LandingLayout({
     }
   }, [isLoading, data, router]);
 
-  if (isLoading)
-    return <div>Carregando...</div>;
 
   return (
     <>
