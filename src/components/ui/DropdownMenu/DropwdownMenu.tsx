@@ -6,7 +6,6 @@ import Image from "next/image";
 import Icon from "@/components/ui/Icon/Icon";
 import styles from "./DropdownMenu.module.css";
 
-import user from "../../../assets/images/user.png";
 import ThemeChanger from "../ThemeChanger/ThemeChanger";
 import { logout } from "@/services/authService";
 import { useQueryClient } from "@tanstack/react-query";
@@ -48,13 +47,19 @@ export default function DropdownMenu() {
         className={styles.avatar_button}
         aria-label="Abrir menu de perfil"
       >
-        <Image
-          src={user}
-          alt="User avatar"
-          width={40}
-          height={40}
-          className={styles.avatar}
-        />
+        {me?.profilePicture ? (
+          <Image
+            src={me.profilePicture}
+            alt="User avatar"
+            width={40}
+            height={40}
+            className={styles.avatar}
+          />
+        ) : (
+          <div className={styles.placeholder_avatar}>
+            <Icon name="user" size={20} />
+          </div>
+        )}
       </button>
 
       <div className={`${styles.menu} ${open ? styles.open : ""}`}>

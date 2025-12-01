@@ -44,3 +44,17 @@ export async function putUpdateUser(data: Partial<UpdateUserDTO>): Promise<ApiRe
   const res = await api.put(`/users`, data);
   return res.data;
 }
+
+// userService.ts
+
+export async function putUploadUserImage(type: string, file: File): Promise<ApiResponse<User>> {
+    const formData = new FormData();
+    formData.append("type", type);
+    formData.append("file", file);
+
+    const res = await api.put(`/users/upload-image`, formData, {
+        headers: { "Content-Type": "multipart/form-data" },
+    });
+
+    return res.data;
+}
