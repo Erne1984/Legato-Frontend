@@ -1,5 +1,18 @@
-.container_settings_wrapper {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 20px;
+.container_settings_content {
+  display: flex;
+  gap: 1rem;
+}
+
+.container_settings_center {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .container_settings_content {
+    flex-direction: column;
+  }
 }

@@ -45,7 +45,6 @@ export async function putUpdateUser(data: Partial<UpdateUserDTO>): Promise<ApiRe
   return res.data;
 }
 
-// userService.ts
 
 export async function putUploadUserImage(type: string, file: File): Promise<ApiResponse<User>> {
     const formData = new FormData();

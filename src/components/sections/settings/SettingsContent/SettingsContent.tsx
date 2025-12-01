@@ -12,6 +12,8 @@ import { Instrument } from "@/types/skills";
 import { Genre } from "@/types/genres";
 import { User } from "@/types/response";
 import { useRouter } from "next/navigation";
+import SidebarSettings from "../SidebarSettings/SidebarSettings";
+import MenuMobileSettings from "../MenuMobileSettings/MenuMobileSettings";
 
 interface Props {
     me: User;
@@ -72,35 +74,43 @@ export default function SettingsContent({ me }: Props) {
     };
 
     return (
-        <div className={styles.container_settings_wrapper}>
-            <ProfileBannerUploader
-                bannerPhoto={me.profileBanner}
-                profilePhoto={me.profilePicture}
-            />
 
-            <BasicInfoForm
-                displayName={formData.displayName}
-                username={formData.username}
-                bio={formData.bio}
-                onChange={handleBasicInfoChange}
-            />
+        <div className={styles.container_settings_content}>
+            <MenuMobileSettings tab="Geral" />
+            <SidebarSettings tab="Geral" />
+            <div className={styles.container_settings_center}>
+                <ProfileBannerUploader
+                    bannerPhoto={me.profileBanner}
+                    profilePhoto={me.profilePicture}
+                />
 
-            <MusicInterestsForm
-                initialInstruments={formData.instruments}
-                initialGenres={formData.genres}
-                onChange={handleMusicInterestsChange}
-            />
+                <BasicInfoForm
+                    displayName={formData.displayName}
+                    username={formData.username}
+                    bio={formData.bio}
+                    onChange={handleBasicInfoChange}
+                />
 
-            <LinksSection
-                instagramLink={formData.links.instagram}
-                spotifyLink={formData.links.spotify}
-                youtubeLink={formData.links.youtube}
-                soundcloudLink={formData.links.soundcloud}
-                websiteLink={formData.links.website}
-                onChange={handleLinksChange}
-            />
+                <MusicInterestsForm
+                    initialInstruments={formData.instruments}
+                    initialGenres={formData.genres}
+                    onChange={handleMusicInterestsChange}
+                />
 
-            <ActionButtons onSave={handleSave} disabled={isPending} />
+                <LinksSection
+                    instagramLink={formData.links.instagram}
+                    spotifyLink={formData.links.spotify}
+                    youtubeLink={formData.links.youtube}
+                    soundcloudLink={formData.links.soundcloud}
+                    websiteLink={formData.links.website}
+                    onChange={handleLinksChange}
+                />
+
+                <ActionButtons onSave={handleSave} disabled={isPending} />
+            </div>
+
+
         </div>
+
     );
 }

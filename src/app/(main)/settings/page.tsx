@@ -3,6 +3,7 @@
 import { useMe } from "@/hooks/useUser";
 import SettingsContent from "@/components/sections/settings/SettingsContent/SettingsContent";
 import { useEffect } from "react";
+import styles from "./settings.module.css"
 
 export default function SettingsPage() {
   const { data: meData, isLoading, error } = useMe();
@@ -30,7 +31,14 @@ export default function SettingsPage() {
     return <p>Não foi possível identificar seu usuário.</p>;
   }
 
-  return <SettingsContent me={me} />;
+  return (
+    <div className={styles.container_settings_wrapper}>
+ 
+      <SettingsContent me={me} />;
+
+    </div>
+
+  )
 
 
 }
