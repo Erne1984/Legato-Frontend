@@ -1,5 +1,7 @@
 import api from "@/libs/axios";
-import { ApiResponse, User } from "@/types/response";
+import { ApiResponse, UpdateUserDTO, User } from "@/types/response";
+
+// GET
 
 export async function fetchCurrentUser(): Promise<ApiResponse<User>> {
     const res = await api.get("/users/me");
@@ -34,4 +36,11 @@ export async function getUserFollowers(id: number): Promise<ApiResponse<User[]>>
 export async function postSendConnectionUser(id: number): Promise<ApiResponse<User>> { 
     const res = await api.post(`/users/followers/${id}`);
     return res.data;
+}
+
+// PUT
+
+export async function putUpdateUser(data: Partial<UpdateUserDTO>): Promise<ApiResponse<User>> {
+  const res = await api.put(`/users`, data);
+  return res.data;
 }

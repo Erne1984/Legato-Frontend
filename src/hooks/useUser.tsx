@@ -1,11 +1,12 @@
-import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUserConnections, getUserFollowers, getUsers } from "@/services/userService";
-import { useQuery } from "@tanstack/react-query";
+import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUserConnections, getUserFollowers, getUsers, putUpdateUser } from "@/services/userService";
+import { UpdateUserDTO, User } from "@/types/response";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export function useMe() {
     return useQuery({
         queryKey: ["me"],
         queryFn: fetchCurrentUser,
-        retry: false,
+        retry: true,
     });
 }
 
@@ -19,8 +20,8 @@ export function useFindByUsername(username: string) {
 
 export function useFetchUserConnections(userId: number) {
     return useQuery({
-         queryKey: ['userConnections', userId],
-         queryFn: () => fetchUserConnections()
+        queryKey: ['userConnections', userId],
+        queryFn: () => fetchUserConnections()
     })
 }
 
@@ -43,4 +44,22 @@ export function useGetUsersFollowers(id: number) {
         queryKey: ["usersFollowers", id],
         queryFn: () => getUserFollowers(id)
     })
+}
+
+export function useUpdateUser() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: ({ data }: { data: Partial<UpdateUserDTO> }) =>
+            putUpdateUser(data),
+
+        onSuccess: (res) => {
+            queryClient.setQueryData(["me"], (oldMe: User) => ({
+                ...oldMe,
+                data: res.data.data
+            }));
+
+            queryClient.invalidateQueries({ queryKey: ["me"] });
+        },
+    });
 }

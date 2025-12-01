@@ -25,6 +25,7 @@ export interface Location {
 }
 
 export interface User {
+  data: any;
   id: number;
   email: string;
   username: string;
@@ -82,4 +83,29 @@ export interface Notification {
   type: NotificationType;
   targetType: NotificationTargetType;
   targetId: number | null;
+}
+
+export interface UpdateUserDTO {
+  email?: string;
+  username?: string;
+  displayName?: string;
+  profilePicture?: string;
+  profileBanner?: string;
+  photosCard?: string[];
+  sex?: string | null;
+  bio?: string;
+  goal?: string | null;
+  instruments?: string[];
+  genres?: string[];
+  location?: {
+    city?: string;
+    state?: string;
+    country?: string;
+  } | null;
+  links?: {
+    instagram?: string;
+    spotify?: string;
+    youtube?: string;
+    website?: string;
+  } | null;
 }

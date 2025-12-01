@@ -5,24 +5,40 @@ import { ChangeEvent, useState } from "react";
 type BasicInfoFormsProps = {
   username: string,
   displayName: string,
-  bio?: string
-}
+  bio?: string,
+  onChange: (data: { username: string; displayName: string; bio: string }) => void
+};
 
 export default function BasicInfoForm(props: BasicInfoFormsProps) {
   const [displayName, setDisplayName] = useState<string>(props.displayName)
   const [username, setUsername] = useState<string>(props.username)
   const [bio, setBio] = useState<string>(props.bio ? props.bio : "");
 
+  const updateParent = (values: any) => {
+    props.onChange({
+      username,
+      displayName,
+      bio,
+      ...values,
+    });
+  };
+
   const handleDisplayNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setDisplayName(e.target.value);
+    const val = e.target.value;
+    setDisplayName(val);
+    updateParent({ displayName: val });
   };
 
   const handleUsernameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
+    const val = e.target.value;
+    setUsername(val);
+    updateParent({ username: val });
   };
 
   const handleBioChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setBio(e.target.value);
+    const val = e.target.value;
+    setBio(val);
+    updateParent({ bio: val });
   };
 
 

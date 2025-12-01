@@ -4,15 +4,23 @@ import { useState } from "react";
 import InputField from "@/components/ui/InputField/InputField";
 import styles from "./LinksSection.module.css";
 
-type LinksSection = {
-  instagramLink?: string,
-  spotifyLink?: string,
-  youtubeLink?: string,
-  soundcloudLink?: string,
-  websiteLink?: string
-}
+type LinksSectionProps = {
+  instagramLink?: string;
+  spotifyLink?: string;
+  youtubeLink?: string;
+  soundcloudLink?: string;
+  websiteLink?: string;
+  onChange: (links: {
+    instagram: string;
+    spotify: string;
+    youtube: string;
+    soundcloud: string;
+    website: string;
+  }) => void;
+};
 
-export default function LinksSection(props: LinksSection) {
+
+export default function LinksSection(props: LinksSectionProps) {
   const getValue = (value?: string) => {
     return value || "";
   };
@@ -33,6 +41,14 @@ export default function LinksSection(props: LinksSection) {
     const updated = [...links];
     updated[index].value = newValue;
     setLinks(updated);
+
+    props.onChange({
+      instagram: updated[0].value,
+      spotify: updated[1].value,
+      youtube: updated[2].value,
+      soundcloud: updated[3].value,
+      website: updated[4].value,
+    });
   };
 
   return (

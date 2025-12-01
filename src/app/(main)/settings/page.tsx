@@ -1,37 +1,38 @@
 "use client";
-import ProfileBannerUploader from "@/components/sections/settings/ProfileBannerUploader/ProfileBannerUploader";
-import styles from "./settings.module.css";
-import BasicInfoForm from "@/components/sections/settings/BasicInfoForm/BasicInfoForm";
-import MusicInterestsForm from "@/components/sections/settings/MusicInterestsForm/MusicInterestsForm";
-import LinksSection from "@/components/sections/settings/LinksSection/LinksSection";
-import ActionButtons from "@/components/sections/settings/ActionButtons/ActionButtons";
+
 import { useMe } from "@/hooks/useUser";
-import Login from "@/app/(landing)/login/page";
+import SettingsContent from "@/components/sections/settings/SettingsContent/SettingsContent";
+import { useEffect } from "react";
 
 export default function SettingsPage() {
-  const { data: meData } = useMe();
+  const { data: meData, isLoading, error } = useMe();
+
+  useEffect(() => {
+    console.log(meData)
+  }, [meData])
+
+  if (isLoading) return <p>Carregando...</p>;
+
+  if (error) {
+    const status = error.message
+
+    return (
+      <div style={{ padding: 24 }}>
+        <h2>Você não está autenticado</h2>
+        <p>Faça login para acessar as configurações.</p>
+        <p> {status}</p>
+      </div>
+    );
+  }
+
   const me = meData?.data;
+  if (!me) {
+    return <p>Não foi possível identificar seu usuário.</p>;
+  }
 
-  if (!me) return <Login />;
-  const links = me.links || {};
+  return <SettingsContent me={me} />;
 
-  return (
-    <div className={styles.container_settings_wrapper}>
 
-      <ProfileBannerUploader bannerPhoto={me.profileBanner} profilePhoto={me.profilePicture} />
-      <BasicInfoForm displayName={me.displayName} username={me.username} bio={me.bio} />
-      <MusicInterestsForm
-        initialInstruments={me.instruments}
-        initialGenres={me.genres}
-      />
-      <LinksSection
-        instagramLink={links.instagram}
-        spotifyLink={links.spotify}
-        youtubeLink={links.youtube}
-        soundcloudLink={links.soundcloud}
-        websiteLink={links.website}
-      />
-      <ActionButtons />
-    </div>
-  );
 }
+
+

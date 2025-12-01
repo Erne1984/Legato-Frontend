@@ -9,13 +9,16 @@ import ModalMusic from "./modalMusic";
 interface Props {
   initialInstruments: Instrument[];
   initialGenres: Genre[];
+  onChange: (data: { instruments: Instrument[], genres: Genre[] }) => void;
 }
+
 
 type ModalType = "instrument" | "genre";
 
 export default function MusicInterestsForm({
   initialInstruments,
   initialGenres,
+  onChange
 }: Props) {
   const [instruments, setInstruments] = useState<Instrument[]>(initialInstruments);
   const [genres, setGenres] = useState<Genre[]>(initialGenres);
@@ -34,14 +37,22 @@ export default function MusicInterestsForm({
     );
   };
 
-  const confirmModal = () => {
-    if (modalType === "instrument") {
-      setInstruments(tempSelection as Instrument[]);
-    } else if (modalType === "genre") {
-      setGenres(tempSelection as Genre[]);
-    }
-    setModalType(null);
-  };
+const confirmModal = () => {
+  let newData;
+  
+  if (modalType === "instrument") {
+    const updated = tempSelection as Instrument[];
+    setInstruments(updated);
+    newData = { instruments: updated, genres };
+  } else {
+    const updated = tempSelection as Genre[];
+    setGenres(updated);
+    newData = { instruments, genres: updated };
+  }
+
+  onChange(newData);
+  setModalType(null);
+};
 
   const renderTags = (items: string[]) =>
     items.map((item) => (
