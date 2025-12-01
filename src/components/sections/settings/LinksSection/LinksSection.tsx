@@ -4,18 +4,29 @@ import { useState } from "react";
 import InputField from "@/components/ui/InputField/InputField";
 import styles from "./LinksSection.module.css";
 
-export default function LinksSection() {
+type LinksSection = {
+  instagramLink?: string,
+  spotifyLink?: string,
+  youtubeLink?: string,
+  soundcloudLink?: string,
+  websiteLink?: string
+}
+
+export default function LinksSection(props: LinksSection) {
+  const getValue = (value?: string) => {
+    return value || "";
+  };
+
   const [links, setLinks] = useState([
-    { label: "Instagram", placeholder: "Adicionar URL de perfil", value: "" },
-    { label: "TikTok", placeholder: "Adicionar URL de perfil", value: "" },
-    { label: "Spotify", placeholder: "Adicionar URL de perfil", value: "" },
-    { label: "YouTube", placeholder: "Adicionar URL de canal", value: "" },
+    { label: "Instagram", placeholder: "Adicionar URL de perfil", value: getValue(props.instagramLink) },
+    { label: "Spotify", placeholder: "Adicionar URL de perfil", value: getValue(props.spotifyLink) },
+    { label: "YouTube", placeholder: "Adicionar URL de canal", value: getValue(props.youtubeLink) },
     {
       label: "SoundCloud",
       placeholder: "Adicionar URL de perfil",
-      value: "https://soundcloud.com/arthur-reali-fabiano",
+      value: getValue(props.soundcloudLink),
     },
-    { label: "Site", placeholder: "Adicionar URL de site pessoal", value: "" },
+    { label: "Site", placeholder: "Adicionar URL de site pessoal", value: getValue(props.websiteLink) },
   ]);
 
   const handleChange = (index: number, newValue: string) => {

@@ -45,7 +45,7 @@ export default function ProfileBannerUploader({ profilePhoto, bannerPhoto }: Pro
               src={bannerPhoto}
               alt="Banner do perfil"
               width={400}
-              height={80}
+              height={120}
               className={styles.bannerImage}
               onClick={() => setShowBannerModal(true)}
             />

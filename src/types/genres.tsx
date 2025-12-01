@@ -1,0 +1,41 @@
+export const GenreValues = [
+  "ROCK", "INDIE", "MPB", "POP", "HIP_HOP", "RNB_SOUL", "ELETRONICO",
+  "JAZZ", "BLUES", "CLASSICO", "FUNK", "METAL", "SERTANEJO", "PAGODE",
+  "FORRO", "ROCK_PROGRESSIVO", "KPOP", "LATINA", "LOFI", "REGGAE",
+  "GOSPEL", "AFRO", "HOUSE", "EDM", "TRAP", "PUNK", "FOLK",
+  "DANCEHALL", "OUTRO",
+] as const;
+
+export type Genre = typeof GenreValues[number];
+
+export const GenreLabel: Record<Genre, string> = {
+  ROCK: "Rock",
+  INDIE: "Indie",
+  MPB: "MPB",
+  POP: "Pop",
+  HIP_HOP: "Hip Hop",
+  RNB_SOUL: "R&B / Soul",
+  ELETRONICO: "Eletrônico",
+  JAZZ: "Jazz",
+  BLUES: "Blues",
+  CLASSICO: "Clássico",
+  FUNK: "Funk",
+  METAL: "Metal",
+  SERTANEJO: "Sertanejo",
+  PAGODE: "Pagode",
+  FORRO: "Forró",
+  ROCK_PROGRESSIVO: "Rock Progressivo",
+  KPOP: "K-Pop",
+  LATINA: "Latina",
+  LOFI: "Lo-fi",
+  REGGAE: "Reggae",
+  GOSPEL: "Gospel",
+  AFRO: "Afro",
+  HOUSE: "House",
+  EDM: "EDM",
+  TRAP: "Trap",
+  PUNK: "Punk",
+  FOLK: "Folk",
+  DANCEHALL: "Dancehall",
+  OUTRO: "Outro",
+};

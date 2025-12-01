@@ -1,7 +1,18 @@
+import { Genre } from "./genres";
+import { Instrument } from "./skills";
+
 export interface ApiResponse<T = unknown> {
   success: boolean;
   message: string;
   data: T;
+}
+
+export interface ExternalLinks {
+  spotify?: string;
+  soundcloud?: string;
+  instagram?: string;
+  youtube?: string;
+  website?: string;
 }
 
 export interface Location {
@@ -18,17 +29,17 @@ export interface User {
   email: string;
   username: string;
   displayName: string;
-  profilePicture: string | null;
-  profileBanner: string | null;
+  profilePicture: string | undefined;
+  profileBanner: string | undefined;
   photosCard: string[];
   sex: string | null;
-  instruments: string[];
   favoriteArtistsSpotifyId: string[];
-  genres: string[];
+  instruments: Instrument[];
+  genres: Genre[];
   bio: string;
   goal: string | null;
   location: Location | null;
-  links: string | null;
+  links: ExternalLinks | null;
   createdAt: string;
   updatedAt: string;
   followersCount: number;
