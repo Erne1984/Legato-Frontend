@@ -1,8 +1,8 @@
 "use client";
 import HeaderLandingPage from "@/components/sections/landingPage/HeaderLandingPage/HeaderLandingPage";
 import HeaderMobileLandingPage from "@/components/ui/HeaderMobile/HeaderMobileLandingPage";
-import WarningModal from "@/components/ui/WarningModal/WarningModal";
 import { useMe } from "@/hooks/useUser";
+import { isTokenValid } from "@/utils/isTokenValid";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -11,18 +11,17 @@ export default function LandingLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { data, isLoading } = useMe();
-  
   const router = useRouter();
+  const [authChecked, setAuthChecked] = useState(false);
 
-  const user = data?.data;
+  const isLogged = isTokenValid();
 
   useEffect(() => {
-    if (!isLoading && user) {
-      router.replace(`/users/${user.username}`);
+    if (isLogged) {
+      router.replace("/find_musicians");
     }
-  }, [isLoading, data, router]);
-
+    setAuthChecked(true);
+  }, [isLogged, router]);
 
   return (
     <>
