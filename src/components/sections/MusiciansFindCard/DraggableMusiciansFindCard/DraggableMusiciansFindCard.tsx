@@ -4,7 +4,6 @@ import React, { useState, useRef, useEffect, forwardRef, useImperativeHandle } f
 import styles from "./DraggableMusiciansFindCard.module.css"
 import SwipeOverlay from "../SwipeOverlayMusiciansFindCard/SwipeOverlayMusiciansFindCard";
 
-//Define the type for methods we want to expose to parent via ref
 
 export type DraggableCardHandle = {
     triggerSwipe: (direction: "left" | "right") => void;
@@ -94,7 +93,6 @@ const DraggableCard = forwardRef<DraggableCardHandle, DraggableCardProps>(
       };
     }, [isDragging]);
 
-    // Render draggable card
     return (
         <div
             className={`${styles.swipeable_card} 
@@ -107,20 +105,15 @@ const DraggableCard = forwardRef<DraggableCardHandle, DraggableCardProps>(
                     : undefined,
                 transition: isDragging ? "none" : "transform 0.6 ease",
             }}
-            //Mouse events
             onMouseDown={(e) => handleStart(e.clientX)}
             onMouseMove={(e) => handleMove(e.clientX)}
             onMouseUp={handleEnd}
             onMouseLeave={handleEnd}
-            //Touch events
             onTouchStart={(e) => handleStart(e.touches[0].clientX)}
             onTouchMove={(e) => handleMove(e.touches[0].clientX)}
             onTouchEnd={handleEnd}
         >
-            {/* Overlay that reacts dynamically to offsetX */}
             <SwipeOverlay offsetX={offsetX} />
-
-            {/* Actual content of the card */}
             {children}
         </div> 
     );

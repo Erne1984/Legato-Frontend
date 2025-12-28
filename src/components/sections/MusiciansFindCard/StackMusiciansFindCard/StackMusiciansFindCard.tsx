@@ -73,7 +73,6 @@ const handleSendMatch = () => {
   return (
     <>
       <div className={styles.stack_container}>
-        {/* Map cards: top card is last in DOM for proper stacking */}
         {cards
           .map((card, index) => {
             const isTop = index === 0;

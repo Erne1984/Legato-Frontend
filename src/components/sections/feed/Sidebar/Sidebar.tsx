@@ -83,5 +83,5 @@ export default function Sidebar({ tab }: SidebarProps) {
         </div>
       </aside>
     </>
-  );
+  )
 }

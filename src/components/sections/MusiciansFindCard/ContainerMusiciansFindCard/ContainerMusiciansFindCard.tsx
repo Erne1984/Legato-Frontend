@@ -9,7 +9,7 @@ type ContainerMusiciansFindCardProps = {
     skills: string[];
     slides: { type: "image" | "video"; src: string }[];
     distance: number;
-    gender: string;
+    gender: string | null;
     musicGenres: string[];
     age: number;
 };
@@ -26,9 +26,7 @@ export default function MusiciansFindCard({
     return (
         <>
             <div className={styles.card_wrapper}>
-                {/* Swipeable wrapper around the main card */}
                 <div className={styles.container_card}>
-                    {/* Carousel inside the card */}
                     <CarouselCard
                         slides={slides}
                         name={name}
@@ -37,11 +35,9 @@ export default function MusiciansFindCard({
                         age={age}
                     />
 
-                    {/* Musician info section */}
                     <div className={styles.description_container_card}>
                         <p className={styles.musician_bio}>{bio}</p>
 
-                        {/* Music Genres */}
                         <div className={styles.musician_skills}>
                             <div className={styles.musician_skills_title}>Gêneros Musicais</div>
                             {musicGenres.map((genre, index) => (
@@ -51,13 +47,11 @@ export default function MusiciansFindCard({
                             ))}
                         </div>
 
-                        {/* Gender */}
                         <div className={styles.musician_skills}>
                             <div className={styles.musician_skills_title}>Gênero</div>
                             <div className={styles.musician_skills_item}>{gender}</div>
                         </div>
 
-                        {/* Common artists */}
                         <div className={styles.musician_common_artists}>
                             <div className={styles.musician_commom_artists_title}>Artistas em comum</div>
                             <div className={styles.musician_commom_artists_container}>
@@ -70,7 +64,6 @@ export default function MusiciansFindCard({
                             </div>
                         </div>
 
-                        {/* View profile button */}
                         <div>
                             <p className={styles.view_profile_button}>
                                 Ver Perfil Completo

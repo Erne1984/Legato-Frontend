@@ -1,4 +1,4 @@
-import { fetchCurrentUser, fetchUserByUsername, fetchUserConnections, getUserConnections, getUserFollowers, getUsers, putUpdateUser, putUploadUserImage } from "@/services/userService";
+import { fetchCurrentUser, fetchUserByUsername, getUserConnections, getUserFollowers, getUsers, putUpdateUser, putUploadUserCardImage, putUploadUserImage } from "@/services/userService";
 import { UpdateUserDTO, User } from "@/types/response";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -18,47 +18,36 @@ export function useFindByUsername(username: string) {
     });
 }
 
-export function useFetchUserConnections(userId: number) {
-    return useQuery({
-        queryKey: ['userConnections', userId],
-        queryFn: () => fetchUserConnections()
-    })
-}
+// Removido useFetchUserConnections - mesmo que useGetUsersConnections
 
 export function useGetUsers() {
     return useQuery({
         queryKey: ["users"],
-        queryFn: () => getUsers()
-    })
+        queryFn: getUsers
+    });
 }
 
-export function useGetUsersConnections(id: number) {
+export function useGetUsersConnections() {
     return useQuery({
-        queryKey: ["usersConnections", id],
-        queryFn: () => getUserConnections()
-    })
+        queryKey: ["usersConnections"],
+        queryFn: getUserConnections
+    });
 }
 
 export function useGetUsersFollowers(id: number) {
     return useQuery({
         queryKey: ["usersFollowers", id],
         queryFn: () => getUserFollowers(id)
-    })
+    });
 }
 
 export function useUpdateUser() {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: ({ data }: { data: Partial<UpdateUserDTO> }) =>
-            putUpdateUser(data),
-
+        mutationFn: (data: Partial<UpdateUserDTO>) => putUpdateUser(data),
         onSuccess: (res) => {
-            queryClient.setQueryData(["me"], (oldMe: User) => ({
-                ...oldMe,
-                data: res.data.data
-            }));
-
+            queryClient.setQueryData(["me"], res);
             queryClient.invalidateQueries({ queryKey: ["me"] });
         },
     });
@@ -70,14 +59,21 @@ export function useUploadUserImage() {
     return useMutation({
         mutationFn: ({ type, file }: { type: string; file: File }) =>
             putUploadUserImage(type, file),
-
         onSuccess: (res) => {
-            queryClient.setQueryData(["me"], (old: any) => ({
-                ...old,
-                data: res.data
-            }));
-
+            queryClient.setQueryData(["me"], res);
             queryClient.invalidateQueries({ queryKey: ["me"] });
+        },
+    });
+}
+
+export function useUploadUserCardImage() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: ({ index, file }: { index: number; file: File }) =>
+            putUploadUserCardImage(index, file),
+        onSuccess: (res) => {
+            queryClient.setQueryData(["me"], res);
         },
     });
 }

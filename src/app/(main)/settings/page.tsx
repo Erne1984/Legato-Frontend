@@ -34,7 +34,7 @@ export default function SettingsPage() {
   return (
     <div className={styles.container_settings_wrapper}>
  
-      <SettingsContent me={me} />;
+      <SettingsContent me={me} />
 
     </div>
 

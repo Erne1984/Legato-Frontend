@@ -3,17 +3,23 @@ import styles from "./SidebarSettings.module.css";
 import { MenuItem, SidebarProps } from "../../feed/Sidebar/Sidebar";
 import Icon from "@/components/ui/Icon/Icon";
 
+export type SidebarSettingsProps = {
+  tab: string;
+  changeTab: () =>  void;
+}
 
-export default function SidebarSettings({ tab }: SidebarProps) {
+
+export default function SidebarSettings({ tab, changeTab }: SidebarSettingsProps) {
       const [activeItem, setActiveItem] = useState(tab);
     
       const menuItems: MenuItem[] = [
         { key: "Geral", icon: "settings", label: "Tudo" },
         { key: "Card", icon: "users", label: "Card" }
-      ];
+      ]
     
       const handleItemClick = (key: string) => {
         setActiveItem(key);
+        changeTab();
       };
 
     return(
