@@ -17,7 +17,7 @@ export default function StatsCardUser({ userId, userUsername, posts }: StatsCard
   const [showFollowers, setShowFollowers] = useState(false);
   const [showPosts, setShowPosts] = useState(false);
 
-  const { data: connData } = useGetUsersConnections(userId);
+  const { data: connData } = useGetUsersConnections();
   const { data: followersData } = useGetUsersFollowers(userId);
 
   const connections = connData?.data || [];
