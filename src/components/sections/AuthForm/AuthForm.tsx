@@ -8,6 +8,15 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLogin, useRegister } from "@/hooks/useAuth";
 
+
+type ApiError = {
+  response?: {
+    data?: {
+      message: string;
+    };
+  };
+};
+
 type AuthFormProps = {
   type: "login" | "signup";
 };
@@ -34,64 +43,67 @@ export default function AuthForm({ type }: AuthFormProps) {
       email,
       password,
     },
-    {
-      onError: () => {
-        setWarning({
-          show:true,
-          message: "Usuário ou senha inválidos!",
-        });
+      {
+        onError: () => {
+          setWarning({
+            show: true,
+            message: "Usuário ou senha inválidos!",
+          });
+        }
       }
-    }
     );
   };
 
   const handleRegister = () => {
-  // Checagem de campos obrigatórios
-  if (!email || !password || !confirmPassword || !username || !displayName) {
-    setWarning({
-      show: true,
-      message: "Por favor, preencha todos os campos obrigatórios!",
-    });
-    return;
-  }
-
-  if (!acceptTerms) {
-    setWarning({
-      show: true,
-      message: "Você precisa aceitar os termos para continuar.",
-    });
-    return;
-  }
-
-  if (password !== confirmPassword) {
-    setWarning({
-      show: true,
-      message: "As senhas não coincidem!",
-    });
-    return;
-  }
-
-  registerMutation.mutate(
-    {
-      email,
-      password,
-      role: "USER",
-      username,
-      displayName,
-    },
-    {
-      onError: (error: any) => {
-        const message =
-          error?.response?.data?.message ||
-          "Erro ao registrar! Este email já está sendo utilizado.";
-        setWarning({ show: true, message });
-      },
-      onSuccess: () => {
-        setWarning({ show: true, message: "Registro realizado com sucesso!" });
-      },
+    if (!email || !password || !confirmPassword || !username || !displayName) {
+      setWarning({
+        show: true,
+        message: "Por favor, preencha todos os campos obrigatórios!",
+      });
+      return;
     }
-  );
-};
+
+    if (!acceptTerms) {
+      setWarning({
+        show: true,
+        message: "Você precisa aceitar os termos para continuar.",
+      });
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setWarning({
+        show: true,
+        message: "As senhas não coincidem!",
+      });
+      return;
+    }
+
+    registerMutation.mutate(
+      {
+        email,
+        password,
+        role: "USER",
+        username,
+        displayName,
+      },
+      {
+        onError: (error: unknown) => {
+          let message = "Erro ao registrar! Este email já está sendo utilizado.";
+
+          if (error && typeof error === 'object' && 'response' in error) {
+            const responseError = error as { response?: { data?: { message?: string } } };
+            message = responseError.response?.data?.message || message;
+          }
+
+          setWarning({ show: true, message });
+        },
+        onSuccess: () => {
+          setWarning({ show: true, message: "Registro realizado com sucesso!" });
+        },
+      }
+    );
+  };
 
 
   const navigateToLogin = () => router.push("/login");
@@ -206,10 +218,10 @@ export default function AuthForm({ type }: AuthFormProps) {
         <GoogleButton />
       </div>
 
-      <WarningModal 
+      <WarningModal
         show={warning.show}
         message={warning.message}
-        onClose={() => setWarning({ ...warning, show: false})}
+        onClose={() => setWarning({ ...warning, show: false })}
       />
     </>
   );

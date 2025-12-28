@@ -14,7 +14,7 @@ export default function BasicInfoForm(props: BasicInfoFormsProps) {
   const [username, setUsername] = useState<string>(props.username)
   const [bio, setBio] = useState<string>(props.bio ? props.bio : "");
 
-  const updateParent = (values: any) => {
+  const updateParent = (values: Partial<{ username: string; displayName: string; bio: string }>) => {
     props.onChange({
       username,
       displayName,

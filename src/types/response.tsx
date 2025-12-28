@@ -25,7 +25,6 @@ export interface Location {
 }
 
 export interface User {
-  data: any;
   id: number;
   email: string;
   username: string;

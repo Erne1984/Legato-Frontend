@@ -8,7 +8,7 @@ export function isTokenValid(): boolean {
   if (!token) return false;
 
   try {
-    const decoded: any = jwtDecode(token);
+    const decoded = jwtDecode<{ exp?: number }>(token);
 
     if (!decoded.exp) return false;
 
