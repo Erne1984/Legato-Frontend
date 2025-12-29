@@ -1,52 +1,56 @@
+import { useState } from "react";
+import { Camera } from "lucide-react";
+ 
 import styles from "./CardImageUpload.module.css";
+import { CardImageModal } from "../CardImageModal/CardImageModal";
 
-interface CardImageUploadProps {
-    image: string | null;
-    onUpload: (file: File) => void;
-    isLoading?: boolean;
-    disabled?: boolean;
+interface Props {
+    images: (string | null)[];
+    onUpload: (file: File, index: number) => void;
+    onRemove?: (index: number) => void;
 }
 
-export function CardImageUpload({
-    image,
-    onUpload,
-    isLoading = false,
-    disabled = false,
-}: CardImageUploadProps) {
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) onUpload(file);
-    };
+export function CardImageGrid({ images, onUpload, onRemove }: Props) {
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
     return (
-        <div className={styles.cardSlot}>
-            <label className={styles.uploadWrapper}>
-                {image ? (
-                    <img
-                        src={image}
-                        alt="Card"
-                        className={styles.cardImage}
-                    />
-                ) : (
-                    <span className={styles.placeholder}>+</span>
-                )}
-
-                {!disabled && (
-                    <input
-                        type="file"
-                        accept="image/*"
-                        hidden
-                        disabled={isLoading}
-                        onChange={handleFileChange}
-                    />
-                )}
-
-                {isLoading && (
-                    <div className={styles.overlay}>
-                        <span className={styles.spinner} />
+        <>
+            <div className={styles.grid}>
+                {images.map((image, index) => (
+                    <div
+                        key={index}
+                        className={styles.slot}
+                        onClick={() => setActiveIndex(index)}
+                    >
+                        {image ? (
+                            <img src={image} alt={`Card ${index + 1}`} />
+                        ) : (
+                            <div className={styles.placeholder}>
+                                <Camera size={28} />
+                            </div>
+                        )}
                     </div>
-                )}
-            </label>
-        </div>
+                ))}
+            </div>
+
+            {activeIndex !== null && (
+                <CardImageModal
+                    image={images[activeIndex]}
+                    onClose={() => setActiveIndex(null)}
+                    onUpload={(file) => {
+                        onUpload(file, activeIndex);
+                        setActiveIndex(null);
+                    }}
+                    onRemove={
+                        images[activeIndex]
+                            ? () => {
+                                onRemove?.(activeIndex);
+                                setActiveIndex(null);
+                            }
+                            : undefined
+                    }
+                />
+            )}
+        </>
     );
 }

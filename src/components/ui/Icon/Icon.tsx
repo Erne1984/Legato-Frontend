@@ -41,6 +41,8 @@ import {
   ChevronRight,
   ChevronLeft,
   History,
+  Upload,
+  Trash2
 } from "lucide-react";
 
 const icons = {
@@ -86,6 +88,8 @@ const icons = {
   LeftArrow: ChevronLeft,
   RightArrow: ChevronRight,
   history: History,
+  upload: Upload,
+  trash2: Trash2
 };
 
 export type IconName = keyof typeof icons;

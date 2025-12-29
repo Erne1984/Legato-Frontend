@@ -61,3 +61,10 @@ export async function putUploadUserCardImage(index: number, file: File): Promise
     });
     return res.data;
 }
+
+// DELETE
+export async function deleteUserCardPhoto(userId: number, photoIndex: number) {
+    const res = await api.delete(`/users/${userId}/cards/${photoIndex}`)
+
+    return res.data;
+}

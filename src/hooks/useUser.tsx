@@ -1,4 +1,4 @@
-import { fetchCurrentUser, fetchUserByUsername, getUserConnections, getUserFollowers, getUsers, putUpdateUser, putUploadUserCardImage, putUploadUserImage } from "@/services/userService";
+import { deleteUserCardPhoto, fetchCurrentUser, fetchUserByUsername, getUserConnections, getUserFollowers, getUsers, putUpdateUser, putUploadUserCardImage, putUploadUserImage } from "@/services/userService";
 import { UpdateUserDTO, User } from "@/types/response";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
@@ -18,7 +18,6 @@ export function useFindByUsername(username: string) {
     });
 }
 
-// Removido useFetchUserConnections - mesmo que useGetUsersConnections
 
 export function useGetUsers() {
     return useQuery({
@@ -72,6 +71,20 @@ export function useUploadUserCardImage() {
     return useMutation({
         mutationFn: ({ index, file }: { index: number; file: File }) =>
             putUploadUserCardImage(index, file),
+        onSuccess: (res) => {
+            queryClient.setQueryData(["me"], res);
+        },
+    });
+}
+
+
+export function useDeleteUserCardPhoto() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: ({ userId, photoIndex }: { userId: number; photoIndex: number }) =>
+            deleteUserCardPhoto(userId, photoIndex),
+
         onSuccess: (res) => {
             queryClient.setQueryData(["me"], res);
         },
